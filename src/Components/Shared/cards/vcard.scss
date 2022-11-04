@@ -1,0 +1,93 @@
+@import "../../../Style/colors.scss";
+@import"../../../Style/shortcuts.scss";
+
+#vcart {
+    border: 10px solid darken($primaryColor, 5%);
+    max-width: 15em;
+    background-color: rgb(255, 255, 255);
+    border-radius: calc($borderRadius * 3);
+    overflow: hidden;
+    margin-left: 3rem;
+
+    .cartBody {
+
+        .cartBody_img {
+            border-radius: calc($borderRadius * 2);
+            overflow: hidden;
+            margin: 1rem;
+
+            img {
+                width: 100%;
+
+            }
+        }
+
+        .cartBody_details {
+            margin: 1rem;
+
+            h3 {
+                @include noSpacing;
+                font-size: 1.2em;
+                font-weight: bolder;
+                color: $primaryColorDark;
+
+            }
+
+            .cartBody_details_data {
+                @include dFlex;
+                justify-content: space-between;
+                
+
+                .cartBody_details_data_text {
+                    .spanMajor {
+                        display: block;
+                        font-weight: bolder;
+                        color: $secoundryColor;
+                    }
+
+                    .spanMinor {
+                        display: block;
+                        color: $liteGray;
+                        font-size: 14px;
+                    }
+
+                }
+
+            }
+
+            .cartBody_details_data_price {
+                border-radius: $borderRadius;
+                border: 2px solid $primaryColor;
+                padding: 0.2em 0.5em ;
+                transition: $noramlTransition;
+                &:hover {
+                    border: 2px solid $secoundryColor;
+
+                    .priceCurrency{
+                        color: $primaryColor;
+                    }
+                }
+
+                .stars{
+                    display: block;
+                    
+                }
+
+                .itemPrice {
+                    font-size: 1.3em;
+                    font-weight: bold;
+                    color: $primaryColorDark
+                }
+
+                .priceCurrency {
+                    color: $secoundryColor;
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
