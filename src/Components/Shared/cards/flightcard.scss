@@ -1,0 +1,110 @@
+
+@import "../../../Style/colors.scss";
+@import"../../../Style/shortcuts.scss";
+
+#flightCard {
+    border: 10px solid darken($primaryColor, 5%);
+    max-width: 500px;
+    background-color: rgb(255, 255, 255);
+    border-radius: calc($borderRadius * 3);
+    overflow: hidden;
+    margin-left: 3rem;
+
+    .cardBody {
+
+        @include dFlex;
+        flex-wrap: wrap;
+
+        .cardBody_img {
+            border-radius: calc($borderRadius * 2);
+            height: 200px;
+            margin: 1rem;
+            overflow: hidden;
+
+            img {
+                height: 100%;
+            }
+        }
+
+        .cardBody_details {
+            // width: 100%;
+            padding: 1rem 0;
+            @include dFlex;
+            justify-content: space-evenly;
+            flex-direction: column;
+
+            .cardBody_details_data {
+
+                .spacer {
+                    height: 50px;
+                    background: transparent; /* you'll need this if #container's parent element has a different background from #container itself */
+                }
+                .container {
+                    position: relative;
+                    min-height: 80px;
+                  
+                    .container_data
+                     
+                    .data {
+                        position: absolute;
+                        bottom: 110%;
+                        right: 0;
+                        left: 0;
+                      
+                        @include dFlex;
+                        justify-content: space-between;
+
+                        .data_from {
+                            padding: 5px 10px;
+                            border-radius: 1rem;
+                            background-color: $secoundryColor;
+                        }
+
+                        .data_to {
+                            padding: 5px 10px;
+                            border-radius: 1rem;
+
+                            background-color: $primaryColor;
+
+                        }
+
+                    }
+
+
+                }
+
+                // .date_container{
+                //     position: relative;
+                //     .container_data {
+                //         position: absolute;
+                //         bottom: 110%;
+                //         right: 0;
+                //         left: 0;
+
+                //         @include dFlex;
+                //         justify-content: space-between;
+
+                //         .data_from {
+                //             padding: 5px 10px;
+                //             border-radius: 1rem;
+                //             background-color: $secoundryColor;
+                //         }
+
+                //         .data_to {
+                //             padding: 5px 10px;
+                //             border-radius: 1rem;
+
+                //             background-color: $primaryColor;
+
+                //         }
+
+                //     }
+
+                // }
+            }
+        }
+
+
+    }
+
+}

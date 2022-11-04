@@ -33,22 +33,7 @@ function NavbarComponant() {
                         </div>
                     </div>
                 </nav>
-
-
-
-
-                <div>
-                    <h1>Find your next stay</h1>
-                    <h5>Search deals on hotels, homes, and much more...</h5>
-
-
-                </div>
-
             </div>
-
-
-
-
         </>
     )
 }

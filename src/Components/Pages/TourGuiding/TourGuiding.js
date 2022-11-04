@@ -1,19 +1,16 @@
 import './tourGuiding.scss'
 
-function TourGuiding(){
+//// Header Data ////
+import headerimg from "../../../Assets/header/tourGuidHeader.png"
+import HeaderComponent from '../../Shared/header/HeaderComponent'
+const headerTitle = <>Select Your tooor </>
+const headerParagraph = <> Ana msh mn sharm , </>
+function TourGuiding() {
 
-
-
-
-
-
-
-    return(
-
-
-
-
-<h1>Tour Guiding Page</h1>
+    return (
+        <>
+            <HeaderComponent img={headerimg} title={headerTitle} paragraph={headerParagraph} />
+        </>
 
 
     )
