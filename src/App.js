@@ -30,6 +30,9 @@ function App() {
 <Route path={"/TourGuiding"} exact component={TourGuiding}></Route>
 <Route path={"/flight"} exact component={Flight}></Route>
 <Route path={"/holidays"} exact component={Holidays}></Route>
+
+
+
 <Route path={"*"} exact component={NotFound}></Route>
 
   </Switch>
