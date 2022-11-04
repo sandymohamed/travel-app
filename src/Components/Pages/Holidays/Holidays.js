@@ -1,4 +1,4 @@
-import  './holidays.css';
+import  './holidays.scss';
 
 const Holidays = () => {
     return (
