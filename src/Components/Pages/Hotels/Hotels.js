@@ -1,4 +1,4 @@
-import './hotels.css';
+import './hotels.scss';
 
 const Hotels = () => {
     return (

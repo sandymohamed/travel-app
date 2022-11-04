@@ -1,4 +1,4 @@
-import  './Flight.css';
+import  './Flight.scss';
 
 const Flight = () => {
     return (

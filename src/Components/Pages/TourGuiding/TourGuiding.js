@@ -1,4 +1,4 @@
-import './tourGuiding.css'
+import './tourGuiding.scss'
 
 function TourGuiding(){
 
