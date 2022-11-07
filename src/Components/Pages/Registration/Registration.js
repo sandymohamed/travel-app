@@ -37,7 +37,7 @@ function Registration() {
 
     const submit = (e) => {
     
-        if (e.target.name == "name") {
+        if (e.target.name === "name") {
             setUserData({
                 ...userData,
                 name: e.target.value
@@ -47,7 +47,7 @@ function Registration() {
                 ...error,
                 nameErr: e.target.value.length === 0 ? "This Field is Required" : e.target.value.length < 3 ? "please insert valid name" : null
             })
-        } else if (e.target.name == "email") {
+        } else if (e.target.name === "email") {
             setUserData({
                 ...userData,
                 email: e.target.value
@@ -56,7 +56,7 @@ function Registration() {
                 ...error,
                 emailErr: e.target.value.length === 0 ? "This Field is Required" : emailRegex.test(e.target.value) ? null : "email format must be xxx@xxxx.com"
             })
-        } else if (e.target.name == "userName") {
+        } else if (e.target.name === "userName") {
             setUserData({
                 ...userData,
                 userName: e.target.value
@@ -65,7 +65,7 @@ function Registration() {
                 ...error,
                 userNameErr: e.target.value.length === 0 ? "This Field is Required" : e.target.value.length < 3 ? "please insert valid user name" : null
             })
-        } else if (e.target.name == "password") {
+        } else if (e.target.name === "password") {
             setUserData({
                 ...userData,
                 password: e.target.value
@@ -77,7 +77,7 @@ function Registration() {
         } 
        
     }
-  };
+  
 
   const submitData = (e) => {
     e.preventDefault();
@@ -95,7 +95,7 @@ function Registration() {
     if (checkerInput) {
       console.log(e);
     }
-  };
+  }
 
   return (
     <div className="container w-50">

@@ -6,7 +6,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 ////// For Header //////
-import headerImg from '../../../Assets/header/transportationHeader.png';
+import headerImg from '../../../assets/header/transportationHeader.png';
 const headerTitle = <> Find your Tayara</>;
 const headerParagraph = <> ana b7b masr gdn msh adaer asafr laaaa</>;
 

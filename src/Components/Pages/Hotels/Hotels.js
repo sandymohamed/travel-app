@@ -4,9 +4,9 @@ import './hotels.scss';
 import headerimg from "../../../assets/header/hotelHeader.png"
 import Vcart from '../../Shared/cards/Vcard';
 import FlightCard from '../../Shared/cards/FlightCard';
-// import {getHotels} from '../../../services/hotelsServ'
+import {getHotels} from '../../../services/hotelsServ'
 import axios from 'axios'
-// import {ENDPOINTS} from '../../../utils/endPoints' 
+import {ENDPOINTS} from '../../../utils/endPoints' 
 import { useEffect, useState } from 'react';
 
 const headerTitle =<>Select Your Home </>
@@ -21,20 +21,20 @@ const Hotels = () => {
 const [hotels, setHotels] = useState([])
 
 // const getHotels = () => {
-//     return axios.get(`http://localhost:8080/hotel/`)
-//     .then(res => {
-//         setHotels(res)
-//     console.log("d"+hotels)})
+//     return axios.get(`${ENDPOINTS.GETHOTELS}`)
+//     .then(res => {setHotels(res.data)})
 //     .catch(err => console.log(err))
 // }
 
 
 useEffect(() => {
     // get all movies
-    fetch('https://fakestoreapi.com/products')
-    .then(res=>res.json())
-    .then(json=>console.log(json))
+    // fetch('https://fakestoreapi.com/products')
+    // .then(res=>res.json())
+    // .then(json=>console.log(json))
         
+getHotels().then(res=> setHotels(res))
+    // setHotels( getHotels())
 }, [])
 
 
@@ -55,13 +55,15 @@ useEffect(() => {
                         <div>stars</div>
                     </div>
                     <div>left cards
-{/* 
-                    {
+
+{/* {title,city ,description, Evaluation,Price} */}
+                    {hotels && (
                         hotels.map((hotel,i)=>(
-                            <Vcart key={i}  />
+                            <Vcart key={i} title={hotel.HotelName} city={hotel.City.City_Name} Evaluation={hotel.Evaluation} Price={hotel.Price} description={hotel.Description}/>
 
                         ))
-                    } */}
+                        )
+                    }
                     </div>
                 </div>
        </>
