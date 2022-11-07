@@ -1,18 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { registerUser } from '../../../services/authAPI';
 function Registration() {
-  //     {
-  //     "username":"markMagdy",
-  //     "firstName":"Mark",
-  //     "lastName":"Wahba",
-  //     "email":"mark.aziz.ms2@gmail.com",
-  //     "password":"mk123456",
-  //     "country":"mmmmina"
-
-  // }
   const [userData, setUserData] = useState({
-    userName: '',
+    username: '',
     firstName: '',
     lastName: '',
     country: '',
@@ -22,11 +13,11 @@ function Registration() {
   });
 
   const [error, setError] = useState({
-    firstName: null,
-    lastName: null,
-    country: null,
+    firstNameErr: null,
+    lastNameErr: null,
+    countryErr: null,
     emailErr: null,
-    userNameErr: null,
+    usernameErr: null,
     passwordErr: null,
     birthdayErr: null,
   });
@@ -34,68 +25,134 @@ function Registration() {
   const passwordRegex = new RegExp(
     /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/
   );
+  const [checkIfErrExist, setCheckIfErrExist] = useState(false);
+  const [response, setResponse] = useState({});
 
-    const submit = (e) => {
-    
-        if (e.target.name === "name") {
-            setUserData({
-                ...userData,
-                name: e.target.value
-            })
 
-            setError({
-                ...error,
-                nameErr: e.target.value.length === 0 ? "This Field is Required" : e.target.value.length < 3 ? "please insert valid name" : null
-            })
-        } else if (e.target.name === "email") {
-            setUserData({
-                ...userData,
-                email: e.target.value
-            })
-            setError({
-                ...error,
-                emailErr: e.target.value.length === 0 ? "This Field is Required" : emailRegex.test(e.target.value) ? null : "email format must be xxx@xxxx.com"
-            })
-        } else if (e.target.name === "userName") {
-            setUserData({
-                ...userData,
-                userName: e.target.value
-            })
-            setError({
-                ...error,
-                userNameErr: e.target.value.length === 0 ? "This Field is Required" : e.target.value.length < 3 ? "please insert valid user name" : null
-            })
-        } else if (e.target.name === "password") {
-            setUserData({
-                ...userData,
-                password: e.target.value
-            })
-            setError({
-                ...error,
-                passwordErr: e.target.value.length === 0 ? "This Field is Required" : passwordRegex.test(e.target.value) ? null : "password length not less than 8 characters contains at least one lowercase , one uppercase , at least one digit and special character [ example : *@%$#] "
-            })
-        } 
-       
+  const handleChange = (e) => {
+    if (e.target.name === 'name') {
+      setUserData({
+        ...userData,
+        name: e.target.value,
+      });
+
+      setError({
+        ...error,
+        nameErr:
+          e.target.value.length === 0
+            ? 'This Field is Required'
+            : e.target.value.length < 3
+            ? 'please insert valid name'
+            : null,
+      });
+    } else if (e.target.name === 'email') {
+      setUserData({
+        ...userData,
+        email: e.target.value,
+      });
+      setError({
+        ...error,
+        emailErr:
+          e.target.value.length === 0
+            ? 'This Field is Required'
+            : emailRegex.test(e.target.value)
+            ? null
+            : 'email format must be xxx@xxxx.com',
+      });
+    } else if (e.target.name === 'userName') {
+      setUserData({
+        ...userData,
+        userName: e.target.value,
+      });
+      setError({
+        ...error,
+        userNameErr:
+          e.target.value.length === 0
+            ? 'This Field is Required'
+            : e.target.value.length < 3
+            ? 'please insert valid user name'
+            : null,
+      });
+    } else if (e.target.name === 'password') {
+      setUserData({
+        ...userData,
+        password: e.target.value,
+      });
+      setError({
+        ...error,
+        passwordErr:
+          e.target.value.length === 0
+            ? 'This Field is Required'
+            : passwordRegex.test(e.target.value)
+            ? null
+            : 'password length not less than 8 characters contains at least one lowercase , one uppercase , at least one digit and special character [ example : *@%$#] ',
+      });
+    } else if (e.target.name === 'firstName') {
+      setUserData({
+        ...userData,
+        firstName: e.target.value,
+      });
+      setError({
+        ...error,
+        firstNameErr:
+          e.target.value.length === 0
+            ? 'This Field is Required'
+            : e.target.value.length > 3
+            ? null
+            : 'first name 3 characters ',
+      });
+    } else if (e.target.name === 'lastName') {
+      setUserData({
+        ...userData,
+        lastName: e.target.value,
+      });
+      setError({
+        ...error,
+        lastNameErr:
+          e.target.value.length === 0
+            ? 'This Field is Required'
+            : e.target.value.length > 3
+            ? null
+            : 'last name 3 characters ',
+      });
+    } else if (e.target.name === 'country') {
+      setUserData({
+        ...userData,
+        country: e.target.value,
+      });
+      setError({
+        ...error,
+        countryErr:
+          e.target.value.length === 0
+            ? 'This Field is Required'
+            : e.target.value.length > 3
+            ? null
+            : 'country not less than 3 characters ',
+      });
+    } else if (e.target.name === 'country') {
+      setUserData({
+        ...userData,
+        birthday: e.target.value,
+      });
+      setError({
+        ...error,
+        birthdayErr:
+          e.target.value.length === 0
+            ? 'This Field is Required'
+            : e.target.value.length > 3
+            ? null
+            : 'country not less than 3 characters ',
+      });
     }
-  
+  };
 
   const submitData = (e) => {
     e.preventDefault();
-    let checkerInput =
-      error.nameErr &&
-      error.emailErr &&
-      error.passwordErr &&
-      error.userNameErr &&
-      error.firstNameErr &&
-      error.lasttNameErr &&
-      error.country
-        ? true
-        : false;
-    console.log(userData);
-    if (checkerInput) {
-      console.log(e);
+    console.log(response);
+    if (!checkIfErrExist) {
+      registerUser(userData).then((res) => setResponse(res));
     }
-  }
+  };
 
   return (
     <div className="container w-50">
@@ -111,7 +168,7 @@ function Registration() {
             className="form-control"
             name="firstName"
             value={userData.firstName}
-            onChange={(e) => submit(e)}
+            onChange={(e) => handleChange(e)}
           />
           <p className="text-danger">{error.firstNameErr}</p>
         </div>
@@ -126,7 +183,7 @@ function Registration() {
             className="form-control"
             name="lastName"
             value={userData.lastName}
-            onChange={(e) => submit(e)}
+            onChange={(e) => handleChange(e)}
           />
           <p className="text-danger">{error.lastNameErr}</p>
         </div>
@@ -142,7 +199,7 @@ function Registration() {
             className="form-control"
             name="email"
             value={userData.email}
-            onChange={(e) => submit(e)}
+            onChange={(e) => handleChange(e)}
           />
           <p className="text-danger">{error.emailErr}</p>
         </div>
@@ -158,8 +215,8 @@ function Registration() {
             type="date"
             className="form-control"
             name="birthday"
-            value={userData.email}
-            onChange={(e) => submit(e)}
+            value={userData.birthday}
+            onChange={(e) => handleChange(e)}
           />
           <p className="text-danger">{error.emailErr}</p>
         </div>
@@ -172,11 +229,11 @@ function Registration() {
           <input
             type="text"
             className="form-control"
-            name="userName"
-            value={userData.userName}
-            onChange={(e) => submit(e)}
+            name="username"
+            value={userData.username}
+            onChange={(e) => handleChange(e)}
           />
-          <p className="text-danger">{error.userNameErr}</p>
+          <p className="text-danger">{error.usernameErr}</p>
         </div>
         <div className="mb-3">
           <label
@@ -189,7 +246,7 @@ function Registration() {
             className="form-control"
             name="country"
             value={userData.country}
-            onChange={(e) => submit(e)}
+            onChange={(e) => handleChange(e)}
           />
           <p className="text-danger">{error.countryErr}</p>
         </div>
@@ -204,7 +261,7 @@ function Registration() {
             className="form-control"
             name="password"
             value={userData.password}
-            onChange={(e) => submit(e)}
+            onChange={(e) => handleChange(e)}
           />
           <p className="text-danger">{error.passwordErr}</p>
         </div>
@@ -212,7 +269,7 @@ function Registration() {
         <button
           type="submit"
           className="btn btn-primary me-5"
-          disabled={error.nameErr || error.passwordErr || error.emailErr || error.userNameErr}>
+          disabled={checkIfErrExist}>
           Submit
         </button>
         <Link to="/login">Have an account</Link>
