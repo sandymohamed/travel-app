@@ -1,32 +1,43 @@
-import { useState } from "react"
-import { Link } from "react-router-dom";
-
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Registration() {
+  //     {
+  //     "username":"markMagdy",
+  //     "firstName":"Mark",
+  //     "lastName":"Wahba",
+  //     "email":"mark.aziz.ms2@gmail.com",
+  //     "password":"mk123456",
+  //     "country":"mmmmina"
 
-    const [userData, setUserData] = useState({
+  // }
+  const [userData, setUserData] = useState({
+    userName: '',
+    firstName: '',
+    lastName: '',
+    country: '',
+    email: '',
+    password: '',
+    birthday: '',
+  });
 
-        name: "",
-        email: "",
-        userName: "",
-        password: "",
-
-    })
-
-    const [error, setError] = useState({
-
-        nameErr: null,
-        emailErr: null,
-        userNameErr: null,
-        passwordErr: null,
-    })
-    const emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{3}');
-    const passwordRegex = new RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/);
-
+  const [error, setError] = useState({
+    firstName: null,
+    lastName: null,
+    country: null,
+    emailErr: null,
+    userNameErr: null,
+    passwordErr: null,
+    birthdayErr: null,
+  });
+  const emailRegex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{3}');
+  const passwordRegex = new RegExp(
+    /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/
+  );
 
     const submit = (e) => {
     
-        if (e.target.name === "name") {
+        if (e.target.name == "name") {
             setUserData({
                 ...userData,
                 name: e.target.value
@@ -36,7 +47,7 @@ function Registration() {
                 ...error,
                 nameErr: e.target.value.length === 0 ? "This Field is Required" : e.target.value.length < 3 ? "please insert valid name" : null
             })
-        } else if (e.target.name === "email") {
+        } else if (e.target.name == "email") {
             setUserData({
                 ...userData,
                 email: e.target.value
@@ -45,7 +56,7 @@ function Registration() {
                 ...error,
                 emailErr: e.target.value.length === 0 ? "This Field is Required" : emailRegex.test(e.target.value) ? null : "email format must be xxx@xxxx.com"
             })
-        } else if (e.target.name === "userName") {
+        } else if (e.target.name == "userName") {
             setUserData({
                 ...userData,
                 userName: e.target.value
@@ -54,7 +65,7 @@ function Registration() {
                 ...error,
                 userNameErr: e.target.value.length === 0 ? "This Field is Required" : e.target.value.length < 3 ? "please insert valid user name" : null
             })
-        } else if (e.target.name === "password") {
+        } else if (e.target.name == "password") {
             setUserData({
                 ...userData,
                 password: e.target.value
@@ -66,65 +77,148 @@ function Registration() {
         } 
        
     }
+  };
 
-    const submitData = (e) => {
-        
-        if(!error.nameErr && !error.emailErr && !error.passwordErr&& !error.userNameErr){
-            e.preventDefault()
-            console.log(e)
-        }
-
+  const submitData = (e) => {
+    e.preventDefault();
+    let checkerInput =
+      error.nameErr &&
+      error.emailErr &&
+      error.passwordErr &&
+      error.userNameErr &&
+      error.firstNameErr &&
+      error.lasttNameErr &&
+      error.country
+        ? true
+        : false;
+    console.log(userData);
+    if (checkerInput) {
+      console.log(e);
     }
+  };
 
+  return (
+    <div className="container w-50">
+      <form onSubmit={(e) => submitData(e)}>
+        <div className="mb-3">
+          <label
+            htmlFor="firstName"
+            className="form-label">
+            First Name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            name="firstName"
+            value={userData.firstName}
+            onChange={(e) => submit(e)}
+          />
+          <p className="text-danger">{error.firstNameErr}</p>
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="lastName"
+            className="form-label">
+            Last Name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            name="lastName"
+            value={userData.lastName}
+            onChange={(e) => submit(e)}
+          />
+          <p className="text-danger">{error.lastNameErr}</p>
+        </div>
 
-        return (
-            <>
+        <div className="mb-3">
+          <label
+            htmlFor="exampleInputEmail1"
+            className="form-label">
+            Email address
+          </label>
+          <input
+            type="email"
+            className="form-control"
+            name="email"
+            value={userData.email}
+            onChange={(e) => submit(e)}
+          />
+          <p className="text-danger">{error.emailErr}</p>
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="birthday"
+            className="form-label">
+            Birthday
+          </label>
+          <input
+            min="1920-01-01"
+            max="2010-12-31"
+            type="date"
+            className="form-control"
+            name="birthday"
+            value={userData.email}
+            onChange={(e) => submit(e)}
+          />
+          <p className="text-danger">{error.emailErr}</p>
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="name"
+            className="form-label">
+            User Name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            name="userName"
+            value={userData.userName}
+            onChange={(e) => submit(e)}
+          />
+          <p className="text-danger">{error.userNameErr}</p>
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="country"
+            className="form-label">
+            Country
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            name="country"
+            value={userData.country}
+            onChange={(e) => submit(e)}
+          />
+          <p className="text-danger">{error.countryErr}</p>
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="exampleInputPassword1"
+            className="form-label">
+            Password
+          </label>
+          <input
+            type="password"
+            className="form-control"
+            name="password"
+            value={userData.password}
+            onChange={(e) => submit(e)}
+          />
+          <p className="text-danger">{error.passwordErr}</p>
+        </div>
 
-              
-                <form onSubmit={(e) => submitData(e)}>
-                    <h1>Form</h1>
+        <button
+          type="submit"
+          className="btn btn-primary me-5"
+          disabled={error.nameErr || error.passwordErr || error.emailErr || error.userNameErr}>
+          Submit
+        </button>
+        <Link to="/login">Have an account</Link>
+      </form>
+    </div>
+  );
+}
 
-                    <div class="mb-3">
-                        <label htmlFor="name" className="form-label">Name</label>
-                        <input type="text" className="form-control" name="name" value={userData.name} onChange={(e) => submit(e)} />
-                        <p className="text-danger">{error.nameErr}</p>
-                    </div>
-
-                    <div class="mb-3">
-                        <label htmlFor="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" className="form-control" name="email" value={userData.email} onChange={(e) => submit(e)} />
-                        <p className="text-danger">{error.emailErr}</p>
-                    </div>
-
-                    
-                        <div class="mb-3">
-                            <label htmlFor="name" className="form-label">User Name</label>
-                            <input type="text" className="form-control" name="userName" value={userData.userName} onChange={(e) => submit(e)} />
-                            <p className="text-danger">{error.userNameErr}</p>
-                        </div>
-
-
-                    
-                    <div class="mb-3">
-                        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                        <input type="password" className="form-control" name="password" value={userData.password} onChange={(e) => submit(e)} />
-                        <p className="text-danger">{error.passwordErr}</p>
-                    </div>
-
-
-
-
-
-
-
-
-
-
-                    <button type="submit" className="btn btn-primary" disabled={error.nameErr || error.passwordErr || error.emailErr || error.userNameErr}>Submit</button>
-                    <Link to="/Login">Have an account</Link>
-                    </form>
-            </>
-        )
-    }
-
-export default Registration
+export default Registration;
