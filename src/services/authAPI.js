@@ -13,3 +13,14 @@ export function registerUser(userDate) {
     .then((response) => response)
     .catch((err) => alert(err));
 }
+
+export function signIn(credentials) {
+  console.log(credentials);
+  return instance({
+    url: `auth/signin`,
+    method: 'POST',
+    data: credentials,
+  })
+    .then((response) => response)
+    .catch((err) => alert(err));
+}
