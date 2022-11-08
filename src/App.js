@@ -12,6 +12,7 @@ import Vcart from './Components/Shared/cards/Vcard';
 
 import Registeration from './Components/Pages/Registration/Registration';
 import Login from './Components/Pages/Login/Login';
+import BookHotel from './Components/Pages/BookHotel/BookHotel';
 
 function App() {
   return (
@@ -56,7 +57,10 @@ function App() {
             path={'/register'}
             exact
             component={Registeration}></Route>
-
+     <Route
+            path={'/bookhotel'}
+            exact
+            component={BookHotel}></Route>
           <Route
             path={'*'}
             exact

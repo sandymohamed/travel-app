@@ -3,38 +3,51 @@ import './hotels.scss';
 //// Header Data ////
 import headerimg from "../../../assets/header/hotelHeader.png"
 import Vcart from '../../Shared/cards/Vcard';
-import FlightCard from '../../Shared/cards/FlightCard';
-import {getHotels} from '../../../services/hotelsServ'
-import axios from 'axios'
-import {ENDPOINTS} from '../../../utils/endPoints' 
+import {getHotels, getHotelsByRate, getCities, getHotelsByCityName, getHotelByName, getHotelByPrice} from '../../../services/hotelsServ'
 import { useEffect, useState } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 const headerTitle =<>Select Your Home </>
 const headerParagraph = <> Ana B7b bety Gdan , msh hadar aseebo laaaaaaaaaaa</>
 
 const Hotels = () => {
 
-
-// const hotels = getHotels()
-// console.log(hotels.data)
-
 const [hotels, setHotels] = useState([])
+const [cities, setCities] = useState([])
+const [city, setCity] = useState('')
+const [search, setSearch] = useState('')
+const [price, setPrice] = useState(null)
 
-// const getHotels = () => {
-//     return axios.get(`${ENDPOINTS.GETHOTELS}`)
-//     .then(res => {setHotels(res.data)})
-//     .catch(err => console.log(err))
-// }
+
+const filterHotels = (filter)=> {
+    switch (filter) {
+        case "getHotelsByRate":
+            getHotelsByRate(5).then(res=> setHotels(res))
+            break;
+
+        case "city":
+            getHotelsByCityName(city).then(res=> setHotels(res))
+            break;
+        case "name":
+            getHotelByName(search).then(res=> setHotels(res))
+            break;
+        case "price":
+        getHotelByPrice(price).then(res=> setHotels(res))
+        break;
+
+        default:
+            getHotels().then(res=> setHotels(res))
+
+            break;
+    }
+}
 
 
 useEffect(() => {
-    // get all movies
-    // fetch('https://fakestoreapi.com/products')
-    // .then(res=>res.json())
-    // .then(json=>console.log(json))
-        
-getHotels().then(res=> setHotels(res))
-    // setHotels( getHotels())
+    getCities().then(res => setCities(res) )
+     
+    getHotels().then(res=> setHotels(res))
 }, [])
 
 
@@ -42,22 +55,58 @@ getHotels().then(res=> setHotels(res))
        <>
               <HeaderComponent img={headerimg} title={headerTitle} paragraph={headerParagraph}/>
 
-                <div>
+                <div className="w-100">
+
                     nav bar 
                     & select city & date
                     & search
 
-                </div>
 
-                <div className='d-flex'>
-                    <div>right filters
+<input type="search" onChange={(e)=> setSearch(e.target.value) } />
+<button onClick={()=>filterHotels('name') }> find</button>
+
+
+<input type="number" onChange={(e)=> setPrice(e.target.value) } />
+<button onClick={()=>filterHotels('price') }> find</button>
+
+     <Dropdown 
+     onSelect={(e)=> {
+        setCity(e)
+        console.log("c" + city);    
+        console.log(e);    
+
+    }  }>
+      <Dropdown.Toggle variant="warning m-2" id="dropdown-basic" >
+        Select City
+      </Dropdown.Toggle>
+      <button  onClick={()=>filterHotels('city') }>search</button>
+
+      <Dropdown.Menu>
+ 
+
+{
+    cities &&(
+    cities.map((city, i) => (
+        <Dropdown.Item eventKey={city.City_Name} key={i} onSelect={(e)=> {setCity(e.target.value)}}> {city.City_Name}</Dropdown.Item>
+        )    )
+    )
+}
+     
+      </Dropdown.Menu>
+    </Dropdown>
+
+                </div>
+                <button  onClick={(e)=>filterHotels('getHotelsByRate') }>search by rate more than 5</button>
+
+                <div className='d-flex w-100'>
+                    <div >right filters
                         <div>price...................................................</div>
                         <div>stars</div>
                     </div>
-                    <div>left cards
+                    <div >left cards
 
 {/* {title,city ,description, Evaluation,Price} */}
-                    {hotels && (
+                    {(hotels) && (
                         hotels.map((hotel,i)=>(
                             <Vcart key={i} title={hotel.HotelName} city={hotel.City.City_Name} Evaluation={hotel.Evaluation} Price={hotel.Price} description={hotel.Description}/>
 

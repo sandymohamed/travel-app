@@ -1,5 +1,15 @@
 export const ENDPOINTS ={
-    // GETHOTELS: `${process.env.REACT_APP_API_URL}`
-    GETHOTELS: `http://localhost:8080/hotel/`
+    GETHOTELS: `hotel/`,
+    GETHOTELSBYRATE: `hotel/rate`,
+    GETCITIES: `city/`,
+    GETHOTELSBYCITY: `hotel/city`,
+    GETHOTELBYNAME :`hotel/name`,
+    GETHOTELBYPRICE :`hotel/price`,
+
+    GETHOLIDAYS: `holiday/`,
+    GETHOLIDAYSBYRATE: `holiday/rate`,
+    GETHOLIDAYSBYCITY: `holiday/city`,
+    GETHOLIDAYBYPRICE :`holiday/price`,
+
 
 }

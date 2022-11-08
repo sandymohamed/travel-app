@@ -1,15 +1,53 @@
-import axios from 'axios'
 import {ENDPOINTS} from '../utils/endPoints' 
+import {instance} from './authAPI'
 
+// get all hotels 
 export const getHotels = () => {
-    // console.log(process.env.REACT_APP_API_URL)
-    return axios.get(`${ENDPOINTS.GETHOTELS}`)
+    return instance.get(`${ENDPOINTS.GETHOTELS}`)
+
     .then(res => {return(res.data)})
     .catch(err => console.log(err))
 }
 
+// get hotel by name
+export const getHotelByName = (name) => {
+    return instance.get(`${ENDPOINTS.GETHOTELBYNAME}?hotelName=${name}`)
 
+    .then(res => {return(res.data)})
+    .catch(err => console.log(err))
+}
 
+// get hotel by price
+export const getHotelByPrice = (price) => {
+    return instance.get(`${ENDPOINTS.GETHOTELBYPRICE}?price=${price}`)
+
+    .then(res => {return(res.data)})
+    .catch(err => console.log(err))
+}
+
+// get hotels by it's rate
+export const getHotelsByRate = (rate) => {
+    return instance.get(`${ENDPOINTS.GETHOTELSBYRATE}?rate=${rate}`)
+
+    .then(res => {return(res.data)})
+    .catch(err => console.log(err))
+}
+
+// get all hotels by city
+export const getHotelsByCityName = (city) => {
+    return instance.get(`${ENDPOINTS.GETHOTELSBYCITY}?city=${city}`)
+
+    .then(res => {return(res.data)})
+    .catch(err => console.log(err))
+}
+
+// get all cities 
+export const getCities = () => {
+    return instance.get(`${ENDPOINTS.GETCITIES}`)
+
+    .then(res => {return(res.data)})
+    .catch(err => console.log(err))
+}
 
 
 

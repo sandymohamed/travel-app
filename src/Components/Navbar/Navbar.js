@@ -30,6 +30,8 @@ function NavbarComponant() {
                             <Link className="nav-item nav-link" to="/flight">Flight</Link>
                             <Link className="nav-item nav-link" to="/TourGuiding">Tour Guiding</Link>
                             <Link className="nav-item nav-link " to="/holidays">Holidays</Link>
+                            <Link className="nav-item nav-link " to="/bookhotel">BookHotel</Link>
+
                         </div>
                     </div>
                 </nav>
