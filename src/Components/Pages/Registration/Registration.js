@@ -28,8 +28,24 @@ function Registration() {
   const [checkIfErrExist, setCheckIfErrExist] = useState(false);
   const [response, setResponse] = useState({});
 
+
   const handleChange = (e) => {
-    if (e.target.name === 'email') {
+    if (e.target.name === 'name') {
+      setUserData({
+        ...userData,
+        name: e.target.value,
+      });
+
+      setError({
+        ...error,
+        nameErr:
+          e.target.value.length === 0
+            ? 'This Field is Required'
+            : e.target.value.length < 3
+            ? 'please insert valid name'
+            : null,
+      });
+    } else if (e.target.name === 'email') {
       setUserData({
         ...userData,
         email: e.target.value,
@@ -43,14 +59,14 @@ function Registration() {
             ? null
             : 'email format must be xxx@xxxx.com',
       });
-    } else if (e.target.name === 'username') {
+    } else if (e.target.name === 'userName') {
       setUserData({
         ...userData,
-        username: e.target.value,
+        userName: e.target.value,
       });
       setError({
         ...error,
-        usernameErr:
+        userNameErr:
           e.target.value.length === 0
             ? 'This Field is Required'
             : e.target.value.length < 3
@@ -113,7 +129,7 @@ function Registration() {
             ? null
             : 'country not less than 3 characters ',
       });
-    } else if (e.target.name === 'birthday') {
+    } else if (e.target.name === 'country') {
       setUserData({
         ...userData,
         birthday: e.target.value,
@@ -128,11 +144,6 @@ function Registration() {
             : 'country not less than 3 characters ',
       });
     }
-    for (let err in error) {
-      error[err] !== null
-        ? setCheckIfErrExist((current) => true)
-        : setCheckIfErrExist((current) => false);
-    }
   };
 
   const submitData = (e) => {
@@ -142,6 +153,7 @@ function Registration() {
       registerUser(userData).then((res) => setResponse(res));
     }
   };
+
   return (
     <div className="container w-50">
       <form onSubmit={(e) => submitData(e)}>
