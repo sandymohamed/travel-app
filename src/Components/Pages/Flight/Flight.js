@@ -184,6 +184,6 @@ const Flight = () => {
                 </div>
             </section>
         </>
-};
+    )};
 
 export default Flight;
