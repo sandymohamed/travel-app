@@ -1,12 +1,20 @@
 @import "../../../Style/colors.scss";
 @import "../../../Style/shortcuts.scss";
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
 .flight_container {
     background-color: white;
     border: 10px solid lighten($primaryColor, 10);
 
-    height: 200px;
     margin: 6rem 10vw;
+    margin-bottom: 0 !important;
 
     border-radius: calc($borderRadius *3);
     position: relative;
@@ -22,7 +30,7 @@
 
             display: flex;
             align-items: center;
-          
+
             min-width: 100px;
             max-width: 150px;
             padding: 0.5rem 1rem;
@@ -47,6 +55,7 @@
             }
         }
 
+
         .services_flights {
             background-color: $secoundryColor;
             text-align: center;
@@ -65,37 +74,171 @@
             }
 
         }
-    }
 
-    .flightDetails_country {
-        @include dFlex;
-
-        >div  {
-            position: relative;
-            
-            i {
-                position: absolute;
-            left: 0;
-            top: 8px;
-            padding: 9px 8px;
-            color: #aaa;
-            transition: 0.3s;
-        }
-    }
-
-        input[list="country"] {
-            border-radius: $borderRadius;
-            border: 2px solid #aaa;
-            margin: 8px 0;
-            padding-left: 2rem;
-            outline: none;
-            box-sizing: border-box;
-            transition: 0.3s;
-
-            &:focus {
-                border-color: $secoundryColor;
-                box-shadow: 0 0 8px 0 $secoundryColor;
+        @media only screen and (max-width: 800px) {
+            *span {
+                display: none;
             }
         }
+
+        // @media only screen and (max-width: 600px) {
+        //     *span {
+        //       display: none;
+        //     }
+        //   }
     }
+
+    *input[list="country"],
+    [type="date"] {
+        border-radius: $borderRadius;
+        border: 2px solid #aaa;
+        margin: 8px 0;
+        padding-left: 2rem;
+        outline: none;
+        box-sizing: border-box;
+        transition: 0.3s;
+
+        &:focus {
+            border-color: $secoundryColor;
+            box-shadow: 0 0 8px 0 $secoundryColor;
+        }
+    }
+
+    .flightDetails_country,
+    .flightDetails_date {
+        @include dFlex;
+        justify-content: space-around;
+
+        @media only screen and (max-width: 800px) {
+            flex-direction: column;
+        }
+
+        >div {
+            position: relative;
+
+            i {
+                position: absolute;
+                left: 0;
+                top: 8px;
+                padding: 9px 8px;
+                color: #aaa;
+                transition: 0.3s;
+            }
+        }
+
+        span {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+        }
+    }
+
+}
+
+.slidebar {
+    background-color: $liteGray;
+    border: 10px solid rgb(255, 255, 255);
+    border-radius: calc($borderRadius *3);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2em;
+    margin-left: 10vw;
+
+    .slidebar_container {
+
+        @include dFlex;
+        flex-direction: column;
+        padding-top: 1rem;
+        @media only screen and (max-width: 768px) {
+            align-items: flex-start;
+            justify-content: space-between !important;
+            flex-direction: row;
+            
+        }
+
+
+
+        .filter {
+            @include dFlex;
+            flex-direction: column;
+            input[type="number"] , input[type="radio"]{
+                width: 40px;
+                &::-webkit-outer-spin-button,
+                ::-webkit-inner-spin-button {
+                    appearance: none !important;
+                }
+                ;
+            }
+
+            input[name="priceFilter"] , input[name="classFilter"]{
+                display: none;
+
+                &:checked + label {
+                    background-color: $primaryColor;
+
+                    ::before {
+                        border: 6px solid white
+                    }
+                }
+            }
+
+            label {
+                font-size: 12px;
+                margin: 1px;
+                background-color: $liteGray;
+                padding: 5px 10px 5px 30px;
+
+                position: relative;
+                border-radius: $borderRadius;
+                border: 5px solid white;
+
+                & ::before {
+                    content: "";
+                    position: absolute;
+                    left: 5px;
+                    height: 20px;
+                    width: 20px;
+                    border: 3px solid white;
+                    border-radius: 50%;
+
+                }
+
+            }
+
+            small {
+                font-size: 8px;
+            }
+        }
+
+        
+    }
+    @media only screen and (max-width: 70px) {
+        background-color: red;
+
+        height: 100px;
+        // border: 10px solid rgb(255, 255, 255);
+        // border-radius: calc($borderRadius *3);
+        // display: flex;
+        // align-items: center;
+        // flex-direction: row;
+        // margin-top: 2em;
+        // margin-left: 10vw;
+        .slidebar_container{
+            
+        @include dFlex;
+        flex-direction: row;
+        padding-top: 1rem;
+        
+
+
+
+        }
+    
+  }
+}
+
+.cardsArea{  
+    
+@include dFlex;
+flex-direction: column;
 }
