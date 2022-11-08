@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { registerUser } from '../../../services/authAPI';
+import { ToastContainer, toast } from 'react-toastify';
+
 function Registration() {
   const [userData, setUserData] = useState({
     username: '',
@@ -11,7 +13,6 @@ function Registration() {
     password: '',
     birthday: '',
   });
-
   const [error, setError] = useState({
     firstNameErr: null,
     lastNameErr: null,
@@ -21,12 +22,11 @@ function Registration() {
     passwordErr: null,
     birthdayErr: null,
   });
+
   const emailRegex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{3}');
   const passwordRegex = new RegExp(
     /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/
   );
-  const [checkIfErrExist, setCheckIfErrExist] = useState(false);
-  const [response, setResponse] = useState({});
 
   const handleChange = (e) => {
     if (e.target.name === 'email') {
@@ -53,7 +53,7 @@ function Registration() {
         usernameErr:
           e.target.value.length === 0
             ? 'This Field is Required'
-            : e.target.value.length < 3
+            : e.target.value.length <= 3
             ? 'please insert valid user name'
             : null,
       });
@@ -81,7 +81,7 @@ function Registration() {
         firstNameErr:
           e.target.value.length === 0
             ? 'This Field is Required'
-            : e.target.value.length > 3
+            : e.target.value.length >= 3
             ? null
             : 'first name 3 characters ',
       });
@@ -95,7 +95,7 @@ function Registration() {
         lastNameErr:
           e.target.value.length === 0
             ? 'This Field is Required'
-            : e.target.value.length > 3
+            : e.target.value.length >= 3
             ? null
             : 'last name 3 characters ',
       });
@@ -109,7 +109,7 @@ function Registration() {
         countryErr:
           e.target.value.length === 0
             ? 'This Field is Required'
-            : e.target.value.length > 3
+            : e.target.value.length >= 3
             ? null
             : 'country not less than 3 characters ',
       });
@@ -123,27 +123,34 @@ function Registration() {
         birthdayErr:
           e.target.value.length === 0
             ? 'This Field is Required'
-            : e.target.value.length > 3
+            : e.target.value.length >= 3
             ? null
             : 'country not less than 3 characters ',
       });
-    }
-    for (let err in error) {
-      error[err] !== null
-        ? setCheckIfErrExist((current) => true)
-        : setCheckIfErrExist((current) => false);
     }
   };
 
   const submitData = (e) => {
     e.preventDefault();
-    console.log(response);
-    if (!checkIfErrExist) {
-      registerUser(userData).then((res) => setResponse(res));
+    if (
+      userData.username &&
+      userData.password &&
+      userData.firstName &&
+      userData.lastName &&
+      userData.email &&
+      userData.birthday &&
+      userData.country
+    ) {
+      registerUser(userData);
+    } else {
+      toast.info(`You should to fill every field`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
     }
   };
   return (
     <div className="container w-50">
+      <ToastContainer />
       <form onSubmit={(e) => submitData(e)}>
         <div className="mb-3">
           <label
@@ -257,7 +264,15 @@ function Registration() {
         <button
           type="submit"
           className="btn btn-primary me-5"
-          disabled={checkIfErrExist}>
+          disabled={
+            error.usernameErr ||
+            error.passwordErr ||
+            error.firstNameErr ||
+            error.lastNameErr ||
+            error.emailErr ||
+            error.birthdayErr ||
+            error.countryErr
+          }>
           Submit
         </button>
         <Link to="/login">Have an account</Link>

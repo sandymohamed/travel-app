@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { signIn } from '../../../services/authAPI';
+import { useDispatch, useSelector } from 'react-redux';
+import { signUser } from '../../../redux/actions/user';
+import { ToastContainer } from 'react-toastify';
+//import { useNavigate } from 'react-router-dom';
 
-function Form() {
+function SignIn() {
   const [userData, setUserData] = useState({
     username: '',
     password: '',
   });
-  const [userResponse, setUserResponse] = useState({});
+  //const navigate = useNavigate();
+
+  let { data: userInfo, loading } = useSelector(({ signReducer }) => signReducer);
+
+  const dispatch = useDispatch();
 
   const [errors, setErrors] = useState({
     usernameErr: null,
@@ -16,7 +23,7 @@ function Form() {
 
   const regex = new RegExp('[a-z0-9]+@[a-z]+[a-z]{3}');
   const changeDetails = (e) => {
-    if (e.target.name == 'username') {
+    if (e.target.name === 'username') {
       setUserData({
         ...userData,
         username: e.target.value,
@@ -26,7 +33,7 @@ function Form() {
         ...errors,
         usernameErr: regex.test(e.target.value) ? null : 'invalid username',
       });
-    } else if (e.target.name == 'password') {
+    } else if (e.target.name === 'password') {
       setUserData({
         ...userData,
         password: e.target.value,
@@ -41,13 +48,17 @@ function Form() {
   };
 
   const submitData = (e) => {
+    e.preventDefault();
     if (!errors.usernameErr && !errors.passwordErr) {
-      signIn(userData).then(({ data }) => setUserResponse(data));
-      e.preventDefault();
+      dispatch(signUser(userData));
+      //navigate('/', { replace: true });
     }
   };
+
   return (
     <div className="container w-50">
+      <ToastContainer />
+
       <form onSubmit={(e) => submitData(e)}>
         <div class="mb-3">
           <label
@@ -95,4 +106,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default SignIn;
