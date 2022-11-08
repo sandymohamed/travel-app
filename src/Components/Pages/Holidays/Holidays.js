@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { getCities} from '../../../services/hotelsServ'
 import { getHolidays, getHolidaysByRate, getHolidaysByCityName, getHolidayByPrice } from '../../../services/holidaysServ';
 import Dropdown from 'react-bootstrap/Dropdown';
-import headerimg from '../../../assets/header/tourGuidHeader.png';
+import headerimg from '../../../Assets/header/tourGuidHeader.png';
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 import Vcart from '../../Shared/cards/Vcard';
 const headerTitle = <>Select Your tooor </>;
