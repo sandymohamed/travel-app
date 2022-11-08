@@ -1,5 +1,7 @@
 import './Flight.scss';
 
+
+
 // import 'react-date-range/dist/styles.css'; // main style file
 // import 'react-date-range/dist/theme/default.css'; // theme css file
 ///////////////////////////////
@@ -50,10 +52,6 @@ const Flight = () => {
                             </div>
                             <span>Tour Guide</span>
                         </div>
-
-
-
-
 
 
                     </section>
@@ -186,7 +184,6 @@ const Flight = () => {
                 </div>
             </section>
         </>
-    );
 };
 
 export default Flight;
