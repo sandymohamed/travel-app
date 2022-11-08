@@ -1,7 +1,7 @@
 
 
 import "./flightcard.scss"
-import dummyImg from "../../../Assets/card/dummy-image.jpg";
+import dummyImg from "../../../assets/card/dummy-image.jpg";
 import {useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlane , faCalendarWeek} from "@fortawesome/free-solid-svg-icons";

@@ -1,5 +1,5 @@
 import './vcard.scss';
-import dummyImg from "../../../Assets/card/dummy-image.jpg";
+import dummyImg from "../../../assets/card/dummy-image.jpg";
 import {useEffect} from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';

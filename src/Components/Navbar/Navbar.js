@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom"
-import travEasyLogo from "../../Assets/logoWhite.png"
+import travEasyLogo from "../../assets/logoWhite.png"
 import "./navbar.scss"
 function NavbarComponant() {
 

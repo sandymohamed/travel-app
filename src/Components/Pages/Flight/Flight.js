@@ -9,7 +9,7 @@ import './Flight.scss';
 ////////////////////////////////
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 ////// For Header //////
-import headerImg from "../../../Assets/header/transportationHeader.png"
+import headerImg from "../../../assets/header/transportationHeader.png"
 import MultiRangeSlider from '../../Shared/range/MultiRangeSlider';
 import FlightCard from '../../Shared/cards/FlightCard';
 
