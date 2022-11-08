@@ -1,12 +1,12 @@
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 import './hotels.scss';
 //// Header Data ////
-import headerimg from "../../../assets/header/hotelHeader.png"
+
+import headerimg from "../../../Assets/header/hotelHeader.png"
 import Vcart from '../../Shared/cards/Vcard';
 import {getHotels, getHotelsByRate, getCities, getHotelsByCityName, getHotelByName, getHotelByPrice} from '../../../services/hotelsServ'
 import { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-
 
 const headerTitle =<>Select Your Home </>
 const headerParagraph = <> Ana B7b bety Gdan , msh hadar aseebo laaaaaaaaaaa</>

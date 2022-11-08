@@ -1,6 +1,6 @@
 import './vcard.scss';
-import dummyImg from '../../../assets/card/dummy-image.jpg';
-import { useEffect } from 'react';
+import dummyImg from "../../../Assets/card/dummy-image.jpg";
+import {useEffect} from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -8,7 +8,6 @@ function Vcart({title,city ,description, Evaluation,Price}) {
     useEffect(() => {
         AOS.init();
       }, [])
-
 
     return (
 
