@@ -6,7 +6,6 @@ import { faPlane, faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
 import AOS from 'aos';
 import "aos/dist/aos.css"
 import { bookHotel } from '../../../services/hotelsServ';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {useParams} from 'react-router-dom'
 import BookForm from '../../Shared/BookForm/BookForm';

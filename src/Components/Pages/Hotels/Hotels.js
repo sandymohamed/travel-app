@@ -66,7 +66,7 @@ useEffect(() => {
 <button onClick={()=>filterHotels('name') }> find</button>
 
 
-<input type="number" onChange={(e)=> setPrice(e.target.value) } />
+<input type="number" placeholder='p' onChange={(e)=> setPrice(e.target.value) } />
 <button onClick={()=>filterHotels('price') }> find</button>
 
      <Dropdown 
