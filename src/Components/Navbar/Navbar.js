@@ -20,10 +20,10 @@ function NavbarComponant() {
 
     return (
         <>
-       <nav className="nav">
-                    <Link class="nav__logo" to="/Home">
-                        <img src={travEasyLogo} />
-                    </Link>
+            <nav className="nav">
+                <Link class="nav__logo" to="/Home">
+                    <img src={travEasyLogo} />
+                </Link>
 
                 <ul className={active}>
                     <li className="nav__item">
@@ -40,8 +40,25 @@ function NavbarComponant() {
                     <li className="nav__item">
                         <Link class="nav__link " to="/holidays">Holidays</Link>
                     </li>
-             
+                    <li className="nav__item">
+                        <ul>
+                            <li>
+                                <Link class="nav__link " to="/login">
+                                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                                </Link>
+                            </li>
+                            <li>
+                                <Link class="nav__link " to="/register">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    Register
+                                </Link>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
+                {/* <div>
+                    <i class="fa-solid fa-right-to-bracket">login</i>
+                </div> */}
                 <div onClick={navToggle} className={icon}>
                     <div className="line1"></div>
                     <div className="line2"></div>
@@ -49,7 +66,7 @@ function NavbarComponant() {
                 </div>
             </nav>
 
-  {/* <div className="Container">
+            {/* <div className="Container">
                 <div class="row">
                     <div class="col">
             <div className="Container">

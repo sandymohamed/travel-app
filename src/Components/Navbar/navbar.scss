@@ -14,25 +14,21 @@ li {
   list-style: none;
 }
 
-a {
-  text-decoration: none;
-  color: rgb(204, 204, 204);
-}
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 8vh;
+  height: 4rem;
   background: #51acf1;
   .nav__logo {
     img {
       height: 50px;
     }
   }
-
+ 
   .nav__item{
-    .nav__link{
+    .nav__link {
       color: white;
       transition: $noramlTransition;
       border:  3px solid  #51acf1;
@@ -44,6 +40,9 @@ a {
         border:  3px solid white;
       }
 
+    }
+    ul{
+      display: flex;
     }
   }
 
@@ -69,7 +68,7 @@ a {
   transition: 0.3s ease-in;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 975px) {
   .nav__toggler {
     display: block;
     cursor: pointer;

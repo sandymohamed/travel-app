@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { signIn } from '../../../services/authAPI';
-
+import loginImg from "../../../Assets/login.jpg"
+import "./Login.scss"
 function Form() {
   const [userData, setUserData] = useState({
     username: '',
@@ -47,9 +48,18 @@ function Form() {
     }
   };
   return (
-    <div className="container w-50">
-      <form onSubmit={(e) => submitData(e)}>
-        <div class="mb-3">
+    <section id='login'>
+      <div className="container">
+        <div className='loginImg '>
+          <img src={loginImg} className=''></img>
+        </div>
+      <form  onSubmit={(e) => submitData(e)}>
+        <div className='loginGorm_title'>
+        <span> Welcome To TravEasy</span>
+        <h3> Sign In</h3>
+
+        </div>
+        <div >
           <label
             htmlFor="username"
             className="form-label">
@@ -66,7 +76,7 @@ function Form() {
           <p className="text-danger"> {errors.usernameErr} </p>
         </div>
 
-        <div class="mb-3">
+        <div >
           <label
             htmlFor="password"
             className="form-label">
@@ -89,9 +99,11 @@ function Form() {
           className="btn btn-primary mx-5">
           Login
         </button>
-        <Link to="/register">Creat an account</Link>
+        <Link to="/register">Create an account</Link>
       </form>
     </div>
+    </section>
+    
   );
 }
 
