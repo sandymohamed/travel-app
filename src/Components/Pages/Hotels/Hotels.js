@@ -108,7 +108,7 @@ useEffect(() => {
 {/* {title,city ,description, Evaluation,Price} */}
                     {(hotels) && (
                         hotels.map((hotel,i)=>(
-                            <Vcart key={i} title={hotel.HotelName} city={hotel.City.City_Name} Evaluation={hotel.Evaluation} Price={hotel.Price} description={hotel.Description}/>
+                            <Vcart key={i} title={hotel.HotelName} city={hotel.City.City_Name} Evaluation={hotel.Evaluation} Price={hotel.Price} description={hotel.Description} id={hotel._id}/>
 
                         ))
                         )

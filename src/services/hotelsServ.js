@@ -51,3 +51,21 @@ export const getCities = () => {
 
 
 
+// book hotel
+export const bookHotel = (bookData) => {
+    console.log(bookData);
+    return instance.post(`${ENDPOINTS.BOOKHOTEL}`,bookData)
+
+    .then(res => console.log(res))
+    .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log("server responded");
+        } else if (error.request) {
+          console.log("network error");
+        } else {
+          console.log(error);
+        }
+      });
+  
+}
