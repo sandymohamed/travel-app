@@ -31,8 +31,7 @@ function SignIn() {
 
       setErrors({
         ...errors,
-        // usernameErr: regex.test(e.target.value) ? null : 'invalid username',
-        
+        usernameErr: regex.test(e.target.value) ? null : 'invalid username',
       });
     } else if (e.target.name === 'password') {
       setUserData({
@@ -43,7 +42,7 @@ function SignIn() {
       setErrors({
         ...errors,
         passwordErr:
-          e.target.value.length < 5 ? '*password must containes 8 characters at least' : null,
+          e.target.value.length < 8 ? '*password must containes 8 characters at least' : null,
       });
     }
   };
