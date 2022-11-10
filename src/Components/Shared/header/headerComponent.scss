@@ -9,6 +9,11 @@
     border-radius: calc($borderRadius * 3);
     position: relative;
     min-height: 200px;
+    transition:$noramlTransition;
+    @media only screen and (max-width: 800px) {
+        min-height: 350px;
+
+    }
 
     .header_title {
         font-size: 2.5rem;
@@ -21,10 +26,19 @@
     }
 
     .header_img {
-        width: 300px;
+        max-height: 250px;
+        max-width: 250px;
         position: absolute;
         top: 50%;
         right: -10%;
+        transform: translate(-50%,-50%);
+        transition: $noramlTransition;
+        @media only screen and (max-width: 800px) {
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
 
     }
 }

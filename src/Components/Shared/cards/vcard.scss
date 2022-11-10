@@ -3,12 +3,12 @@
 
 #vcart {
     border: 10px solid darken($primaryColor, 5%);
-    max-width: 15em;
+    // width: 15em !important;
+    min-width: 200px;
+    max-width: 250px;
     background-color: rgb(255, 255, 255);
     border-radius: calc($borderRadius * 3);
     overflow: hidden;
-    margin-left: 3rem;
-
     .cartBody {
 
         .cartBody_img {

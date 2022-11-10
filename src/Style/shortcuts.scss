@@ -1,5 +1,5 @@
 @import "./colors.scss";
-$noramlTransition: all ease-in-out 0.2s;
+$noramlTransition: all ease-in-out 0.3s;
 $borderRadius: 1.2em;
 
 // @mixin borderRadius {
@@ -47,8 +47,28 @@ $borderRadius: 1.2em;
    }
 
 
+   
 .secondaryBtn{
     @include secondaryBtn;
+
+}
+
+@mixin orangeBtn() {
+    background-color: $secoundryColor;
+    border: 5px solid white;
+    border-radius: $borderRadius;
+    padding: 5px 0.7em;
+    color: white;
+    transition: $noramlTransition;
+    margin: 0.2em ;
+    &:hover{
+       background-color:$primaryColorDark ;
+    }
+   }
+
+
+.orangeBtn{
+    @include orangeBtn;
 
 }
 @mixin noMargin {

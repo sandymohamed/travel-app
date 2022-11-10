@@ -1,0 +1,53 @@
+@import "../../../Style/colors.scss";
+@import "../../../Style/shortcuts.scss";
+
+.hotelDetails {
+    @include dFlex;
+    justify-content: space-around;
+
+    .hotelDetails_hotel,
+    .hotelDetails_price {
+
+        input[name="hotel"],
+        [type="number"] {
+            border-radius: $borderRadius;
+            border: 2px solid #aaa;
+            margin: 8px 0;
+            padding-left: 2rem;
+            outline: none;
+            box-sizing: border-box;
+            transition: 0.3s;
+
+            &:focus {
+                border-color: $secoundryColor;
+                box-shadow: 0 0 8px 0 $secoundryColor;
+            }
+        }
+        button{
+            @include primaryBtn;
+        }
+
+        @include dFlex;
+        justify-content: space-around;
+
+        @media only screen and (max-width: 800px) {
+            flex-direction: column;
+        }
+    }
+
+
+}
+
+.hotelcomponent{
+    margin: 2rem 10vw;
+    .cardsArea{  
+        
+    @include dFlex;
+    flex-direction: column;
+    }
+    
+}
+.serviceFilter_stars{
+    display: flex;
+    flex-direction: column;
+}

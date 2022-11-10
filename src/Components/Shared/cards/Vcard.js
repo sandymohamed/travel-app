@@ -34,7 +34,7 @@ function Vcart({title,city ,description, Evaluation,Price, id}) {
                         </div>
                     </div>
                     <button className='primaryBtn'>
-                    <Link to={`/hotel/${id}`} className='btn btn-warning'>
+                    <Link to={`/hotel/${id}`} >
                         Details
                           </Link>
             
