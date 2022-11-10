@@ -31,7 +31,8 @@ function SignIn() {
 
       setErrors({
         ...errors,
-        usernameErr: regex.test(e.target.value) ? null : 'invalid username',
+        // usernameErr: regex.test(e.target.value) ? null : 'invalid username',
+        
       });
     } else if (e.target.name === 'password') {
       setUserData({
@@ -42,7 +43,7 @@ function SignIn() {
       setErrors({
         ...errors,
         passwordErr:
-          e.target.value.length < 8 ? '*password must containes 8 characters at least' : null,
+          e.target.value.length < 5 ? '*password must containes 8 characters at least' : null,
       });
     }
   };
@@ -60,7 +61,7 @@ function SignIn() {
       <ToastContainer />
 
       <form onSubmit={(e) => submitData(e)}>
-        <div class="mb-3">
+        <div className="mb-3">
           <label
             htmlFor="username"
             className="form-label">
@@ -77,7 +78,7 @@ function SignIn() {
           <p className="text-danger"> {errors.usernameErr} </p>
         </div>
 
-        <div class="mb-3">
+        <div className="mb-3">
           <label
             htmlFor="password"
             className="form-label">

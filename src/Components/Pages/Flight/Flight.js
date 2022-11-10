@@ -27,13 +27,13 @@ const Flight = () => {
                     <section className='services'>
                         <div className='services_flights'>
                             <div className='icon'>
-                                <i class="fa-solid fa-plane"></i>
+                                <i className="fa-solid fa-plane"></i>
                             </div>
                             <span>Flights</span>
                         </div>
                         <div className='services_hotels'>
                             <div className='icon'>
-                                <i class="fa-solid fa-hotel"></i>
+                                <i className="fa-solid fa-hotel"></i>
                             </div>
                             <span>Hotels</span>
                         </div>
@@ -41,14 +41,14 @@ const Flight = () => {
 
                         <div className='services_holiday'>
                             <div className='icon'>
-                                <i class="fa-solid fa-suitcase-rolling"></i>                            </div>
+                                <i className="fa-solid fa-suitcase-rolling"></i>                            </div>
                             <span>Holiday</span>
                         </div>
 
 
                         <div className='services_tourGuide'>
                             <div className='icon'>
-                                <i class="fa-solid fa-language"></i>
+                                <i className="fa-solid fa-language"></i>
                             </div>
                             <span>Tour Guide</span>
                         </div>
@@ -61,7 +61,7 @@ const Flight = () => {
                                 <div className='flightDetails_country'>
                                     <div>
                                         <input list="country" name="country" placeholder='From' id="countryFrom" />
-                                        <i class="fa-solid fa-map-location-dot"></i>
+                                        <i className="fa-solid fa-map-location-dot"></i>
                                         <datalist id="country">
                                             <option value="Cairo" />
                                             <option value="Roma" />
@@ -71,11 +71,11 @@ const Flight = () => {
                                         </datalist>
 
                                     </div>
-                                    {/* <span>- - - - -<i class="fa-solid fa-plane"></i>
+                                    {/* <span>- - - - -<i className="fa-solid fa-plane"></i>
                                - - - - -</span> */}
                                     <div className=''>
                                         <input list="country" name="country" placeholder='To' id="countryTo" />
-                                        <i class="fa-solid fa-map-location"></i>
+                                        <i className="fa-solid fa-map-location"></i>
                                         <datalist id="country">
                                             <option value="Cairo" />
                                             <option value="Roma" />

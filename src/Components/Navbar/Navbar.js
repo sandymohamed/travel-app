@@ -21,24 +21,24 @@ function NavbarComponant() {
     return (
         <>
        <nav className="nav">
-                    <Link class="nav__logo" to="/Home">
+                    <Link className="nav__logo" to="/Home">
                         <img src={travEasyLogo} />
                     </Link>
 
                 <ul className={active}>
                     <li className="nav__item">
-                        <Link class="nav__link" to="/hotels">Hotels </Link>
+                        <Link className="nav__link" to="/hotels">Hotels </Link>
                     </li>
                     <li className="nav__item">
-                        <Link class="nav__link" to="/flight">Flight</Link>
+                        <Link className="nav__link" to="/flight">Flight</Link>
 
                     </li>
                     <li className="nav__item">
-                        <Link class="nav__link" to="/TourGuiding">Tour Guiding</Link>
+                        <Link className="nav__link" to="/TourGuiding">Tour Guiding</Link>
 
                     </li>
                     <li className="nav__item">
-                        <Link class="nav__link " to="/holidays">Holidays</Link>
+                        <Link className="nav__link " to="/holidays">Holidays</Link>
                     </li>
              
                 </ul>
@@ -50,8 +50,8 @@ function NavbarComponant() {
             </nav>
 
   {/* <div className="Container">
-                <div class="row">
-                    <div class="col">
+                <div className="row">
+                    <div className="col">
             <div className="Container">
                 <div className="row">
                     <div className="col">

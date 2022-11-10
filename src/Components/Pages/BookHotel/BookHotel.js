@@ -1,18 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './bookHotel.scss';
-import dummyImg from "../../../assets/card/dummy-image.jpg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlane, faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
 import AOS from 'aos';
 import "aos/dist/aos.css"
 import { bookHotel } from '../../../services/hotelsServ';
-import Form from 'react-bootstrap/Form';
-import {useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import BookForm from '../../Shared/BookForm/BookForm';
+import { useSelector } from 'react-redux';
+import ImgSlider from '../../Shared/Slider/ImgSlider';
+import HotelDetails from '../../Shared/hotelDetails/HotelDetails';
 
 const BookHotel = () => {
 
-  const {id} = useParams()
+  const { id } = useParams()
+
+  const userId = useSelector((({ signReducer }) => signReducer.data.id))
+  console.log(userId);
+  let user = (userId) ? userId : null
 
   const initialValues = {
     RoomCount: "",
@@ -24,12 +27,10 @@ const BookHotel = () => {
     IsApprove: false,
     startDate: "",
     endDate: "",
-    Hotels:`${id}`,
-    // *****************************************************************************************
-    Tourist: "6361a092361936bf86c57460",
-    Guide: "6361a092361936bf86c57460"
+    Hotels: `${id}`,
+    Tourist: `${user}`,
+    Guide: `${user}`
   };
-
 
 
 
@@ -41,39 +42,20 @@ const BookHotel = () => {
   return (
 
 
-    <>
-
-      <section id="flightCard" data-aos="fade-up" data-aos-delay="200">
-        <div className='cardBody'>
-          <div className='cardBody_img col-md-4 ' data-aos="fade-up" data-aos-delay="300">
-            <img src={dummyImg} alt="Item_Name"></img>
-          </div>
-          <article className='cardBody_details col-md-7 col-sm-12' data-aos="zoom-out" data-aos-delay="200">
-            <div className="cardBody_details_data">
-              <div className="spacer"></div>
-              <div className="container">
-
-                <span className="line">  - - - - - - -<span> <FontAwesomeIcon className="fs-3" icon={faPlane} />  </span> - - - - - - -</span>
-                <div className="container_data">
-                  <div className="spacer"></div>
-                  <div className="data">
-                    <span className="data_from">Egypt</span>
-                    <span className="data_to">Usa</span>
-                  </div>
-                </div>
-
-              </div>
-
-
-           <BookForm initialValues={initialValues} id={id} />
-
-            </div>
-
-          </article>
-
-        </div>
+    <div className='d-block'>
+      <section className='slider'>
+        <ImgSlider hotelId={id} />
       </section>
-    </>
+
+      <section className="formCard" data-aos="fade-up" data-aos-delay="200">
+        <HotelDetails hotelId={id} />
+      </section>
+
+      <br />
+      <section className="formCard" data-aos="fade-up" data-aos-delay="200">
+        <BookForm initialValues={initialValues} id={id} bookHotel={bookHotel} />
+      </section>
+    </div>
   );
 };
 

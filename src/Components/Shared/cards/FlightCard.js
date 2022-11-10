@@ -26,15 +26,15 @@ function FlightCard() {
                     </div>
                     <article className='cardBody_details ' data-aos="zoom-out" data-aos-delay="200">
                         <div className="cardBody_details_data">
-                            <div class="spacer"></div>
+                            <div className="spacer"></div>
                             <div className="container">
                             
                                 <span className="line">  - - - - - - -<span  className="icon"> 
-                                <i class="fa-solid fa-plane"></i>
+                                <i className="fa-solid fa-plane"></i>
 
                                  </span> - - - - - - -</span>
                                 <div className="container_data">
-                                    <div class="spacer"></div>
+                                    <div className="spacer"></div>
                                     <div className="data">
                                         <span className="data_from">Egypt</span>
                                         <span className="data_to">Usa</span>
@@ -44,7 +44,7 @@ function FlightCard() {
                             </div>
 
                             <div className="container">
-                                <span className="line">  - - - - - - -<span className="icon"><i class="fa-solid fa-calendar-days"></i></span> - - - - - - -</span>
+                                <span className="line">  - - - - - - -<span className="icon"><i className="fa-solid fa-calendar-days"></i></span> - - - - - - -</span>
                                 <div className="container_data">
                                     <div className="data date">
                                         <span className="data_from">10/11/2022</span>

@@ -9,6 +9,16 @@ export const getHotels = () => {
     .catch(err => console.log(err))
 }
 
+// get hotel by id 
+export const getHotelById = (id) => {
+ console.log( id);
+  return instance.get(`${ENDPOINTS.GETHOTELS}`+id)
+
+  .then(res => {return(res.data)})
+  .catch(err => console.log(err))
+}
+
+
 // get hotel by name
 export const getHotelByName = (name) => {
     return instance.get(`${ENDPOINTS.GETHOTELBYNAME}?hotelName=${name}`)
@@ -40,6 +50,16 @@ export const getHotelsByCityName = (city) => {
     .then(res => {return(res.data)})
     .catch(err => console.log(err))
 }
+
+// get total price
+export const getTotalPrice = (id) => {
+  return instance.get(`${ENDPOINTS.TOTALPRICE}${id}`)
+  .then(res => {return(res.data.totalAmount)})
+  .catch(err => console.log(err))
+}
+
+
+
 
 // get all cities 
 export const getCities = () => {
