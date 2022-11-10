@@ -1,10 +1,12 @@
 import './vcard.scss';
-import dummyImg from "../../../Assets/card/dummy-image.jpg";
+import dummyImg from "../../../assets/card/dummy-image.jpg";
 import {useEffect} from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import {Link} from 'react-router-dom'
 
-function Vcart({title,city ,description, Evaluation,Price}) {
+
+function Vcart({title,city ,description, Evaluation,Price, id}) {
     useEffect(() => {
         AOS.init();
       }, [])
@@ -31,7 +33,12 @@ function Vcart({title,city ,description, Evaluation,Price}) {
                             <span className='priceCurrency'>$</span>
                         </div>
                     </div>
-                    <button className='primaryBtn'>Select</button>
+                    <button className='primaryBtn'>
+                    <Link to={`/hotel/${id}`} >
+                        Details
+                          </Link>
+            
+                    </button>
 
                 </article>
 

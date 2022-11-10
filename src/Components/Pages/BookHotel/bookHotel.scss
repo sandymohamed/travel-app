@@ -1,0 +1,24 @@
+@import "../../../Style/colors.scss";
+@import"../../../Style/shortcuts.scss";
+
+section{
+    display: block;
+}
+.slider
+{
+    height: 10vh;
+    width: 100%;
+}
+.formCard{
+    position: relative;
+    top: 120vh;
+    padding: 5%;
+    border: 10px solid darken($primaryColor, 5%);
+   width: 80%;
+    background-color: rgb(255, 255, 255);
+    border-radius: calc($borderRadius * 3);
+    overflow: hidden;
+    margin-left: 3rem;
+    margin-top: 1rem;
+
+}

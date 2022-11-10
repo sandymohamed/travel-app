@@ -9,6 +9,16 @@ export const getHotels = () => {
     .catch(err => console.log(err))
 }
 
+// get hotel by id 
+export const getHotelById = (id) => {
+ console.log( id);
+  return instance.get(`${ENDPOINTS.GETHOTELS}`+id)
+
+  .then(res => {return(res.data)})
+  .catch(err => console.log(err))
+}
+
+
 // get hotel by name
 export const getHotelByName = (name) => {
     return instance.get(`${ENDPOINTS.GETHOTELBYNAME}?hotelName=${name}`)
@@ -41,6 +51,16 @@ export const getHotelsByCityName = (city) => {
     .catch(err => console.log(err))
 }
 
+// get total price
+export const getTotalPrice = (id) => {
+  return instance.get(`${ENDPOINTS.TOTALPRICE}${id}`)
+  .then(res => {return(res.data.totalAmount)})
+  .catch(err => console.log(err))
+}
+
+
+
+
 // get all cities 
 export const getCities = () => {
     return instance.get(`${ENDPOINTS.GETCITIES}`)
@@ -51,3 +71,21 @@ export const getCities = () => {
 
 
 
+// book hotel
+export const bookHotel = (bookData) => {
+    console.log(bookData);
+    return instance.post(`${ENDPOINTS.BOOKHOTEL}`,bookData)
+
+    .then(res => console.log(res))
+    .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log("server responded");
+        } else if (error.request) {
+          console.log("network error");
+        } else {
+          console.log(error);
+        }
+      });
+  
+}

@@ -5,7 +5,10 @@ export const ENDPOINTS ={
     GETHOTELSBYCITY: `hotel/city`,
     GETHOTELBYNAME :`hotel/name`,
     GETHOTELBYPRICE :`hotel/price`,
+    BOOKHOTEL:`bookedHotel/`,
+    TOTALPRICE:`bookedHotel/agg?id=`,
 
+    
     GETHOLIDAYS: `holiday/`,
     GETHOLIDAYSBYRATE: `holiday/rate`,
     GETHOLIDAYSBYCITY: `holiday/city`,

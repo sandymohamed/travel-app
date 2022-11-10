@@ -2,7 +2,7 @@ import HeaderComponent from '../../Shared/header/HeaderComponent';
 import './hotels.scss';
 //// Header Data ////
 
-import headerimg from "../../../Assets/header/hotelHeader.png"
+import headerimg from "../../../assets/header/hotelHeader.png"
 import Vcart from '../../Shared/cards/Vcard';
 import { getHotels, getHotelsByRate, getCities, getHotelsByCityName, getHotelByName, getHotelByPrice } from '../../../services/hotelsServ'
 import { useEffect, useState } from 'react';
@@ -121,11 +121,11 @@ const Hotels = () => {
 
 
     return (
-        <>
-            <HeaderComponent img={headerimg} title={headerTitle} paragraph={headerParagraph} />
-            <ServiceSection serviceSection={serviceSection} />
-
-            <section className='hotelcomponent'>
+       <>
+              <HeaderComponent img={headerimg} title={headerTitle} paragraph={headerParagraph}/>
+              <ServiceSection serviceSection={serviceSection} />
+               
+              <section className='hotelcomponent'>
                 <div className='row'>
                     <section className=' col-md-3 '>
                         <SlideBar  serviceFilter={serviceFilter}/>
@@ -141,7 +141,6 @@ const Hotels = () => {
                     </section>
                 </div>
             </section>
-
         </>
     );
 };

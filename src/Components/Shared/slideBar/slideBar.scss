@@ -9,6 +9,7 @@
     align-items: center;
     flex-direction: column;
     margin: 2em 1vw;
+    padding: 10px 0px;
     @media only screen and (max-width: 768px) {
         margin: 2em 1vw;
     }
@@ -75,6 +76,12 @@
 
             small {
                 font-size: 8px;
+            }
+        }
+        .priceFilter{
+            span{
+                display: block;
+                margin-bottom: 20px;
             }
         }
 
