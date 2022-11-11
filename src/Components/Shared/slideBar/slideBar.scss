@@ -83,6 +83,9 @@
                 display: block;
                 margin-bottom: 20px;
             }
+            button{
+                @include primaryBtn;
+            }
         }
 
         

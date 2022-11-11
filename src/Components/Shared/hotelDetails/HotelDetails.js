@@ -27,6 +27,30 @@ console.log(hotel);
         <p>{hotel.Evaluation} stars</p>
         <p>Price: {hotel.Price}$</p>
         <p>{hotel.Description}</p>
+        <hr />
+
+       <div className="mapouter">
+            <div className="gmap_canvas">
+            {(hotel.City)&&(
+                <iframe
+                    title='map'
+
+                    id="gmap_canvas" 
+                    // src={`https://maps.google.com/maps?q=${hotel.City.City_Name}@${hotel.lat},${hotel.lon}&t=&z=13&ie=UTF8&iwloc=&output=embed` }
+                    //  src="https://maps.google.com/maps?q=Alexandria&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                    //                              "    q=cairo&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                  src={`https://maps.google.com/maps?q=${hotel.HotelName},${hotel.City.City_Name}&t=&z=13&ie=UTF8&iwloc=&output=embed` }
+                 
+                 frameBorder="0"
+                    scrolling="no"
+                    marginHeight="0" 
+                    marginWidth="0">
+                </iframe>
+            )}
+                    </div>
+                    </div> 
+
+
     </>
     )}
 

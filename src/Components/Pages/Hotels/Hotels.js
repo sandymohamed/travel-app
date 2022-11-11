@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
 import SlideBar from '../../Shared/slideBar/Slidebar';
+import StarRating from '../../Shared/Stars/Stars';
 
 const headerTitle = <>Select Your Home </>
 const headerParagraph = <> Ana B7b bety Gdan , msh hadar aseebo laaaaaaaaaaa</>
@@ -20,6 +21,15 @@ const Hotels = () => {
     const [city, setCity] = useState('')
     const [search, setSearch] = useState('')
     const [price, setPrice] = useState(null)
+    const [rate, setRate] = useState(null)
+
+
+    const handleSelect=(e)=> {
+        // setCity(e)
+        filterHotels('city')
+    }
+
+
     const serviceSection = <>
         <div className="hotelDetails">
 
@@ -27,83 +37,49 @@ const Hotels = () => {
                 <input type="search" name='hotel' placeholder='Find Your Hotel' onChange={(e) => setSearch(e.target.value)} />
                 <button onClick={() => filterHotels('name')}> find</button>
             </div>
-            <div className='hotelDetails_price'>
-                <input type="number" onChange={(e) => setPrice(e.target.value)} />
-                <button onClick={() => filterHotels('price')}> find</button>
-            </div>
-            <Dropdown
-                onSelect={(e) => {
-                    setCity(e)
-                    console.log("c" + city);
-                    console.log(e);
+          
 
-                }}>
-                <Dropdown.Toggle variant="warning m-2" id="dropdown-basic" >
-                    Select City
-                </Dropdown.Toggle>
-                <button onClick={() => filterHotels('city')}>search</button>
+            <select
+             className=" bg-warning m-2 p-2 border border-0 rounded city-option" id="dropdown-basic"
+            defaultValue={city} 
+            onClick={()=> filterHotels('city') }
+            onChange={(e) => {
+                    setCity(e.target.value) 
+                }}
+                >
+        { ( cities) && (
+             cities.map((city, i) => (
+               
+          <option className="bg-white " key={i} value={city.City_Name}        >
+           {city.City_Name}
+          </option>
+        
+        ))  )}
+      </select>
 
-                <Dropdown.Menu>
-                    {
-                        cities && (
-                            cities.map((city, i) => (
-                                <Dropdown.Item eventKey={city.City_Name} key={i} onSelect={(e) => { setCity(e.target.value) }}> {city.City_Name}</Dropdown.Item>
-                            ))
-                        )
-                    }
-
-                </Dropdown.Menu>
-            </Dropdown>
 
 
         </div>
 
     </>
-    const serviceFilter = <>
-        {/* <button onClick={(e) => filterHotels('getHotelsByRate')}>search by rate more than 5</button> */}
-        <span>Stars</span>
-        <div className='serviceFilter_stars'>
-            <input type="radio" name="starFilter" id="fiveStars" />
-            <label for="fiveStars">
-               <span>5 Stars</span> 
-            </label>
-            <input type="radio" name="starFilter" id="fourStars" />
-            <label for="fourStars">
-            <span>4 Stars</span> 
-            </label>
-            <input type="radio" name="starFilter" id="threeStars" />
-            <label for="threeStars">
-            <span>3 Stars</span> 
-            </label>
-            <input type="radio" name="starFilter" id="twoStars" />
-            <label for="twoStars">
-            <span>2 Stars</span> 
-            </label>
-            <input type="radio" name="starFilter" id="oneStar" />
-            <label for="oneStar">
-            <span>1 Star</span> 
-            </label>
-            
-        </div>
-       
-
-    </>
-
-
+  
     const filterHotels = (filter) => {
         switch (filter) {
             case "getHotelsByRate":
-                getHotelsByRate(5).then(res => setHotels(res))
+                getHotelsByRate(rate).then(res => setHotels(res))
+                console.log(rate)
                 break;
 
             case "city":
                 getHotelsByCityName(city).then(res => setHotels(res))
+                console.log("in fil"+ city);
                 break;
             case "name":
                 getHotelByName(search).then(res => setHotels(res))
                 break;
             case "price":
                 getHotelByPrice(price).then(res => setHotels(res))
+                console.log(price);
                 break;
 
             default:
@@ -117,6 +93,7 @@ const Hotels = () => {
         getCities().then(res => setCities(res))
 
         getHotels().then(res => setHotels(res))
+        console.log(price);
     }, [])
 
 
@@ -127,17 +104,22 @@ const Hotels = () => {
                
               <section className='hotelcomponent'>
                 <div className='row'>
-                    <section className=' col-md-3 '>
-                        <SlideBar  serviceFilter={serviceFilter}/>
+                    <section className=' col-md-3 ' style={{width:'30%'}}>
+                        <SlideBar  serviceFilter={<StarRating filterHotels={filterHotels} setRate={setRate} />} setPrice={setPrice} filterHotels={filterHotels}  />
+                        
                     </section>
-                    <section className='cardsArea col-md-8 '>
+                    <section className='cardsArea col-md-8 d-flex ' style={{width:'65%'}} >
+
+                <div className='cards-container '>
 
                         {(hotels) && (
                             hotels.map((hotel, i) => (
-                                <Vcart key={i} title={hotel.HotelName} city={hotel.City.City_Name} Evaluation={hotel.Evaluation} Price={hotel.Price} description={hotel.Description} />
+                                <Vcart key={i} title={hotel.HotelName} city={hotel.City.City_Name} Evaluation={hotel.Evaluation} Price={hotel.Price} description={hotel.Description} hotelId={hotel._id} />
                             ))
                         )
                         }
+                        </div>
+
                     </section>
                 </div>
             </section>

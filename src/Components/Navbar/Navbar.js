@@ -43,13 +43,13 @@ function NavbarComponant() {
                     <li className="nav__item">
                         <ul>
                             <li>
-                                <Link class="nav__link " to="/login">
-                                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                                <Link className="nav__link " to="/login">
+                                    <i className="fa-solid fa-right-to-bracket"></i> Login
                                 </Link>
                             </li>
                             <li>
-                                <Link class="nav__link " to="/register">
-                                    <i class="fa-solid fa-user-plus"></i>
+                                <Link className="nav__link " to="/register">
+                                    <i className="fa-solid fa-user-plus"></i>
                                     Register
                                 </Link>
                             </li>

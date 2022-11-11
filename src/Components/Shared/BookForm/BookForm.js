@@ -194,7 +194,7 @@ const BookForm = ({ initialValues, id, bookHotel }) => {
 
   return (
     <>
-      <Form onSubmit={(e) => { handleSubmit(e) }}>
+      <Form onSubmit={(e) => { handleSubmit(e) }} className="my-form">
           <Form.Group className="mb-3"       data-aos="fade-up" data-aos-delay="400"  controlId="formBasicSingle">
             <Form.Label >Single Room Count</Form.Label>
             <Form.Control required type="number" min="0" name="Single"
@@ -278,7 +278,7 @@ const BookForm = ({ initialValues, id, bookHotel }) => {
 
         
 {/* <h2>{total}</h2> */}
-        <button className="primaryBtn btn" type="submit"> Book</button>
+        <button className="primaryBtn bton" type="submit"> Book</button>
        
 
       </Form>

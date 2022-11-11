@@ -42,18 +42,22 @@ const BookHotel = () => {
   return (
 
 
-    <div className='d-block'>
-      <section className='slider'>
+    <div className='d-block book-container'>
+      <section className='slider m-0 p-0'>
         <ImgSlider hotelId={id} />
       </section>
 
-      <section className="formCard" data-aos="fade-up" data-aos-delay="200">
+      <section className="formCard center" data-aos="fade-up" data-aos-delay="100">
         <HotelDetails hotelId={id} />
       </section>
 
       <br />
-      <section className="formCard" data-aos="fade-up" data-aos-delay="200">
+      <section className="formCard center" data-aos="fade-up" data-aos-delay="200">
         <BookForm initialValues={initialValues} id={id} bookHotel={bookHotel} />
+      </section>
+      <section className="formCard center" data-aos="fade-up" data-aos-delay="200">
+**********************feedBack************************
+
       </section>
     </div>
   );

@@ -45,9 +45,29 @@
     @include dFlex;
     flex-direction: column;
     }
+
+    .cards-container{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+
+        >*{
+            margin-right: 1rem;
+        }
+    }
     
 }
 .serviceFilter_stars{
     display: flex;
     flex-direction: column;
 }
+.city-option{
+    width: 8rem;
+>*:hover{
+    background-color: #aaa;
+}
+}
+
+
+  

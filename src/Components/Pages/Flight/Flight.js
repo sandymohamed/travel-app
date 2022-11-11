@@ -66,19 +66,19 @@ const serviceFilter = <>
 <span>Class</span>
 <div>
     <input type="radio" name="classFilter" id="economy" />
-    <label for="economy">
+    <label htmlFor="economy">
         Economy Class
     </label>
 </div>
 <div>
     <input type="radio" name="classFilter" id="business" />
-    <label for="business">
+    <label htmlFor="business">
         Business Class
     </label>
 </div>
 <div>
     <input type="radio" name="classFilter" id="first" />
-    <label for="first">
+    <label htmlFor="first">
         First Class
     </label>
 </div>

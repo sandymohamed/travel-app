@@ -2,9 +2,11 @@
 import "./slideBar.scss"
 
 import MultiRangeSlider from '../../Shared/range/MultiRangeSlider';
+import { useState } from "react";
 
-function SlideBar(props) {
+function SlideBar({ serviceFilter, setPrice, filterHotels}) {
 
+    const [myMax, setMyMax] = useState(10000)
     return (
         <>
             <section className="slidebar">
@@ -15,34 +17,35 @@ function SlideBar(props) {
 
                         <span>Price</span>
 
-                        <MultiRangeSlider
+                        {/* <MultiRangeSlider
                             min={0}
-                            max={10000}
-                            onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
-                        />
+                            max={myMax}
+                            onChange={({ max }) =>{ setPrice(max) }}  
+                                                  /> */}
 
                         <div>
-                            <input type="radio" name="priceFilter" id="priceFilter1" />
-                            <label for="priceFilter1">
+                            <input type="radio" name="priceFilter" id="priceFilter1"  onChange={() =>{ setPrice(2500) ; setMyMax(2500)}} />
+                            <label htmlFor="priceFilter1">
                                 0- 2500 <small>L.E</small>
                             </label>
                         </div>
                         <div>
-                            <input type="radio" name="priceFilter" id="priceFilter2" />
-                            <label for="priceFilter2">
-                                2500- 5000 <small>L.E</small>
+                            <input type="radio" name="priceFilter" id="priceFilter2"  onChange={() =>{ setPrice(5000) ; setMyMax(5000)}} />
+                            <label htmlFor="priceFilter2">
+                                5000 <small>L.E</small>
                             </label>
                         </div>
                         <div>
-                            <input type="radio" name="priceFilter" id="priceFilter3" />
-                            <label for="priceFilter3">
-                                5000- 1000 <small>L.E</small>
+                            <input type="radio" name="priceFilter" id="priceFilter3"  onChange={() =>{ setPrice(10000) ; setMyMax(10000)}} />
+                            <label htmlFor="priceFilter3">
+                                10000 <small>L.E</small>
                             </label>
                         </div>
+                        <button className="find" onClick={() => filterHotels('price')}> find</button>
 
                     </section>
                     <section className='filter serviceFilter'>
-                        {props.serviceFilter}
+                        {serviceFilter}
                     </section>
                 </div>
             </section>

@@ -15,10 +15,10 @@ function ServiceSection(props) {
                     <section className='services'>
 
                         {/* --------------: Hotel :-------------- */}
-                        <NavLink class="nav__link" to="/hotels" activeClassName="active">
+                        <NavLink className="nav__link" to="/hotels" activeClassName="active">
                             <div className=' serviceItem services_hotels'>
                                 <div className='icon'>
-                                    <i class="fa-solid fa-hotel"></i>
+                                    <i className="fa-solid fa-hotel"></i>
                                 </div>
                                 <span>Hotels</span>
                             </div>
@@ -27,10 +27,10 @@ function ServiceSection(props) {
 
                         {/* --------------: Flight :-------------- */}
 
-                        <NavLink class="nav__link" to="/flight" activeClassName="active">
+                        <NavLink className="nav__link" to="/flight" activeClassName="active">
                             <div className='serviceItem services_flights'>
                                 <div className='icon'>
-                                    <i class="fa-solid fa-plane"></i>
+                                    <i className="fa-solid fa-plane"></i>
                                 </div>
                                 <span>Flights</span>
                             </div>
@@ -38,11 +38,11 @@ function ServiceSection(props) {
                         </NavLink>
                         {/* --------------: Holiday :-------------- */}
 
-                        <NavLink class="nav__link " to="/holidays" activeClassName="active">
+                        <NavLink className="nav__link " to="/holidays" activeClassName="active">
 
                             <div className='serviceItem services_holiday'>
                                 <div className='icon'>
-                                    <i class="fa-solid fa-suitcase-rolling"></i>
+                                    <i className="fa-solid fa-suitcase-rolling"></i>
                                 </div>
                                 <span>Holiday</span>
                             </div>
@@ -50,10 +50,10 @@ function ServiceSection(props) {
                         </NavLink>
                         {/* --------------: TourGuid :-------------- */}
 
-                        <NavLink class="nav__link" to="/TourGuiding" activeClassName="active">
+                        <NavLink className="nav__link" to="/TourGuiding" activeClassName="active">
                             <div className=' serviceItem services_tourGuide'>
                                 <div className='icon'>
-                                    <i class="fa-solid fa-language"></i>
+                                    <i className="fa-solid fa-language"></i>
                                 </div>
                                 <span>Tour Guide</span>
                             </div>
