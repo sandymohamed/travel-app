@@ -96,7 +96,7 @@ const Flight = () => {
             <section className='flightcomponent'>
                 <div className='row'>
                     <section className=' col-md-3 '>
-                        <SlideBar serviceFilter={serviceFilter} />
+                        {/* <SlideBar serviceFilter={serviceFilter} /> */}
                     </section>
                     <section className='cardsArea col-md-8 '>
                         <FlightCard />
