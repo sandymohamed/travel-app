@@ -1,10 +1,10 @@
+import "./Login.scss"
+import loginImg from "../../../assets/login.jpg"
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUser } from '../../../redux/actions/user';
 import { ToastContainer } from 'react-toastify';
-//import { useNavigate } from 'react-router-dom';
-
 function SignIn() {
   const [userData, setUserData] = useState({
     username: '',
@@ -56,11 +56,20 @@ function SignIn() {
   };
 
   return (
-    <div className="container w-50">
-      <ToastContainer />
+    <section id='login'>
+      <div className="container">
+        <div className='loginImg '>
+          <img src={loginImg} className=''></img>
+        </div>
+        {/* <ToastContainer /> */}
 
-      <form onSubmit={(e) => submitData(e)}>
-        <div class="mb-3">
+      <form  onSubmit={(e) => submitData(e)}>
+        <div className='loginGorm_title'>
+        <span> Welcome To TravEasy</span>
+        <h3> Sign In</h3>
+
+        </div>
+        <div >
           <label
             htmlFor="username"
             className="form-label">
@@ -77,7 +86,7 @@ function SignIn() {
           <p className="text-danger"> {errors.usernameErr} </p>
         </div>
 
-        <div class="mb-3">
+        <div>
           <label
             htmlFor="password"
             className="form-label">
@@ -92,17 +101,23 @@ function SignIn() {
           />
 
           <p className="text-danger"> {errors.passwordErr} </p>
-        </div>
-
-        <button
+          <div className="d-flex flex-column align-items-center">
+          <button
           disabled={errors.usernameErr || errors.passwordErr}
           type="submit"
-          className="btn btn-primary mx-5">
+          className="primaryBtn">
           Login
         </button>
-        <Link to="/register">Creat an account</Link>
+        <Link to="/register">Create an account</Link>
+          </div>
+      
+        </div>
+
+     
       </form>
     </div>
+    </section>
+    
   );
 }
 

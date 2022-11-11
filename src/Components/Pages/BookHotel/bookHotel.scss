@@ -1,0 +1,39 @@
+@import "../../../Style/colors.scss";
+@import"../../../Style/shortcuts.scss";
+
+
+
+.book-container{
+
+   
+
+
+section{
+    display: block;
+}
+.slider
+{
+    height: 60vh;
+    width: 100%;
+    margin: 0;
+
+    img{
+        height: 100%;
+    }
+}
+
+
+.formCard{
+    position: relative;
+    left: 10% ;
+    width: 80%;
+    height: fit-content;
+    padding: 5%;
+    border: 10px solid darken($primaryColor, 5%);
+    background-color: rgb(255, 255, 255);
+    border-radius: calc($borderRadius * 3);
+    overflow: hidden;
+    margin: 1rem;
+
+}
+}

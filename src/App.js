@@ -12,6 +12,10 @@ import Vcart from './Components/Shared/cards/Vcard';
 
 import Registeration from './Components/Pages/Registration/Registration';
 import Login from './Components/Pages/Login/Login';
+import BookHotel from './Components/Pages/BookHotel/BookHotel';
+import BookForm from './Components/Shared/BookForm/BookForm';
+import UserDetails from './Components/Pages/UserDetails/UserDetails';
+
 
 function App() {
   return (
@@ -56,11 +60,23 @@ function App() {
             path={'/register'}
             exact
             component={Registeration}></Route>
-
+                  <Route
+            path={'/book'}
+            exact
+            component={BookForm}></Route>
+          <Route
+            path={'/hotel/:id'}
+            exact
+            component={BookHotel}></Route>
+             <Route
+            path={'/UserDetails'}
+            exact
+            component={UserDetails}></Route>
           <Route
             path={'*'}
             exact
             component={NotFound}></Route>
+           
         </Switch>
       </BrowserRouter>
     </>
