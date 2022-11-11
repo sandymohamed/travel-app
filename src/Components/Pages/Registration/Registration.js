@@ -28,24 +28,8 @@ function Registration() {
     /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/
   );
 
-
   const handleChange = (e) => {
-    if (e.target.name === 'name') {
-      setUserData({
-        ...userData,
-        name: e.target.value,
-      });
-
-      setError({
-        ...error,
-        nameErr:
-          e.target.value.length === 0
-            ? 'This Field is Required'
-            : e.target.value.length < 3
-            ? 'please insert valid name'
-            : null,
-      });
-    } else if (e.target.name === 'email') {
+    if (e.target.name === 'email') {
       setUserData({
         ...userData,
         email: e.target.value,
@@ -59,14 +43,14 @@ function Registration() {
             ? null
             : 'email format must be xxx@xxxx.com',
       });
-    } else if (e.target.name === 'userName') {
+    } else if (e.target.name === 'username') {
       setUserData({
         ...userData,
-        userName: e.target.value,
+        username: e.target.value,
       });
       setError({
         ...error,
-        userNameErr:
+        usernameErr:
           e.target.value.length === 0
             ? 'This Field is Required'
             : e.target.value.length <= 3
@@ -129,19 +113,14 @@ function Registration() {
             ? null
             : 'country not less than 3 characters ',
       });
-    } else if (e.target.name === 'country') {
+    } else if (e.target.name === 'birthday') {
       setUserData({
         ...userData,
         birthday: e.target.value,
       });
       setError({
         ...error,
-        birthdayErr:
-          e.target.value.length === 0
-            ? 'This Field is Required'
-            : e.target.value.length >= 3
-            ? null
-            : 'country not less than 3 characters ',
+        birthdayErr: e.target.value.length === 0 ? 'This Field is Required' : null,
       });
     }
   };
@@ -234,7 +213,7 @@ function Registration() {
         </div>
         <div className="mb-3">
           <label
-            htmlFor="name"
+            htmlFor="username"
             className="form-label">
             User Name
           </label>
