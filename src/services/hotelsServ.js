@@ -89,3 +89,29 @@ export const bookHotel = (bookData) => {
       });
   
 }
+
+// get hotel feedback
+export const getHotelFeedback = (id) => {
+  return instance.get(`${ENDPOINTS.GETFEEDBACKBYHOTELID}${id}`)
+  .then(res => {return(res.data)})
+  .catch(err => console.log(err))
+}
+
+// post feedback
+export const postFeedback = (feedback) => {
+  console.log(feedback);
+  return instance.post(`${ENDPOINTS.POSTFEEDBACK}`,feedback)
+
+  .then(res => console.log(res))
+  .catch((error) => {
+      if (error.response) {
+        console.log(error.response);
+        console.log("server responded");
+      } else if (error.request) {
+        console.log("network error");
+      } else {
+        console.log(error);
+      }
+    });
+
+}

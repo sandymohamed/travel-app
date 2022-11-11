@@ -13,6 +13,9 @@ export const ENDPOINTS ={
     GETHOLIDAYSBYRATE: `holiday/rate`,
     GETHOLIDAYSBYCITY: `holiday/city`,
     GETHOLIDAYBYPRICE :`holiday/price`,
+    GETFEEDBACKBYHOTELID:`feedback/hotelid?hotel=`,
+    POSTFEEDBACK:`feedback/`,
+
 
 
 }

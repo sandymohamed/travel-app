@@ -280,6 +280,7 @@ const BookForm = ({ initialValues, id, bookHotel }) => {
 {/* <h2>{total}</h2> */}
         <button className="primaryBtn bton" type="submit"> Book</button>
        
+        <br />
 
       </Form>
 

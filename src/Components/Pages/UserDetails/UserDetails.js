@@ -1,5 +1,5 @@
-import { registerUser } from '../../../services/authAPI';
-import React, {useEffect, useState} from "react";
+import { registerUser, updateUser } from '../../../services/authAPI';
+import React, {useEffect, useState, useSelector} from "react";
 
 
 
