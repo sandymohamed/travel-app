@@ -24,3 +24,4 @@ export function signIn(credentials) {
     .then((response) => response)
     .catch((err) => alert(err));
 }
+
