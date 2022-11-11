@@ -6,7 +6,7 @@ import 'aos/dist/aos.css';
 import {Link} from 'react-router-dom'
 
 
-function Vcart({title,city ,description, Evaluation,Price, id}) {
+function Vcart({title,city ,description, Evaluation,Price, hotelId}) {
     useEffect(() => {
         AOS.init();
       }, [])
@@ -24,7 +24,7 @@ function Vcart({title,city ,description, Evaluation,Price, id}) {
                         <div className='cartBody_details_data_text'>
                             <span className='spanMajor'>{city}</span>
                             <span className='spanMinor'>{description}</span>
-                            <span className=' review spanMinor'>{Evaluation}review</span>
+                            <span className=' review spanMinor'>Rate: {Evaluation}</span>
 
                         </div>
                         <div className='cartBody_details_data_price'>
@@ -34,7 +34,7 @@ function Vcart({title,city ,description, Evaluation,Price, id}) {
                         </div>
                     </div>
                     <button className='primaryBtn'>
-                    <Link to={`/hotel/${id}`} className='btn btn-warning'>
+                    <Link to={`/hotel/${hotelId}`} >
                         Details
                           </Link>
             
