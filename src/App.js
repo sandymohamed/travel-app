@@ -13,11 +13,16 @@ import Registeration from './Components/Pages/Registration/Registration';
 import Login from './Components/Pages/Login/Login';
 import BookHotel from './Components/Pages/BookHotel/BookHotel';
 import BookForm from './Components/Shared/BookForm/BookForm';
+
 import { AuthProvider } from './context/AuthContext';
 import RootGuard from './Guard/RootGuard';
 import GuardedRoute from './Guard/RouteGuard';
 
 import React, { useEffect, useContext } from 'react';
+
+import UserDetails from './Components/Pages/UserDetails/UserDetails';
+
+
 
 function App() {
   return (
@@ -25,6 +30,7 @@ function App() {
       <AuthProvider>
         <RootGuard>
           <NavbarComponant />
+
 
           <Switch>
             <Route
@@ -72,6 +78,10 @@ function App() {
               path={'/hotel/:id'}
               component={BookHotel}
             />
+             <Route
+            path={'/UserDetails'}
+            exact
+            component={UserDetails}></Route>
             <Route
               path={'*'}
               component={NotFound}
@@ -79,7 +89,7 @@ function App() {
           </Switch>
         </RootGuard>
       </AuthProvider>
-    </BrowserRouter>
+
   );
 }
 
