@@ -1,27 +1,17 @@
 import { registerUser } from '../../../services/authAPI';
-import React, {useState} from "react";
-// import { useHistory } from "react-router-dom";
-// import { useParams } from "react-router-dom";
-// import axiosInstance from "../network/axiosInstance";
+import React, {useEffect, useState} from "react";
+
+
 
 
 function UserDetails() {
-// //// Calling API
 
-    // const [details, setDetails] = useState(null)
+  const userDetailsRedux = useSelector((state) => state.signReducer.data)
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:8080/users/${userID}`)
-    //     .then((res) => {
-    //         setDetails(res.data.data)
-    //     })
-    //     .catch((erro)=>{
-    //         console.error("User details not found ")
-    //     })
-    // }, [])
+  useEffect(()=>{ setUserData(userDetailsRedux)
 
+  },[])
 
-////////// 
 const [userData, setUserData] = useState({
     username: '',
     firstName: '',
@@ -166,11 +156,11 @@ const [userData, setUserData] = useState({
     }
   };
 
-  const submitData = (e) => {
+  const updateData = (e) => {
     e.preventDefault();
     console.log(response);
     if (!checkIfErrExist) {
-      registerUser(userData).then((res) => setResponse(res));
+      updateUser(userData).then((res) => setResponse(res));
     }
   };
     return (
@@ -179,7 +169,7 @@ const [userData, setUserData] = useState({
 
 
 <div className="container w-50">
-      <form onSubmit={(e) => submitData(e)}>
+      <form onSubmit={(e) => updateData(e)}>
         <div className="mb-3">
           <label
             htmlFor="firstName"
@@ -293,7 +283,7 @@ const [userData, setUserData] = useState({
           type="submit"
           className="btn btn-primary me-5"
           disabled={checkIfErrExist}>
-          Submit
+          Update
         </button>
       
       </form>
