@@ -7,27 +7,62 @@ import {
   getHolidaysByCityName,
   getHolidayByPrice,
 } from '../../../services/holidaysServ';
-import Dropdown from 'react-bootstrap/Dropdown';
-import headerimg from '../../../Assets/header/tourGuidHeader.png';
+import headerimg from '../../../assets/header/tourGuidHeader.png';
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 import Vcart from '../../Shared/cards/Vcard';
+import SlideBar from '../../Shared/slideBar/Slidebar';
+import StarRating from '../../Shared/Stars/Stars';
+
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
+
+
 const headerTitle = <>Select Your tooor </>;
 const headerParagraph = <> Ana msh mn sharm , </>;
 const Holidays = () => {
   const [holidays, setHotlidays] = useState([]);
   const [cities, setCities] = useState([]);
   const [city, setCity] = useState('');
+  const [rate, setRate] = useState(null);
+
+
   const [price, setPrice] = useState(null);
+
+
+
+  const serviceSection = (
+    <>
+      <div className="holidayDetails">
+        <select
+          className=" bg-warning m-2 p-2 border border-0 rounded city-options"
+          id="dropdown-basic"
+          defaultValue={city}
+          onClick={() => filterHolidays('city')}
+          onChange={(e) => setCity(e.target.value) }>
+         
+          {cities &&
+            cities.map((city, i) => (
+              <option
+                key={i}
+                value={city.City_Name}>
+                {city.City_Name}
+              </option>
+            ))}
+        </select>
+      </div>
+    </>
+  );
+
+
+
 
   const filterHolidays = (filter) => {
     switch (filter) {
       case 'getHotelsByRate':
-        getHolidaysByRate(2).then((res) => setHotlidays(res));
+        getHolidaysByRate(rate).then((res) => setHotlidays(res));
         break;
-
       case 'city':
         getHolidaysByCityName(city).then((res) => setHotlidays(res));
+       console.log(city);
         break;
       case 'price':
         getHolidayByPrice(price).then((res) => setHotlidays(res));
@@ -53,67 +88,46 @@ const Holidays = () => {
         paragraph={headerParagraph}
       />
 
-      <ServiceSection />
-      <div className="w-100">
-        nav bar & select city & date & search
-        <input
-          type="number"
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <button onClick={() => filterHolidays('price')}> find</button>
-        <Dropdown
-          onSelect={(e) => {
-            setCity(e);
-            console.log('c' + city);
-            console.log(e);
-          }}>
-          <Dropdown.Toggle
-            variant="warning m-2"
-            id="dropdown-basic">
-            Select City
-          </Dropdown.Toggle>
-          <button onClick={() => filterHolidays('city')}>search</button>
+      <ServiceSection serviceSection={serviceSection} />
 
-          <Dropdown.Menu>
-            {cities &&
-              cities.map((city, i) => (
-                <Dropdown.Item
-                  eventKey={city.City_Name}
-                  key={i}
-                  onSelect={(e) => {
-                    setCity(e.target.value);
-                  }}>
-                  {' '}
-                  {city.City_Name}
-                </Dropdown.Item>
-              ))}
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
-      <button onClick={(e) => filterHolidays('getHotelsByRate')}>search by rate more than 5</button>
-
-      <div className="d-flex w-100">
-        <div>
-          right filters
-          <div>price...................................................</div>
-          <div>stars</div>
-        </div>
-        <div>
-          left cards
-          {/* {title,city ,description, Evaluation,Price} */}
+      <section className="hotelcomponent">
+        <div className="row">
+          <section
+            className=" col-md-3 "
+            style={{ width: '30%' }}>
+            <SlideBar
+              serviceFilter={
+                <StarRating
+                  filterHotels={filterHolidays}
+                  setRate={setRate}
+                />
+              }
+              setPrice={setPrice}
+              filterHotels={filterHolidays}
+            />
+          </section>
+      <section
+        className="cardsArea col-md-8 d-flex "
+        style={{ width: '65%' }}>
+        <div className="cards-container ">
           {holidays &&
-            holidays.map((hotel, i) => (
+            holidays.map((holiday, i) => (
               <Vcart
                 key={i}
-                title={hotel.HotelName}
-                city={hotel.City.City_Name}
-                Evaluation={hotel.Evaluation}
-                Price={hotel.Price}
-                description={hotel.Description}
+                title={holiday.HotelName}
+                city={holiday.City.City_Name}
+                Evaluation={holiday.Evaluation}
+                Price={holiday.Price}
+                description={holiday.Description}
+                link={`holidays/${holiday._id}`}
               />
             ))}
         </div>
+
+      </section>
+
       </div>
+      </section>
     </>
   );
 };

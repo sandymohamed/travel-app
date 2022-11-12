@@ -11,12 +11,9 @@ console.log(hotelId)
 
     useEffect(()=> {
         AOS.init();
-
-
         getHotelById(`${hotelId}`).then((res)=>setHotel(res))
     },[])
 
-console.log(hotel);
     return (
         <>
 <div className='det-container' data-aos="fade-out" data-aos-delay="400">
@@ -34,11 +31,7 @@ console.log(hotel);
             {(hotel.City)&&(
                 <iframe
                     title='map'
-
                     id="gmap_canvas" 
-                    // src={`https://maps.google.com/maps?q=${hotel.City.City_Name}@${hotel.lat},${hotel.lon}&t=&z=13&ie=UTF8&iwloc=&output=embed` }
-                    //  src="https://maps.google.com/maps?q=Alexandria&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-                    //                              "    q=cairo&t=&z=13&ie=UTF8&iwloc=&output=embed" 
                   src={`https://maps.google.com/maps?q=${hotel.HotelName},${hotel.City.City_Name}&t=&z=13&ie=UTF8&iwloc=&output=embed` }
                  
                  frameBorder="0"

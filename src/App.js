@@ -7,15 +7,20 @@ import TourGuiding from './Components/Pages/TourGuiding/TourGuiding';
 import Flight from './Components/Pages/Flight/Flight';
 import Holidays from './Components/Pages/Holidays/Holidays';
 import NotFound from './Components/Pages/Not-found/NotFound';
-import Vcart from './Components/Shared/cards/Vcard';
 
 import Registeration from './Components/Pages/Registration/Registration';
 import Login from './Components/Pages/Login/Login';
 import BookHotel from './Components/Pages/BookHotel/BookHotel';
+
 import BookForm from './Components/Shared/BookForm/BookForm';
 import { DarkModeProvider } from './context/DarkMode';
+import { AuthProvider } from './context/AuthContext';
 import RootGuard from './Guard/RootGuard';
 import GuardedRoute from './Guard/RouteGuard';
+import UserDetails from './Components/Pages/UserDetails/UserDetails';
+import BookHoliday from './Components/Pages/BookHoliday/BookHoliday';
+import UserReservations from './Components/Pages/UserReservations/UserReservations';
+
 
 import React from 'react';
 
@@ -25,7 +30,6 @@ function App() {
       <DarkModeProvider>
         <RootGuard>
           <NavbarComponant />
-
           <Switch>
             <Route
               path={'/'}
@@ -41,6 +45,7 @@ function App() {
               component={Hotels}
             />
             <Route
+
               path={'/TourGuiding'}
               component={TourGuiding}
             />
@@ -52,10 +57,8 @@ function App() {
               path={'/holidays'}
               component={Holidays}
             />
-            <Route
-              path={'/vcart'}
-              component={Vcart}
-            />
+             
+         
             <Route
               path={'/login'}
               component={Login}
@@ -68,10 +71,25 @@ function App() {
               path={'/book'}
               component={BookForm}
             />
-            <GuardedRoute
-              path={'/hotel/:id'}
+    
+               <Route
+              path={'/hotels/:id'}
               component={BookHotel}
             />
+          
+              <GuardedRoute
+              path={'/holidays/:id'}
+              component={BookHoliday}
+            />
+             <Route
+              path={'/userReservations'}
+              component={UserReservations}
+            />
+         
+             <Route
+            path={'/UserDetails'}
+            exact
+            component={UserDetails}></Route>
             <Route
               path={'*'}
               component={NotFound}
@@ -80,6 +98,8 @@ function App() {
         </RootGuard>
       </DarkModeProvider>
     </BrowserRouter>
+      
+
   );
 }
 

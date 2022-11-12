@@ -86,3 +86,23 @@ class AuthService {
   }
 }
 export default new AuthService();
+
+export function updateUser(userDate) {
+  return instance({
+    url: `auth/updateUser`,
+    method: 'PUT',
+    data: userDate,
+  })
+    .then(({ data }) => {
+      toast.success(`${data.message}`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return data;
+    })
+    .catch(({ response }) => {
+      toast.error(`${JSON.stringify(response.data.message)}`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    });
+}
+
