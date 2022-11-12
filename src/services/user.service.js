@@ -13,7 +13,7 @@ class UserService {
   }
 
   getModeratorBoard() {
-    return axios.get(API_URL + 'moderator', { headers: authHeader() });
+    return axios.get(API_URL + 'mod', { headers: authHeader() });
   }
 
   getAdminBoard() {

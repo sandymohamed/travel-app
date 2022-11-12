@@ -11,6 +11,9 @@ import NotFound from './Components/Pages/Not-found/NotFound';
 import Registeration from './Components/Pages/Registration/Registration';
 import Login from './Components/Pages/Login/Login';
 import BookHotel from './Components/Pages/BookHotel/BookHotel';
+
+import BookForm from './Components/Shared/BookForm/BookForm';
+import { DarkModeProvider } from './context/DarkMode';
 import { AuthProvider } from './context/AuthContext';
 import RootGuard from './Guard/RootGuard';
 import GuardedRoute from './Guard/RouteGuard';
@@ -19,15 +22,14 @@ import BookHoliday from './Components/Pages/BookHoliday/BookHoliday';
 import UserReservations from './Components/Pages/UserReservations/UserReservations';
 
 
+import React from 'react';
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
+      <DarkModeProvider>
         <RootGuard>
           <NavbarComponant />
-
-
           <Switch>
             <Route
               path={'/'}
@@ -38,19 +40,19 @@ function App() {
               path={'/Home'}
               component={Home}
             />
-            <GuardedRoute
+            <Route
               path={'/hotels'}
               component={Hotels}
             />
-            
-            <GuardedRoute
+            <Route
+
               path={'/TourGuiding'}
               component={TourGuiding}
             />
-            <GuardedRoute
+            <Route
               path={'/flight'}
               component={Flight}
-              cd travel/>
+            />
             <GuardedRoute
               path={'/holidays'}
               component={Holidays}
@@ -65,13 +67,17 @@ function App() {
               path={'/register'}
               component={Registeration}
             />
-           
+            <Route
+              path={'/book'}
+              component={BookForm}
+            />
+    
                <Route
               path={'/hotels/:id'}
               component={BookHotel}
             />
           
-                 <Route
+              <GuardedRoute
               path={'/holidays/:id'}
               component={BookHoliday}
             />
@@ -90,9 +96,7 @@ function App() {
             />
           </Switch>
         </RootGuard>
-      </AuthProvider>
-
-      
+      </DarkModeProvider>
     </BrowserRouter>
       
 

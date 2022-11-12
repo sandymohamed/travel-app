@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { registerUser } from '../../../services/authAPI';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../../../redux/actions/auth';
 
 function Registration() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [userData, setUserData] = useState({
     username: '',
     firstName: '',
@@ -22,11 +26,9 @@ function Registration() {
     passwordErr: null,
     birthdayErr: null,
   });
-
+  const [successfully, setSuccessfully] = useState(false);
   const emailRegex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{3}');
-  const passwordRegex = new RegExp(
-    /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/
-  );
+  const passwordRegex = new RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/);
 
   const handleChange = (e) => {
     if (e.target.name === 'email') {
@@ -136,14 +138,20 @@ function Registration() {
       userData.birthday &&
       userData.country
     ) {
-      registerUser(userData);
+      try {
+        dispatch(register(userData));
+      } catch (error) {
+        toast.info(`Something Wrong here!`, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
     } else {
       toast.info(`You should to fill every field`, {
         position: toast.POSITION.TOP_CENTER,
       });
     }
   };
-
+  let { message } = useSelector((MessageReducer) => MessageReducer);
   return (
     <div className="container w-50">
       <ToastContainer />
@@ -209,7 +217,7 @@ function Registration() {
             value={userData.birthday}
             onChange={(e) => handleChange(e)}
           />
-          <p className="text-danger">{error.emailErr}</p>
+          <p className="text-danger">{error.birthdayErr}</p>
         </div>
         <div className="mb-3">
           <label
@@ -256,7 +264,15 @@ function Registration() {
           />
           <p className="text-danger">{error.passwordErr}</p>
         </div>
-
+        {message && (
+          <div className="form-group">
+            <div
+              className={successfully ? 'alert alert-success' : 'alert alert-danger'}
+              role="alert">
+              {message}
+            </div>
+          </div>
+        )}
         <button
           type="submit"
           className="btn btn-primary me-5"
