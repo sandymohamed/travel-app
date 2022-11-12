@@ -11,15 +11,7 @@ const AuthGuard = ({ children }) => {
   let { isLoggedIn } = useSelector(({ AuthReducer }) => AuthReducer);
 
   useEffect(() => {
-    if (location.pathname === '/hotels' && isLoggedIn === false) {
-      history.push('/login');
-    } else if (location.pathname === '/TourGuiding' && isLoggedIn === false) {
-      history.push('/login');
-    } else if (location.pathname === '/flight' && isLoggedIn === false) {
-      history.push('/login');
-    } else if (location.pathname === '/holidays' && isLoggedIn === false) {
-      history.push('/login');
-    } else if (location.pathname === '/book' && isLoggedIn === false) {
+    if (location.pathname === '/hotel/:id' && isLoggedIn === false) {
       history.push('/login');
     }
   }, [location.pathname]);
