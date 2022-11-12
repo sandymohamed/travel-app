@@ -11,7 +11,6 @@ export const getHotels = () => {
 
 // get hotel by id 
 export const getHotelById = (id) => {
- console.log( id);
   return instance.get(`${ENDPOINTS.GETHOTELS}`+id)
 
   .then(res => {return(res.data)})
@@ -88,6 +87,14 @@ export const bookHotel = (bookData) => {
         }
       });
   
+}
+
+// get UserReservations 
+export const bookedHotelByUser = (userName) => {
+  return instance.get(`${ENDPOINTS.BOOKHOTELBYUSER}${userName}`)
+
+  .then(res => {return(res.data)})
+  .catch(err => console.log(err))
 }
 
 // get hotel feedback

@@ -86,7 +86,7 @@ function NavbarComponant() {
                 <button
                   className="btn btn-md text-white pt-1"
                   onClick={handleLoggin}>
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i> ToggleLogg
+                  <i className="fa-solid fa-arrow-right-from-bracket"></i> ToggleLogg
                 </button>
               </li>
             </ul>

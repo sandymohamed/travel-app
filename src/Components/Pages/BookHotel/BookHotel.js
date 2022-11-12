@@ -10,6 +10,7 @@ import ImgSlider from '../../Shared/Slider/ImgSlider';
 import HotelDetails from '../../Shared/hotelDetails/HotelDetails';
 import { format } from 'date-fns'
 import PostFeedback from '../../Shared/PostFeedback/PostFeedback';
+import Form from 'react-bootstrap/Form';
 
 const BookHotel = () => {
 
@@ -46,6 +47,8 @@ console.log(id);
   }, [])
 
   console.log(feedback);
+
+
 
   return (
 
