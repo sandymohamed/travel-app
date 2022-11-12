@@ -36,19 +36,19 @@ function App() {
               path={'/Home'}
               component={Home}
             />
-            <GuardedRoute
+            <Route
               path={'/hotels'}
               component={Hotels}
             />
-            <GuardedRoute
+            <Route
               path={'/TourGuiding'}
               component={TourGuiding}
             />
-            <GuardedRoute
+            <Route
               path={'/flight'}
               component={Flight}
             />
-            <GuardedRoute
+            <Route
               path={'/holidays'}
               component={Holidays}
             />
@@ -64,11 +64,11 @@ function App() {
               path={'/register'}
               component={Registeration}
             />
-            <GuardedRoute
+            <Route
               path={'/book'}
               component={BookForm}
             />
-            <Route
+            <GuardedRoute
               path={'/hotel/:id'}
               component={BookHotel}
             />
