@@ -6,53 +6,41 @@ export const instance = axios.create({
 });
 
 // register
-export function registerUser(userDate) {
-  return instance({
-    url: `auth/signup`,
-    method: 'POST',
-    data: userDate,
-  })
-    .then(({ data }) => {
-      toast.success(`${data.message}`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-      return data;
-    })
-    .catch(({ response }) => {
-      toast.error(`${JSON.stringify(response.data.message)}`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    });
-}
+// export function registerUser(userDate) {
+//   return instance({
+//     url: `auth/signup`,
+//     method: 'POST',
+//     data: userDate,
+//   })
+//     .then(({ data }) => {
+//       toast.success(`${data.message}`, {
+//         position: toast.POSITION.TOP_CENTER,
+//       });
+//       return data;
+//     })
+//     .catch(({ response }) => {
+//       toast.error(`${JSON.stringify(response.data.message)}`, {
+//         position: toast.POSITION.TOP_CENTER,
+//       });
+//     });
+// }
 
-export function signIn(credentials) {
-  return instance({
-    url: `auth/signin`,
-    method: 'POST',
-    data: credentials,
-  })
-    .then(({ data }) => data)
-    .catch(({ response }) => {
-      toast.error(`${response.data.message}`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    });
-}
+// export function signIn(credentials) {
+//   return instance({
+//     url: `auth/signin`,
+//     method: 'POST',
+//     data: credentials,
+//   })
+//     .then(({ data }) => data)
+//     .catch(({ response }) => {
+//       toast.error(`${response.data.message}`, {
+//         position: toast.POSITION.TOP_CENTER,
+//       });
+//     });
+// }
 
-export function tokenTest() {
-  return instance({
-    url: `test/user`,
-    method: 'GET',
-  })
-    .then((data) => console.log('resolve', data))
-    .catch(({ response }) => {
-      toast.error(`${response.data.message}`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    });
-}
 class AuthService {
-  signIn(credentials) {
+  login(credentials) {
     return instance({
       url: `auth/signin`,
       method: 'POST',
@@ -60,9 +48,6 @@ class AuthService {
     })
       .then(({ data }) => {
         if (data.accessToken) {
-          console.log('Data => ', data);
-
-          console.log('data.accessToken => ', data.accessToken);
           localStorage.setItem('user', JSON.stringify(data));
         }
         return data;
@@ -76,20 +61,22 @@ class AuthService {
   logout() {
     localStorage.removeItem('user');
   }
-  registerUser(userDate) {
+  register(userData) {
     return instance({
       url: `auth/signup`,
       method: 'POST',
-      data: userDate,
+      data: userData,
     })
       .then(({ data }) => {
+        console.log('data inside authAPI => ', data);
+
         toast.success(`${data.message}`, {
           position: toast.POSITION.TOP_CENTER,
         });
         return data;
       })
       .catch(({ response }) => {
-        toast.error(`${JSON.stringify(response.data.message)}`, {
+        toast.error(`${response.data.message.toString()}`, {
           position: toast.POSITION.TOP_CENTER,
         });
       });

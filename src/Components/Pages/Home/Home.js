@@ -3,14 +3,14 @@ import './home.scss';
 import FlightCard from '../../Shared/cards/FlightCard';
 import Vcart from '../../Shared/cards/Vcard';
 import Carousel from 'react-bootstrap/Carousel';
-import testslider from '../../../assets/card/dummy-image.jpg';
-import flightImg from '../../../assets/header/flight.png';
-
-import { tokenTest } from '../../../services/authAPI';
+import testslider from '../../../Assets/card/dummy-image.jpg';
+import flightImg from '../../../Assets/header/flight.png';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
-  tokenTest();
-
+  let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
+  let { message } = useSelector((MessageReducer) => MessageReducer);
+  console.log('Message =>', message);
   return (
     <>
       <Carousel>
