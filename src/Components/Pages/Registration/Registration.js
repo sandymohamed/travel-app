@@ -127,7 +127,7 @@ function Registration() {
     }
   };
 
-  const submitData = (e) => {
+  const submitData = async (e) => {
     e.preventDefault();
     if (
       userData.username &&
@@ -138,16 +138,24 @@ function Registration() {
       userData.birthday &&
       userData.country
     ) {
-      dispatch(register(userData)).then(() => {
-        // nothing now1
-        setSuccessfully(true);
-        toast.info(`Registered Successfuly!`, {
+      try {
+        let sss = await dispatch(register(userData));
+        console.log('yes im here', sss);
+      } catch (error) {
+        toast.info(`Something Wrong here!`, {
           position: toast.POSITION.TOP_CENTER,
         });
-        setTimeout(() => {
-          history.push('/home');
-        }, 2000);
-      });
+      }
+      // dispatch(register(userData)).then(() => {
+      //   // nothing now1
+      //   // setSuccessfully(true);
+      //   // toast.info(`Registered Successfuly!!ss`, {
+      //   //   position: toast.POSITION.TOP_CENTER,
+      //   // });
+      //   // setTimeout(() => {
+      //   //   history.push('/login');
+      //   // }, 2000);
+      // });
     } else {
       toast.info(`You should to fill every field`, {
         position: toast.POSITION.TOP_CENTER,
@@ -220,7 +228,7 @@ function Registration() {
             value={userData.birthday}
             onChange={(e) => handleChange(e)}
           />
-          <p className="text-danger">{error.emailErr}</p>
+          <p className="text-danger">{error.birthdayErr}</p>
         </div>
         <div className="mb-3">
           <label

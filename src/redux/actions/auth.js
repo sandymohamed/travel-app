@@ -2,37 +2,60 @@ import { REGISTER_SUCCESS, REGISTER_FAIL, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, SET
 import AuthService from '../../services/authAPI';
 
 export const register = (userData) => (dispatch) => {
-  return AuthService.register(userData).then(
-    (response) => {
-      console.warn('response =>', response);
-
-      dispatch({
-        type: REGISTER_SUCCESS,
-      });
+  try {
+    AuthService.register(userData).then((response) => {
+      let data = response ? response.data : null;
+      dispatch({ type: REGISTER_SUCCESS });
 
       dispatch({
         type: SET_MESSAGE,
-        payload: response.data,
+        payload: data,
       });
 
       return Promise.resolve();
-    },
-    (error) => {
-      const message = JSON.stringify(error);
-      console.warn('message =>', error);
+    });
+  } catch (error) {
+    const message = JSON.stringify(error);
+    console.warn('message =>', error);
 
-      dispatch({
-        type: REGISTER_FAIL,
-      });
+    dispatch({
+      type: REGISTER_FAIL,
+    });
 
-      dispatch({
-        type: SET_MESSAGE,
-        payload: message,
-      });
+    dispatch({
+      type: SET_MESSAGE,
+      payload: message,
+    });
 
-      return Promise.reject();
-    }
-  );
+    return Promise.reject();
+  }
+  // return AuthService.register(userData).then(
+  //   (response) => {
+  //     dispatch({ type: REGISTER_SUCCESS });
+
+  //     dispatch({
+  //       type: SET_MESSAGE,
+  //       payload: response.data,
+  //     });
+
+  //     return Promise.resolve();
+  //   },
+  //   (error) => {
+  //     const message = JSON.stringify(error);
+  //     console.warn('message =>', error);
+
+  //     dispatch({
+  //       type: REGISTER_FAIL,
+  //     });
+
+  //     dispatch({
+  //       type: SET_MESSAGE,
+  //       payload: message,
+  //     });
+
+  //     return Promise.reject();
+  //   }
+  // );
 };
 
 export const login = (credentials) => (dispatch) => {
