@@ -38,10 +38,10 @@ function App() {
               path={'/Home'}
               component={Home}
             />
-            {/* <GuardedRoute
+            <GuardedRoute
               path={'/hotels'}
               component={Hotels}
-            /> */}
+            />
             
             <GuardedRoute
               path={'/TourGuiding'}
@@ -51,10 +51,10 @@ function App() {
               path={'/flight'}
               component={Flight}
             />
-            {/* <GuardedRoute
+            <GuardedRoute
               path={'/holidays'}
               component={Holidays}
-            /> */}
+            />
              
          
             <Route
@@ -65,18 +65,12 @@ function App() {
               path={'/register'}
               component={Registeration}
             />
-           <Route
-              path={'/hotel'}
-              component={Hotels}
-            />
+           
                <Route
               path={'/hotels/:id'}
               component={BookHotel}
             />
-            <Route
-              path={'/holiday'}
-              component={Holidays}
-            />
+          
                  <Route
               path={'/holidays/:id'}
               component={BookHoliday}
