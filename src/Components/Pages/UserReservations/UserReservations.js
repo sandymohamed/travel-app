@@ -53,7 +53,7 @@ const UserReservations = () => {
 
         
        <section className="formCard " >
-        <h1 className='text-center'>Hotels Reservations</h1>
+        <h1 className='text-center'>Holidays Reservations</h1>
         {
             (holidayReservations)&&(
                 holidayReservations.map((item,i)=>(
@@ -68,6 +68,7 @@ const UserReservations = () => {
                     <p>Transport: {item.Transport}</p>
                     <p>startDate: {item.startDate}</p>
                     <p>endDate: {item.endDate}</p>
+                    {/* format date ********************************************************************* */}
                     <p className='text-end'>updatedAt: {item.updatedAt}</p>
 
 

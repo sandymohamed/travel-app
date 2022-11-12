@@ -50,7 +50,7 @@ function App() {
             <GuardedRoute
               path={'/flight'}
               component={Flight}
-            />
+              cd travel/>
             <GuardedRoute
               path={'/holidays'}
               component={Holidays}
