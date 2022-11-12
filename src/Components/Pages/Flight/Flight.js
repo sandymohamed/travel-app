@@ -1,5 +1,6 @@
 import './Flight.scss';
-
+import { useEffect, useState } from 'react';
+import { getAllFlight } from '../../../services/FlightService';
 // import 'react-date-range/dist/styles.css'; // main style file
 // import 'react-date-range/dist/theme/default.css'; // theme css file
 import HeaderComponent from '../../Shared/header/HeaderComponent';
@@ -11,6 +12,40 @@ import SlideBar from '../../Shared/slideBar/Slidebar';
 
 const headerTitle = <> Find your Tayara</>;
 const headerParagraph = <> ana b7b masr gdn msh adaer asafr laaaa</>;
+
+const Flight = () => {
+
+  
+const [AirLineList, setAirLineList] = useState([]);
+const [countryTo,setcountryTo] = useState();
+const [countryFrom,setcountryFrom] = useState();
+const [selectedOption,SetselectedOption] =useState()
+
+
+
+const FunctionSearch = (e) =>
+{
+   console.log(e.target)
+   switch (e.target.id) {
+    case "countryTo":
+     setcountryTo(e.target.value)
+      break;
+    case "countryFrom":
+      setcountryFrom(e.target.value)
+      break;
+      case "":
+      setcountryFrom(e.target.value)
+      break ;
+    default:
+     
+  }
+}
+
+// const handleOptionChange: function (changeEvent) {
+//   this.setState({
+//     selectedOption: changeEvent.target.value
+//   });
+// },
 
 const serviceSection = (
   <>
@@ -40,6 +75,7 @@ const serviceSection = (
               name="country"
               placeholder="To"
               id="countryTo"
+              onChange={(e)=>{FunctionSearch(e)}}
             />
             <i className="fa-solid fa-map-location"></i>
             <datalist id="country">
@@ -80,6 +116,9 @@ const serviceFilter = (
         type="radio"
         name="classFilter"
         id="economy"
+        checked={this.state.selectedOption === 'economy'}
+        onChange={(e)=>{FunctionSearch(e)}}
+       
       />
       <label htmlFor="economy">Economy Class</label>
     </div>
@@ -88,6 +127,8 @@ const serviceFilter = (
         type="radio"
         name="classFilter"
         id="business"
+        checked={this.state.selectedOption === 'business'}
+        onChange={(e)=>{FunctionSearch(e)}}
       />
       <label htmlFor="business">Business Class</label>
     </div>
@@ -96,12 +137,23 @@ const serviceFilter = (
         type="radio"
         name="classFilter"
         id="first"
+        checked={this.state.selectedOption === 'first'}
+        onChange={(e)=>{FunctionSearch(e)}}
       />
       <label htmlFor="first">First Class</label>
     </div>
   </>
 );
-const Flight = () => {
+ 
+  useEffect(() => {
+
+ 
+    getAllFlight(countryTo).then((res) => setAirLineList(res.data));
+    
+    console.log(countryTo)
+  
+  }, [countryTo])
+
   return (
     <>
       <HeaderComponent
@@ -115,13 +167,14 @@ const Flight = () => {
       <section className="flightcomponent">
         <div className="row">
           <section className=" col-md-3 ">
-            {/* <SlideBar serviceFilter={serviceFilter} /> */}
+             <SlideBar serviceFilter={serviceFilter} /> 
           </section>
           <section className="cardsArea col-md-8 ">
-            <FlightCard />
-            <FlightCard />
-            <FlightCard />
-            <FlightCard />
+          {AirLineList.map((AirLine) => {
+                return (
+                  <FlightCard Flightobj={AirLine} /> 
+                )
+            })}
           </section>
         </div>
       </section>

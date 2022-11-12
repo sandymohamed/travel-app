@@ -1,5 +1,5 @@
 import './Login.scss';
-import loginImg from '../../../Assets/login.jpg';
+import loginImg from '../../../assets/login.jpg';
 import { useState, useContext } from 'react';
 
 import { Link } from 'react-router-dom';
@@ -45,7 +45,7 @@ function SignIn() {
 
       setErrors({
         ...errors,
-        passwordErr: e.target.value.length < 8 ? '*password must containes 8 characters at least' : null,
+        passwordErr: e.target.value.length < 6 ? '*password must containes 8 characters at least' : null,
       });
     }
   };

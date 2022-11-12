@@ -5,10 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faCalendarWeek } from '@fortawesome/free-solid-svg-icons';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-function FlightCard() {
+function FlightCard({Flightobj}) {
   useEffect(() => {
     AOS.init();
   }, []);
+
+  let DepartureDate = new Date(Flightobj.DepartureDate);
+  let ReturnDate = new Date(Flightobj.ReturnDate);
+  /* Date format you have */
+  let DepartureDateMDY = `${DepartureDate.getDate()}-${DepartureDate.getMonth() + 1}-${DepartureDate.getFullYear()}`;
+  let ReturnDateMDY = `${ReturnDate.getDate()}-${ReturnDate.getMonth() + 1}-${ReturnDate.getFullYear()}`;
+  /* Date converted to MM-DD-YYYY format */
+
 
   return (
     <>
@@ -18,33 +26,37 @@ function FlightCard() {
         data-aos-delay="200">
         <div className="cardBody">
           <div
-            className="cardBody_img  "
+            className="cardBody_img col-md-4 "
             data-aos="fade-up"
             data-aos-delay="300">
             <img
-              src={dummyImg}
+             src= 'https://w7.pngwing.com/pngs/901/129/png-transparent-hurghada-international-airport-cairo-borg-el-arab-airport-egyptair-airbus-a330-others-text-egypt-logo-thumbnail.png'//{dummyImg}
               alt="Item_Name"></img>
           </div>
           <article
-            className="cardBody_details "
+            className="cardBody_details col-md-7 col-sm-12"
             data-aos="zoom-out"
             data-aos-delay="200">
             <div className="cardBody_details_data">
-              <div className="spacer"></div>
+              <div class="spacer"></div>
               <div className="container">
                 <span className="line">
                   {' '}
                   - - - - - - -
-                  <span className="icon">
-                    <i className="fa-solid fa-plane"></i>
+                  <span>
+                    {' '}
+                    <FontAwesomeIcon
+                      className="fs-3"
+                      icon={faPlane}
+                    />{' '}
                   </span>{' '}
                   - - - - - - -
                 </span>
                 <div className="container_data">
-                  <div className="spacer"></div>
+                  <div class="spacer"></div>
                   <div className="data">
-                    <span className="data_from">Egypt</span>
-                    <span className="data_to">Usa</span>
+                    <span className="data_from">{Flightobj.FlyingFrom}</span>
+                    <span className="data_to">{Flightobj.FlyingTo}</span>
                   </div>
                 </div>
               </div>
@@ -53,15 +65,15 @@ function FlightCard() {
                 <span className="line">
                   {' '}
                   - - - - - - -
-                  <span className="icon">
-                    <i className="fa-solid fa-calendar-days"></i>
+                  <span>
+                    <i class="fa-solid fa-calendar-days"></i>
                   </span>{' '}
                   - - - - - - -
                 </span>
                 <div className="container_data">
-                  <div className="data date">
-                    <span className="data_from">10/11/2022</span>
-                    <span className="data_to">15/11/2022</span>
+                  <div className="data">
+                    <span className="data_from">{DepartureDateMDY}</span>
+                    <span className="data_to">{ReturnDateMDY}</span>
                   </div>
                 </div>
               </div>

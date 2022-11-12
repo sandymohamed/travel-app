@@ -14,7 +14,6 @@ import BookHotel from './Components/Pages/BookHotel/BookHotel';
 
 import BookForm from './Components/Shared/BookForm/BookForm';
 import { DarkModeProvider } from './context/DarkMode';
-import { AuthProvider } from './context/AuthContext';
 import RootGuard from './Guard/RootGuard';
 import GuardedRoute from './Guard/RouteGuard';
 import UserDetails from './Components/Pages/UserDetails/UserDetails';
