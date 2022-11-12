@@ -5,12 +5,12 @@ import Vcart from '../../Shared/cards/Vcard';
 import Carousel from 'react-bootstrap/Carousel';
 import testslider from '../../../Assets/card/dummy-image.jpg';
 import flightImg from '../../../Assets/header/flight.png';
-
-import { tokenTest } from '../../../services/authAPI';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
-  tokenTest();
-
+  let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
+  let { message } = useSelector((MessageReducer) => MessageReducer);
+  console.log('Message =>', message);
   return (
     <>
       <Carousel>

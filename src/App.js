@@ -13,16 +13,16 @@ import Registeration from './Components/Pages/Registration/Registration';
 import Login from './Components/Pages/Login/Login';
 import BookHotel from './Components/Pages/BookHotel/BookHotel';
 import BookForm from './Components/Shared/BookForm/BookForm';
-import { AuthProvider } from './context/AuthContext';
+import { DarkModeProvider } from './context/DarkMode';
 import RootGuard from './Guard/RootGuard';
 import GuardedRoute from './Guard/RouteGuard';
 
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
+      <DarkModeProvider>
         <RootGuard>
           <NavbarComponant />
 
@@ -78,7 +78,7 @@ function App() {
             />
           </Switch>
         </RootGuard>
-      </AuthProvider>
+      </DarkModeProvider>
     </BrowserRouter>
   );
 }

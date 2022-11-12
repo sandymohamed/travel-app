@@ -1,27 +1,25 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+//import { AuthContext } from '../context/AuthContext';
+import { useSelector } from 'react-redux';
 
 const AuthGuard = ({ children }) => {
+  //const { isAuthorized } = useContext(AuthContext);
+
   const history = useHistory();
   const location = useLocation();
-  const { isAuthorized } = useContext(AuthContext);
-  const SAMPLE_PERMISSION = {
-    //can be taken from any resource and stored using any of the best practice
-    moneytransfer: true,
-    list: false,
-    isAuthorized,
-  };
+  let { isLoggedIn } = useSelector(({ AuthReducer }) => AuthReducer);
+
   useEffect(() => {
-    if (location.pathname === '/hotels' && isAuthorized === false) {
+    if (location.pathname === '/hotels' && isLoggedIn === false) {
       history.push('/login');
-    } else if (location.pathname === '/TourGuiding' && isAuthorized === false) {
+    } else if (location.pathname === '/TourGuiding' && isLoggedIn === false) {
       history.push('/login');
-    } else if (location.pathname === '/flight' && isAuthorized === false) {
+    } else if (location.pathname === '/flight' && isLoggedIn === false) {
       history.push('/login');
-    } else if (location.pathname === '/holidays' && isAuthorized === false) {
+    } else if (location.pathname === '/holidays' && isLoggedIn === false) {
       history.push('/login');
-    } else if (location.pathname === '/book' && isAuthorized === false) {
+    } else if (location.pathname === '/book' && isLoggedIn === false) {
       history.push('/login');
     }
   }, [location.pathname]);

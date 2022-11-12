@@ -3,10 +3,14 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import travEasyLogo from '../../Assets/logoWhite.png';
 import './navbar.scss';
-import { AuthContext } from '../../context/AuthContext';
+import { DarkModeContext } from '../../context/DarkMode';
 import RootGuard from '../../Guard/RootGuard';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/actions/auth';
 
 function NavbarComponant() {
+  const dispatch = useDispatch();
+
   const [active, setActive] = useState('nav__menu');
   const [icon, setIcon] = useState('nav__toggler');
   const navToggle = () => {
@@ -19,14 +23,19 @@ function NavbarComponant() {
       setIcon('nav__toggler toggle');
     } else setIcon('nav__toggler');
   };
-  const { isAuthorized, loggin } = useContext(AuthContext);
-  const handleLoggin = () => {
-    console.log(isAuthorized);
-    loggin();
+  const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
+  let { isLoggedIn } = useSelector(({ AuthReducer }) => AuthReducer);
+
+  const handleToggleDarkMode = () => {
+    toggleDarkMode();
+    console.log(darkMode);
+  };
+  const handleLogout = () => {
+    dispatch(logout());
   };
   return (
     <RootGuard>
-      <nav className="nav">
+      <nav className={`nav  ${darkMode ? 'bg-dark ' : ''}`}>
         <Link
           className="nav__logo"
           to="/Home">
@@ -36,7 +45,7 @@ function NavbarComponant() {
           />
         </Link>
 
-        <ul className={active}>
+        <ul className={`${active} pt-3`}>
           <li className="nav__item">
             <Link
               className="nav__link"
@@ -69,14 +78,14 @@ function NavbarComponant() {
             <ul>
               <li>
                 <Link
-                  className="nav__link "
+                  className={`nav__link ${isLoggedIn ? 'd-none' : ''}`}
                   to="/login">
                   <i className="fa-solid fa-right-to-bracket"></i> Login
                 </Link>
               </li>
               <li>
                 <Link
-                  className="nav__link "
+                  className={`nav__link ${isLoggedIn ? 'd-none' : ''}`}
                   to="/register">
                   <i className="fa-solid fa-user-plus"></i>
                   Register
@@ -84,21 +93,23 @@ function NavbarComponant() {
               </li>
               <li>
                 <button
-                  className="btn btn-md text-white pt-1"
-                  onClick={handleLoggin}>
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i> ToggleLogg
+                  onClick={handleLogout}
+                  className={`btn btn-md text-white pt-1 ${!isLoggedIn ? 'd-none' : ''}`}>
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
                 </button>
               </li>
             </ul>
           </li>
         </ul>
 
-        <div
-          onClick={navToggle}
-          className={icon}>
-          <div className="line1"></div>
-          <div className="line2"></div>
-          <div className="line3"></div>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input pb-3"
+            type="checkbox"
+            id="darkModeToggler"
+            checked={`${darkMode ? 'checked' : ''}`}
+            onClick={(e) => handleToggleDarkMode()}
+          />
         </div>
       </nav>
     </RootGuard>
