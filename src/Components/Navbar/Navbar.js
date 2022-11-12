@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 import { Link } from 'react-router-dom';
-import travEasyLogo from '../../Assets/logoWhite.png';
+import travEasyLogo from '../../assets/logoWhite.png';
 import './navbar.scss';
 import { AuthContext } from '../../context/AuthContext';
 import RootGuard from '../../Guard/RootGuard';

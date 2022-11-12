@@ -89,6 +89,8 @@ function App() {
           </Switch>
         </RootGuard>
       </AuthProvider>
+    </BrowserRouter>
+      
 
   );
 }
