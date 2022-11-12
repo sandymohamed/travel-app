@@ -7,12 +7,16 @@ import { DarkModeContext } from '../../context/DarkMode';
 import RootGuard from '../../Guard/RootGuard';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/actions/auth';
+import AuthService from '../../services/authAPI';
 
 function NavbarComponant() {
   const dispatch = useDispatch();
 
   const [active, setActive] = useState('nav__menu');
   const [icon, setIcon] = useState('nav__toggler');
+  const currentUser = AuthService.getCurrentUser();
+
+  console.log('currentUser', currentUser);
   const navToggle = () => {
     if (active === 'nav__menu') {
       setActive('nav__menu nav__active');
@@ -108,7 +112,7 @@ function NavbarComponant() {
             type="checkbox"
             id="darkModeToggler"
             checked={`${darkMode ? 'checked' : ''}`}
-            onClick={(e) => handleToggleDarkMode()}
+            onChange={(e) => handleToggleDarkMode()}
           />
         </div>
       </nav>

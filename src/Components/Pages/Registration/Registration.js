@@ -127,7 +127,7 @@ function Registration() {
     }
   };
 
-  const submitData = async (e) => {
+  const submitData = (e) => {
     e.preventDefault();
     if (
       userData.username &&
@@ -139,23 +139,12 @@ function Registration() {
       userData.country
     ) {
       try {
-        let sss = await dispatch(register(userData));
-        console.log('yes im here', sss);
+        dispatch(register(userData));
       } catch (error) {
         toast.info(`Something Wrong here!`, {
           position: toast.POSITION.TOP_CENTER,
         });
       }
-      // dispatch(register(userData)).then(() => {
-      //   // nothing now1
-      //   // setSuccessfully(true);
-      //   // toast.info(`Registered Successfuly!!ss`, {
-      //   //   position: toast.POSITION.TOP_CENTER,
-      //   // });
-      //   // setTimeout(() => {
-      //   //   history.push('/login');
-      //   // }, 2000);
-      // });
     } else {
       toast.info(`You should to fill every field`, {
         position: toast.POSITION.TOP_CENTER,
