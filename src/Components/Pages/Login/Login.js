@@ -52,27 +52,27 @@ function SignIn() {
 
   const submitData = (e) => {
     e.preventDefault();
+    console.log(isLoggedIn);
+
     if (!errors.usernameErr && !errors.passwordErr) {
       // pug!
-      dispatch(login(userData))
-        .then(() => {
-          // setTimeout(() => {
-          //   window.location.reload();
-          // }, 3000);
-          window.location.reload();
-          if (isLoggedIn) {
-            history.push('/home');
-          }
-        })
-        .catch(() => {
-          return toast.info(`Something Wrong! try again`, {
-            position: toast.POSITION.TOP_CENTER,
-          });
+      try {
+        dispatch(login(userData));
+      } catch (error) {
+        return toast.info(`Something Wrong! try again`, {
+          position: toast.POSITION.TOP_CENTER,
         });
+      }
     } else {
       toast.info(`Something Wrong!`, {
         position: toast.POSITION.TOP_CENTER,
       });
+    }
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+    if (isLoggedIn) {
+      history.push('/home');
     }
   };
 
