@@ -10,6 +10,15 @@ export const getHolidays = () => {
     .catch((err) => console.log(err));
 };
 
+// get holiday by id 
+export const getHolidayById = (id) => {
+  console.log( id);
+   return instance.get(`${ENDPOINTS.GETHOLIDAYS}`+id)
+ 
+   .then(res => {return(res.data)})
+   .catch(err => console.log(err))
+ }
+
 // get holiday by price
 export const getHolidayByPrice = (price) => {
   return instance
@@ -41,3 +50,32 @@ export const getHolidaysByCityName = (city) => {
     })
     .catch((err) => console.log(err));
 };
+
+
+
+// Book holiday
+export const bookHoliday = (bookData) => {
+  console.log(bookData);
+  return instance.post(`${ENDPOINTS.BOOKHOLIDAY}`,bookData)
+
+  .then(res => console.log(res))
+  .catch((error) => {
+      if (error.response) {
+        console.log(error.response);
+        console.log("server responded");
+      } else if (error.request) {
+        console.log("network error");
+      } else {
+        console.log(error);
+      }
+    });
+
+}
+
+// get UserReservations 
+export const bookedHolidayByUser = (userName) => {
+  return instance.get(`${ENDPOINTS.BOOKHOLIDAYBYUSER}${userName}`)
+
+  .then(res => {return(res.data)})
+  .catch(err => console.log(err))
+}
