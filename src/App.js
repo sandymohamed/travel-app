@@ -14,6 +14,7 @@ import BookHotel from './Components/Pages/BookHotel/BookHotel';
 
 import BookForm from './Components/Shared/BookForm/BookForm';
 import { DarkModeProvider } from './context/DarkMode';
+// import { AuthProvider } from './context/AuthContext';
 import RootGuard from './Guard/RootGuard';
 import GuardedRoute from './Guard/RouteGuard';
 import UserDetails from './Components/Pages/UserDetails/UserDetails';
@@ -22,6 +23,7 @@ import UserReservations from './Components/Pages/UserReservations/UserReservatio
 
 
 import React from 'react';
+import UserHolidayRes from './Components/Pages/UserReservations/UserHolidayRes';
 
 function App() {
   return (
@@ -52,11 +54,14 @@ function App() {
               path={'/flight'}
               component={Flight}
             />
-            <Route
+            <GuardedRoute
               path={'/holidays'}
               component={Holidays}
             />
-             
+              <Route
+              path={'/holiday'}
+              component={Holidays}
+            />
          
             <Route
               path={'/login'}
@@ -81,8 +86,12 @@ function App() {
               component={BookHoliday}
             />
              <Route
-              path={'/userReservations'}
+              path={'/userReservation'}
               component={UserReservations}
+            />
+              <Route
+              path={'/userholidayReservation'}
+              component={UserHolidayRes}
             />
          
              <Route

@@ -2,14 +2,9 @@ import { useEffect, useState } from 'react';
 import './bookHoliday.scss';
 import AOS from 'aos';
 import "aos/dist/aos.css"
-import { bookHotel, getHotelFeedback } from '../../../services/hotelsServ';
 import { useParams } from 'react-router-dom'
-import BookForm from '../../Shared/BookForm/BookForm';
 import { useSelector } from 'react-redux';
 import ImgSlider from '../../Shared/Slider/ImgSlider';
-import HotelDetails from '../../Shared/hotelDetails/HotelDetails';
-import { format } from 'date-fns'
-import PostFeedback from '../../Shared/PostFeedback/PostFeedback';
 import { getHolidayById } from '../../../services/holidaysServ';
 import HolidayForm from '../../Shared/holidayForm/HolidayForm';
 
