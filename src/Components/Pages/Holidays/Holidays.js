@@ -31,7 +31,7 @@ const Holidays = () => {
 
   const serviceSection = (
     <>
-      <div className="holidayDetails">
+      <div className="holidayDetails ">
         <select
           className=" bg-warning m-2 p-2 border border-0 rounded city-options"
           id="dropdown-basic"
@@ -90,12 +90,13 @@ const Holidays = () => {
 
       <ServiceSection serviceSection={serviceSection} />
 
-      <section className="hotelcomponent">
-        <div className="row">
+      <section className="hotelcomponent ">
+        <div className="hotel-container d-flex">
           <section
-            className=" col-md-3 "
+            className="slide-bar"
             style={{ width: '30%' }}>
             <SlideBar
+             className="filter-bar"
               serviceFilter={
                 <StarRating
                   filterHotels={filterHolidays}
@@ -107,7 +108,7 @@ const Holidays = () => {
             />
           </section>
       <section
-        className="cardsArea col-md-8 d-flex "
+        className="cardsArea  "
         style={{ width: '65%' }}>
         <div className="cards-container ">
           {holidays &&

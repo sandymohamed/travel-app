@@ -1,5 +1,5 @@
 import './Login.scss';
-import loginImg from '../../../Assets/login.jpg';
+import loginImg from '../../../assets/login.jpg';
 import { useState, useContext } from 'react';
 
 import { Link } from 'react-router-dom';

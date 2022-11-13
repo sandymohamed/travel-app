@@ -99,16 +99,16 @@ function NavbarComponant() {
                 <button
                   onClick={handleLogout}
                   className={`btn btn-md text-white pt-1 ${!isLoggedIn ? 'd-none' : ''}`}>
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                  <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
                 </button>
               </li>
             </ul>
           </li>
         </ul>
 
-        <div class="form-check form-switch">
+        <div className="form-check form-switch">
           <input
-            class="form-check-input pb-3"
+            className="form-check-input pb-3"
             type="checkbox"
             id="darkModeToggler"
             checked={`${darkMode ? 'checked' : ''}`}
