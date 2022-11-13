@@ -1,11 +1,14 @@
 import './flightcard.scss';
 import dummyImg from '../../../assets/card/dummy-image.jpg';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faCalendarWeek } from '@fortawesome/free-solid-svg-icons';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-function FlightCard({Flightobj}) {
+import { bookedFlight } from '../../../services/FlightService';
+import { useSelector } from 'react-redux';
+
+function FlightCard({ Flightobj , setIsBook }) {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -17,6 +20,21 @@ function FlightCard({Flightobj}) {
   let ReturnDateMDY = `${ReturnDate.getDate()}-${ReturnDate.getMonth() + 1}-${ReturnDate.getFullYear()}`;
   /* Date converted to MM-DD-YYYY format */
 
+  let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
+  
+  // Function Booking 
+  const FunctionBooking = () => {
+    if(!isLoggedIn)
+     return alert("Login is requrid")
+    
+     try {
+      bookedFlight(user.id,Flightobj._id).then((res) => res)
+      setIsBook(true)
+     } catch (error) {
+      alert(error)
+     }
+   
+  }
 
   return (
     <>
@@ -30,7 +48,7 @@ function FlightCard({Flightobj}) {
             data-aos="fade-up"
             data-aos-delay="300">
             <img
-             src= 'https://w7.pngwing.com/pngs/901/129/png-transparent-hurghada-international-airport-cairo-borg-el-arab-airport-egyptair-airbus-a330-others-text-egypt-logo-thumbnail.png'//{dummyImg}
+              src='https://w7.pngwing.com/pngs/901/129/png-transparent-hurghada-international-airport-cairo-borg-el-arab-airport-egyptair-airbus-a330-others-text-egypt-logo-thumbnail.png'//{dummyImg}
               alt="Item_Name"></img>
           </div>
           <article
@@ -77,7 +95,7 @@ function FlightCard({Flightobj}) {
                   </div>
                 </div>
               </div>
-              <button className="primaryBtn"> Booking</button>
+              <button className="primaryBtn" onClick={() => { FunctionBooking() }}> Booking</button>
               <button className="secondaryBtn"> Details</button>
             </div>
           </article>

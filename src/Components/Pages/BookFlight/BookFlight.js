@@ -8,32 +8,25 @@ import HeaderComponent from '../../Shared/header/HeaderComponent';
 import headerImg from '../../../assets/header/transportationHeader.png';
 import FlightCard from '../../Shared/cards/FlightCard';
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
-import SlideBar from '../../Shared/slideBar/Slidebar';
 import { setFormatDate } from '../../../services/DateformatService';
+import { useSelector } from 'react-redux';
 
 const headerTitle = <> Find your Tayara</>;
 const headerParagraph = <> ana b7b masr gdn msh adaer asafr laaaa</>;
 
-const Flight = () => {
+const BookFlight = () => {
 
   
 const [AirLineList, setAirLineList] = useState([]);
 const [countryTo,setcountryTo] = useState();
 const [countryFrom,setcountryFrom] = useState();
-const [selectedClass,SetselectedClass] = useState()
 const [dateTo,setdateTo] = useState()
-const [price, setPrice] = useState();
 const [isBook, setIsBook] = useState();
 
-
+let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
 
 const FunctionSearch = (e) =>
 {
-  // Check Filter for Class Filter
-    if (e.target.name == "classFilter"){
-      SetselectedClass(e.target.id)
-    }
-
   // Check Filter for countryTo
    switch (e.target.id) {
     case "countryTo":
@@ -115,47 +108,11 @@ const serviceSection = (
     </div>
   </>
 );
-const serviceFilter = (
-  <>
-    <span>Class</span>
-    <div>
-      <input
-        type="radio"
-        name="classFilter"
-        id="economy"
-        checked={selectedClass === 'economy'}
-        onChange={(e)=>{FunctionSearch(e)}}
-       
-      />
-      <label htmlFor="economy">Economy Class</label>
-    </div>
-    <div>
-      <input
-        type="radio"
-        name="classFilter"
-        id="business"
-        checked={selectedClass === 'business'}
-        onChange={(e)=>{FunctionSearch(e)}}
-      />
-      <label htmlFor="business">Business Class</label>
-    </div>
-    <div>
-      <input
-        type="radio"
-        name="classFilter"
-        id="first"
-        checked={selectedClass === 'first'}
-        onChange={(e)=>{FunctionSearch(e)}}
-      />
-      <label htmlFor="first">First Class</label>
-    </div>
-  </>
-);
+
  // Colling Database and Filter Data
   useEffect(() => { 
-    getAllFlight(countryTo , dateTo ,selectedClass , price).then((res) => setAirLineList(res.data));
-    setIsBook(false)
-  }, [countryTo, dateTo , selectedClass ,price , isBook])
+    getAllFlightByUser(countryTo , dateTo , user.name  ).then((res) => setAirLineList(res.data));   
+  }, [countryTo, dateTo ])
 
   return (
     <>
@@ -169,13 +126,10 @@ const serviceFilter = (
       {/* ////////////////////// */}
       <section className="flightcomponent">
         <div className="row">
-          <section className=" col-md-3 ">
-             <SlideBar serviceFilter={serviceFilter}   setPrice={setPrice}/> 
-          </section>
-          <section className="cardsArea col-md-8 ">
+          <section className="cardsArea col-md-12 ">
           {AirLineList.map((AirLine) => {
                 return (
-                  <FlightCard Flightobj={AirLine} setIsBook={setIsBook}/> 
+                  <FlightCard Flightobj={AirLine} /> 
                 )
             })}
           </section>
@@ -185,4 +139,4 @@ const serviceFilter = (
   );
 };
 
-export default Flight;
+export default BookFlight;
