@@ -138,16 +138,13 @@ function Registration() {
       userData.birthday &&
       userData.country
     ) {
-      dispatch(register(userData)).then(() => {
-        // nothing now1
-        setSuccessfully(true);
-        toast.info(`Registered Successfuly!`, {
+      try {
+        dispatch(register(userData));
+      } catch (error) {
+        toast.info(`Something Wrong here!`, {
           position: toast.POSITION.TOP_CENTER,
         });
-        setTimeout(() => {
-          history.push('/home');
-        }, 2000);
-      });
+      }
     } else {
       toast.info(`You should to fill every field`, {
         position: toast.POSITION.TOP_CENTER,
@@ -220,7 +217,7 @@ function Registration() {
             value={userData.birthday}
             onChange={(e) => handleChange(e)}
           />
-          <p className="text-danger">{error.emailErr}</p>
+          <p className="text-danger">{error.birthdayErr}</p>
         </div>
         <div className="mb-3">
           <label

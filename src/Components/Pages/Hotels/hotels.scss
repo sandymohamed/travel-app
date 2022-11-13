@@ -5,24 +5,10 @@
     @include dFlex;
     justify-content: space-around;
 
-    .hotelDetails_hotel,
-    .hotelDetails_price {
+ 
 
-        input[name="hotel"],
-        [type="number"] {
-            border-radius: $borderRadius;
-            border: 2px solid #aaa;
-            margin: 8px 0;
-            padding-left: 2rem;
-            outline: none;
-            box-sizing: border-box;
-            transition: 0.3s;
-
-            &:focus {
-                border-color: $secoundryColor;
-                box-shadow: 0 0 8px 0 $secoundryColor;
-            }
-        }
+       
+        
         button{
             @include primaryBtn;
         }
@@ -36,7 +22,7 @@
     }
 
 
-}
+
 
 .hotelcomponent{
     margin: 2rem 10vw;
@@ -65,6 +51,23 @@
 
 
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+    .hotel-container{
+        flex-direction: column;
+
+
+        .slide-bar{
+            width: 100%;
+            display: block;
+
+            .filter-bar{
+                width: 100%;
+            }
+        }
+
+        .cards-container{
+            flex-direction: column;
+        }
+    }
   
 }

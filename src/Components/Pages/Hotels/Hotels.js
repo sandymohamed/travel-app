@@ -74,12 +74,15 @@ const Hotels = () => {
       />
       <ServiceSection serviceSection={serviceSection} />
 
-      <section className="hotelcomponent">
-        <div className="row">
+      <section className="hotelcomponent  ">
+
+        <div className="d-flex hotel-container ">
+
           <section
-            className=" col-xs-6 col-md-3"
+            className="slide-bar"
             style={{ width: '30%' }}>
             <SlideBar
+            className="filter-bar"
               serviceFilter={
                 <StarRating
                   filterHotels={filterHotels}
@@ -91,7 +94,7 @@ const Hotels = () => {
             />
           </section>
           <section
-            className="cardsArea d-flex col-xs-12  col-md-8"
+            className="cardsArea  "
             style={{ width: '65%' }}>
             <div className="cards-container ">
               {hotels &&
@@ -111,7 +114,10 @@ const Hotels = () => {
             </div>
           </section>
 
-        </div>
+
+
+</div>
+
       </section>
     </>
   );
