@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 import { Link } from 'react-router-dom';
-import travEasyLogo from '../../assets/logoWhite.png';
+import travEasyLogo from '../../Assets/logoWhite.png';
 import './navbar.scss';
 import { DarkModeContext } from '../../context/DarkMode';
 import RootGuard from '../../Guard/RootGuard';
@@ -14,9 +14,10 @@ function NavbarComponant() {
 
   const [active, setActive] = useState('nav__menu');
   const [icon, setIcon] = useState('nav__toggler');
-  const currentUser = AuthService.getCurrentUser();
+  // local storage
+  // const currentUser = AuthService.getCurrentUser();
+  // console.log('currentUser', currentUser);
 
-  console.log('currentUser', currentUser);
   const navToggle = () => {
     if (active === 'nav__menu') {
       setActive('nav__menu nav__active');
@@ -28,7 +29,7 @@ function NavbarComponant() {
     } else setIcon('nav__toggler');
   };
   const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
-  let { isLoggedIn } = useSelector(({ AuthReducer }) => AuthReducer);
+  let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
 
   const handleToggleDarkMode = () => {
     toggleDarkMode();
@@ -42,7 +43,7 @@ function NavbarComponant() {
       <nav className={`nav  ${darkMode ? 'bg-dark ' : ''}`}>
         <Link
           className="nav__logo"
-          to="/Home">
+          to="/home">
           <img
             src={travEasyLogo}
             alt="img"
@@ -60,6 +61,13 @@ function NavbarComponant() {
           <li className="nav__item">
             <Link
               className="nav__link"
+              to="/payment">
+              Payment
+            </Link>
+          </li>
+          <li className="nav__item">
+            <Link
+              className="nav__link"
               to="/flight">
               Flight
             </Link>
@@ -67,7 +75,7 @@ function NavbarComponant() {
           <li className="nav__item">
             <Link
               className="nav__link"
-              to="/TourGuiding">
+              to="/tourguide">
               Tour Guiding
             </Link>
           </li>
@@ -101,6 +109,18 @@ function NavbarComponant() {
                   className={`btn btn-md text-white pt-1 ${!isLoggedIn ? 'd-none' : ''}`}>
                   <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
                 </button>
+              </li>
+              <li className="pt-1">
+                <Link
+                  className={`${!isLoggedIn ? 'd-none' : ''}`}
+                  to="/user/profile">
+                  <i class="fa-regular fa-user"></i> Profile
+                </Link>
+              </li>
+              <li className="ms-5 pt-1">
+                <span className={` text-white pt-1 ${!isLoggedIn ? 'd-none' : ''}`}>
+                  Welcome <span>{user?.firstName}</span>
+                </span>
               </li>
             </ul>
           </li>
