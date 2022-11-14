@@ -21,7 +21,6 @@ import UserDetails from './Components/Pages/UserDetails/UserDetails';
 import BookHoliday from './Components/Pages/BookHoliday/BookHoliday';
 import UserReservations from './Components/Pages/UserReservations/UserReservations';
 
-
 import React from 'react';
 import UserHolidayRes from './Components/Pages/UserReservations/UserHolidayRes';
 
@@ -38,7 +37,7 @@ function App() {
               component={Home}
             />
             <Route
-              path={'/Home'}
+              path={'/home'}
               component={Home}
             />
             <Route
@@ -46,23 +45,19 @@ function App() {
               component={Hotels}
             />
             <Route
-
-              path={'/TourGuiding'}
+              path={'/tourguide'}
               component={TourGuiding}
             />
             <Route
               path={'/flight'}
               component={Flight}
             />
-            <GuardedRoute
+
+            <Route
               path={'/holidays'}
               component={Holidays}
             />
-              <Route
-              path={'/holiday'}
-              component={Holidays}
-            />
-         
+
             <Route
               path={'/login'}
               component={Login}
@@ -75,29 +70,29 @@ function App() {
               path={'/book'}
               component={BookForm}
             />
-    
-               <Route
+
+            <GuardedRoute
               path={'/hotels/:id'}
               component={BookHotel}
             />
-          
-              <GuardedRoute
+
+            <GuardedRoute
               path={'/holidays/:id'}
               component={BookHoliday}
             />
-             <Route
-              path={'/userReservation'}
+            <Route
+              path={'/reservation'}
               component={UserReservations}
             />
-              <Route
-              path={'/userholidayReservation'}
+            <Route
+              path={'/holiday/reservation'}
               component={UserHolidayRes}
             />
-         
-             <Route
-            path={'/UserDetails'}
-            exact
-            component={UserDetails}></Route>
+
+            <Route
+              path={'/user/profile'}
+              exact
+              component={UserDetails}></Route>
             <Route
               path={'*'}
               component={NotFound}
@@ -106,8 +101,6 @@ function App() {
         </RootGuard>
       </DarkModeProvider>
     </BrowserRouter>
-      
-
   );
 }
 
