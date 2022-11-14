@@ -28,8 +28,6 @@ export function getAllFlight(countryTo ,  dateTo ,selectedClass,price) {
      Url += isFrist ? `?Price=${price}` :  `&Price=${price}`
   }
 
-  console.log("URL  = "+ Url)
-
   return instance({
     url: Url ,//`flight`,
     method: 'get'
@@ -43,7 +41,7 @@ export function getAllFlight(countryTo ,  dateTo ,selectedClass,price) {
 // Get all Flight ByUser
 export function getAllFlightByUser(countryTo ,  dateTo ,user) {
 
-  let Url ='flight'
+  let Url ='flightBooking'
   let isFrist = true ;
   // Filtertion For country
   if(countryTo)
@@ -61,7 +59,6 @@ export function getAllFlightByUser(countryTo ,  dateTo ,user) {
      Url += isFrist ? `?Tourist=${user}` :  `&Tourist=${user}`
   }
 
-  console.log("URL  = "+ Url)
 
   return instance({
     url: Url ,//`flight`,
