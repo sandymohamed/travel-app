@@ -23,6 +23,7 @@ import UserReservations from './Components/Pages/UserReservations/UserReservatio
 
 import React from 'react';
 import UserHolidayRes from './Components/Pages/UserReservations/UserHolidayRes';
+import Payment from './Components/Payment/Payment';
 
 function App() {
   return (
@@ -65,6 +66,10 @@ function App() {
             <Route
               path={'/register'}
               component={Registeration}
+            />
+            <Route
+              path={'/payment'}
+              component={Payment}
             />
             <Route
               path={'/book'}
