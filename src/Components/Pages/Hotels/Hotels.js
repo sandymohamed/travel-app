@@ -2,7 +2,7 @@ import HeaderComponent from '../../Shared/header/HeaderComponent';
 import './hotels.scss';
 //// Header Data ////
 
-import headerimg from '../../../assets/header/hotelHeader.png';
+import headerimg from '../../../Assets/header/hotelHeader.png';
 import Vcart from '../../Shared/cards/Vcard';
 import {
   getHotels,
@@ -28,9 +28,6 @@ const Hotels = () => {
   const [search, setSearch] = useState('');
   const [price, setPrice] = useState(null);
   const [rate, setRate] = useState(null);
-
-
-
 
   const filterHotels = (filter) => {
     switch (filter) {
@@ -63,7 +60,15 @@ const Hotels = () => {
     console.log(price);
   }, []);
 
-  const serviceSection =<HotelService setSearch={setSearch} filterHotels={filterHotels}  city ={city} setCity={setCity}  cities={cities} /> ;
+  const serviceSection = (
+    <HotelService
+      setSearch={setSearch}
+      filterHotels={filterHotels}
+      city={city}
+      setCity={setCity}
+      cities={cities}
+    />
+  );
 
   return (
     <>
@@ -75,14 +80,12 @@ const Hotels = () => {
       <ServiceSection serviceSection={serviceSection} />
 
       <section className="hotelcomponent  ">
-
         <div className="d-flex hotel-container ">
-
           <section
             className="slide-bar"
             style={{ width: '30%' }}>
             <SlideBar
-            className="filter-bar"
+              className="filter-bar"
               serviceFilter={
                 <StarRating
                   filterHotels={filterHotels}
@@ -108,16 +111,11 @@ const Hotels = () => {
                     description={hotel.Description}
                     hotelId={hotel._id}
                     link={`hotels/${hotel._id}`}
-
                   />
                 ))}
             </div>
           </section>
-
-
-
-</div>
-
+        </div>
       </section>
     </>
   );

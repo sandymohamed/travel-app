@@ -7,14 +7,13 @@ import {
   getHolidaysByCityName,
   getHolidayByPrice,
 } from '../../../services/holidaysServ';
-import headerimg from '../../../assets/header/tourGuidHeader.png';
+import headerimg from '../../../Assets/header/tourGuidHeader.png';
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 import Vcart from '../../Shared/cards/Vcard';
 import SlideBar from '../../Shared/slideBar/Slidebar';
 import StarRating from '../../Shared/Stars/Stars';
 
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
-
 
 const headerTitle = <>Select Your tooor </>;
 const headerParagraph = <> Ana msh mn sharm , </>;
@@ -24,10 +23,7 @@ const Holidays = () => {
   const [city, setCity] = useState('');
   const [rate, setRate] = useState(null);
 
-
   const [price, setPrice] = useState(null);
-
-
 
   const serviceSection = (
     <>
@@ -37,8 +33,7 @@ const Holidays = () => {
           id="dropdown-basic"
           defaultValue={city}
           onClick={() => filterHolidays('city')}
-          onChange={(e) => setCity(e.target.value) }>
-         
+          onChange={(e) => setCity(e.target.value)}>
           {cities &&
             cities.map((city, i) => (
               <option
@@ -52,9 +47,6 @@ const Holidays = () => {
     </>
   );
 
-
-
-
   const filterHolidays = (filter) => {
     switch (filter) {
       case 'getHotelsByRate':
@@ -62,7 +54,7 @@ const Holidays = () => {
         break;
       case 'city':
         getHolidaysByCityName(city).then((res) => setHotlidays(res));
-       console.log(city);
+        console.log(city);
         break;
       case 'price':
         getHolidayByPrice(price).then((res) => setHotlidays(res));
@@ -96,7 +88,7 @@ const Holidays = () => {
             className="slide-bar"
             style={{ width: '30%' }}>
             <SlideBar
-             className="filter-bar"
+              className="filter-bar"
               serviceFilter={
                 <StarRating
                   filterHotels={filterHolidays}
@@ -107,27 +99,25 @@ const Holidays = () => {
               filterHotels={filterHolidays}
             />
           </section>
-      <section
-        className="cardsArea  "
-        style={{ width: '65%' }}>
-        <div className="cards-container ">
-          {holidays &&
-            holidays.map((holiday, i) => (
-              <Vcart
-                key={i}
-                title={holiday.HotelName}
-                city={holiday.City.City_Name}
-                Evaluation={holiday.Evaluation}
-                Price={holiday.Price}
-                description={holiday.Description}
-                link={`holidays/${holiday._id}`}
-              />
-            ))}
+          <section
+            className="cardsArea  "
+            style={{ width: '65%' }}>
+            <div className="cards-container ">
+              {holidays &&
+                holidays.map((holiday, i) => (
+                  <Vcart
+                    key={i}
+                    title={holiday.HotelName}
+                    city={holiday.City.City_Name}
+                    Evaluation={holiday.Evaluation}
+                    Price={holiday.Price}
+                    description={holiday.Description}
+                    link={`holidays/${holiday._id}`}
+                  />
+                ))}
+            </div>
+          </section>
         </div>
-
-      </section>
-
-      </div>
       </section>
     </>
   );

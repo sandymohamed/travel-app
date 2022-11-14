@@ -1,11 +1,11 @@
 import './vcard.scss';
-import dummyImg from '../../../assets/card/dummy-image.jpg';
+import dummyImg from '../../../Assets/card/dummy-image.jpg';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 
-function Vcart({ link,title, city, description, Evaluation, Price, hotelId }) {
+function Vcart({ link, title, city, description, Evaluation, Price, hotelId }) {
   useEffect(() => {
     AOS.init();
   }, []);
