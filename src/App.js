@@ -24,6 +24,7 @@ import UserReservations from './Components/Pages/UserReservations/UserReservatio
 import React from 'react';
 import UserHolidayRes from './Components/Pages/UserReservations/UserHolidayRes';
 import Payment from './Components/Payment/Payment';
+import BookFlight from './Components/Pages/BookFlight/BookFlight';
 
 function App() {
   return (
@@ -98,10 +99,18 @@ function App() {
               path={'/user/profile'}
               exact
               component={UserDetails}></Route>
+
+            <Route
+              path={'/user/BookFlight'}              
+              component={BookFlight}></Route>
+
             <Route
               path={'*'}
               component={NotFound}
             />
+
+
+
           </Switch>
         </RootGuard>
       </DarkModeProvider>
