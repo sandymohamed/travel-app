@@ -94,10 +94,10 @@ function App() {
               component={UserHolidayRes}
             />
 
-            <Route
+            <GuardedRoute
               path={'/user/profile'}
               exact
-              component={UserDetails}></Route>
+              component={UserDetails}></GuardedRoute>
             <Route
               path={'*'}
               component={NotFound}

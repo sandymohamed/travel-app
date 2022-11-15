@@ -14,9 +14,6 @@ function NavbarComponant() {
 
   const [active, setActive] = useState('nav__menu');
   const [icon, setIcon] = useState('nav__toggler');
-  // local storage
-  // const currentUser = AuthService.getCurrentUser();
-  // console.log('currentUser', currentUser);
 
   const navToggle = () => {
     if (active === 'nav__menu') {
@@ -43,7 +40,7 @@ function NavbarComponant() {
       <nav className={`nav  ${darkMode ? 'bg-dark ' : ''}`}>
         <Link
           className="nav__logo"
-          to="/home">
+          to="/">
           <img
             src={travEasyLogo}
             alt="img"
