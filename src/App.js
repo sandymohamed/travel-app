@@ -95,14 +95,12 @@ function App() {
               component={UserHolidayRes}
             />
 
-            <Route
+            <GuardedRoute
               path={'/user/profile'}
-              exact
-              component={UserDetails}></Route>
-
+              component={UserDetails}/>
             <Route
               path={'/user/BookFlight'}              
-              component={BookFlight}></Route>
+              component={BookFlight} />
 
             <Route
               path={'*'}
