@@ -24,6 +24,7 @@ import UserReservations from './Components/Pages/UserReservations/UserReservatio
 import React from 'react';
 import UserHolidayRes from './Components/Pages/UserReservations/UserHolidayRes';
 import Payment from './Components/Payment/Payment';
+import BookFlight from './Components/Pages/BookFlight/BookFlight';
 
 function App() {
   return (
@@ -96,12 +97,18 @@ function App() {
 
             <GuardedRoute
               path={'/user/profile'}
-              exact
-              component={UserDetails}></GuardedRoute>
+              component={UserDetails}/>
+            <Route
+              path={'/user/BookFlight'}              
+              component={BookFlight} />
+
             <Route
               path={'*'}
               component={NotFound}
             />
+
+
+
           </Switch>
         </RootGuard>
       </DarkModeProvider>
