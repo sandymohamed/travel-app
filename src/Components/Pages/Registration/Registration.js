@@ -141,7 +141,7 @@ function Registration() {
       try {
         dispatch(register(userData));
       } catch (error) {
-        toast.info(`Something Wrong here!`, {
+        toast.info(`Something Wrong heresss!`, {
           position: toast.POSITION.TOP_CENTER,
         });
       }
