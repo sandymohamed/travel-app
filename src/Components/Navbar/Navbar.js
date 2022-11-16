@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import travEasyLogo from '../../Assets/logoWhite.png';
 import './navbar.scss';
 import { DarkModeContext } from '../../context/DarkMode';
@@ -14,7 +14,20 @@ function NavbarComponant() {
 
   const [active, setActive] = useState('nav__menu');
   const [icon, setIcon] = useState('nav__toggler');
+  const [show, setShow] = useState(false)
 
+  //  setShow(){
+  //   console.log("work");
+  //   if(show == false){
+  //     show= true;
+  //   }else{
+  //     show = !show
+  //   }
+  // }
+  
+  const currentUser = AuthService.getCurrentUser();
+
+  console.log('currentUser', currentUser);
   const navToggle = () => {
     if (active === 'nav__menu') {
       setActive('nav__menu nav__active');
@@ -26,7 +39,7 @@ function NavbarComponant() {
     } else setIcon('nav__toggler');
   };
   const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
-  let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
+  let { isLoggedIn } = useSelector(({ AuthReducer }) => AuthReducer);
 
   const handleToggleDarkMode = () => {
     toggleDarkMode();
@@ -40,7 +53,7 @@ function NavbarComponant() {
       <nav className={`nav  ${darkMode ? 'bg-dark ' : ''}`}>
         <Link
           className="nav__logo"
-          to="/">
+          to="/Home">
           <img
             src={travEasyLogo}
             alt="img"
@@ -58,13 +71,6 @@ function NavbarComponant() {
           <li className="nav__item">
             <Link
               className="nav__link"
-              to="/payment">
-              Payment
-            </Link>
-          </li>
-          <li className="nav__item">
-            <Link
-              className="nav__link"
               to="/flight">
               Flight
             </Link>
@@ -72,19 +78,49 @@ function NavbarComponant() {
           <li className="nav__item">
             <Link
               className="nav__link"
-              to="/tourguide">
+              to="/TourGuiding">
               Tour Guiding
             </Link>
           </li>
           <li className="nav__item">
             <Link
               className="nav__link "
-              to="/holidays">
+              to="/holiday">
               Holidays
             </Link>
           </li>
+
           <li className="nav__item">
             <ul>
+              <li className={`userInfo ${isLoggedIn ? 'd-none' : ''}`}>
+                <i  class="fa-solid fa-user"></i>
+                <span onClick={setShow} >User Name</span>
+                <ul className={`${show ? 'd-none' : ''}  `}>
+                  <li>
+                    <span className='userInfo_icon'>
+                      <i class="fa-regular fa-id-badge"></i>
+                    </span>
+                    <NavLink to="/UserDetails" className="userInfo_link">
+                      <span className='userInfo_title'>Profile Page</span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <span className='userInfo_icon'>
+                      <i class="fa-solid fa-list"></i>
+                    </span>
+                    <NavLink to="/reservation" className="userInfo_link">
+
+                      <span className='userInfo_title'>My Reservation</span>
+                    </NavLink>
+                  </li>
+                  <li onClick={handleLogout} className="userInfo_link">
+                    <span className='userInfo_icon'>
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                    </span>
+                    <span className='userInfo_title'>Logout</span>
+                  </li>
+                </ul>
+              </li>
               <li>
                 <Link
                   className={`nav__link ${isLoggedIn ? 'd-none' : ''}`}
@@ -100,6 +136,7 @@ function NavbarComponant() {
                   Register
                 </Link>
               </li>
+
               <li>
                 <button
                   onClick={handleLogout}
@@ -107,22 +144,16 @@ function NavbarComponant() {
                   <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
                 </button>
               </li>
-              <li className="pt-1">
-                <Link
-                  className={`${!isLoggedIn ? 'd-none' : ''}`}
-                  to="/user/profile">
-                  <i class="fa-regular fa-user"></i> Profile
-                </Link>
-              </li>
-              <li className="ms-5 pt-1">
-                <span className={` text-white pt-1 ${!isLoggedIn ? 'd-none' : ''}`}>
-                  Welcome <span>{user?.firstName}</span>
-                </span>
-              </li>
             </ul>
-          </li>
-        </ul>
+          </li >
+        </ul >
 
+
+        <div onClick={navToggle} className={icon}>
+          <div className="line1"></div>
+          <div className="line2"></div>
+          <div className="line3"></div>
+        </div>
         <div className="form-check form-switch">
           <input
             className="form-check-input pb-3"
@@ -132,8 +163,8 @@ function NavbarComponant() {
             onChange={(e) => handleToggleDarkMode()}
           />
         </div>
-      </nav>
-    </RootGuard>
+      </nav >
+    </RootGuard >
   );
 }
 
