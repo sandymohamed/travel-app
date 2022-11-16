@@ -32,11 +32,15 @@ export function getAllFlight(countryFrom,countryTo,dateFrom, dateTo, selectedCla
   if(selectedClass)
   {
      Url += isFrist ? `?CabinClass=${selectedClass}` :  `&CabinClass=${selectedClass}`
+     isFrist = false ;
   }
   if(price)
   {
      Url += isFrist ? `?Price=${price}` :  `&Price=${price}`
+     isFrist = false ;
   }
+
+  console.log("Url flight is  = " +Url);
 
   return instance({
     url: Url ,//`flight`,
