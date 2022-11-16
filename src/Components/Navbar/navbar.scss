@@ -21,28 +21,106 @@ li {
   justify-content: space-around;
   height: 4rem;
   background: #51acf1;
+
   .nav__logo {
     img {
       height: 50px;
     }
   }
- 
-  .nav__item{
+
+  .nav__item {
     .nav__link {
       color: white;
       transition: $noramlTransition;
-      border:  3px solid  #51acf1;
+      border-radius: $borderRadius;
+      border: 3px solid #51acf1;
       padding: 5px 10px;
 
-      &:hover{
+      &:hover {
         background-color: white;
         color: #51acf1;
-        border:  3px solid white;
+        border: 3px solid white;
       }
 
+
     }
-    ul{
+
+    ul {
       display: flex;
+
+      .userInfo {
+        border: none;
+        background-color: $white;
+        border-radius: $borderRadius;
+        padding: 5px 10px;
+        color: $primaryColorDark;
+        position: relative;
+        transition: $noramlTransition;
+        &:hover > ul{
+          display: flex;
+        }
+
+        ul {
+          // @include noSpacing;
+          border-radius: $borderRadius;
+          width: 200px;
+          padding: 1rem 0.5rem;
+          background-color: rgb(255, 255, 255);
+          position: absolute;
+
+          z-index: 500;
+          top: 100%;
+          left: 0;
+          display: none;
+          transition: $noramlTransition;
+
+          flex-direction: column;
+
+          li {
+            border-radius: $borderRadius;
+            padding: 5px;
+            margin-top: 1rem;
+            display: flex;
+            transition: $noramlTransition;
+            &:hover {
+              background-color: #ececec;
+            }
+            &:nth-child(3):hover{
+              background-color: #f98d8d88 ;
+
+
+            }
+
+
+            .userInfo_link {
+              color: black;
+              
+
+            }
+
+            .userInfo_icon {
+              position: relative;
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              background-color: $primaryColorDark;
+              text-align: center;
+
+              margin-right: 10px;
+
+              i {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: $white;
+              }
+
+            }
+
+          }
+        }
+      }
     }
   }
 
@@ -73,18 +151,18 @@ li {
     display: block;
     cursor: pointer;
   }
-  
-  .nav__item{
-    .nav__link{
+
+  .nav__item {
+    .nav__link {
       color: $secoundryColor;
       transition: $noramlTransition;
-      border:  3px solid  $secoundryColor !important;
+      border: 3px solid $secoundryColor !important;
       padding: 5px 10px;
 
-      &:hover{
+      &:hover {
         background-color: white;
         color: $secoundryColor;
-        border:  3px solid white;
+        border: 3px solid white;
       }
 
     }
