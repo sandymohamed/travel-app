@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useHistory, Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +7,14 @@ import { register } from '../../../redux/actions/auth';
 function Registration() {
   const dispatch = useDispatch();
   const history = useHistory();
+  let { isRegistered } = useSelector(({ AuthReducer }) => AuthReducer);
+  let { message } = useSelector((MessageReducer) => MessageReducer);
+
+  useEffect(() => {
+    if (isRegistered === true) {
+      history.push('/login');
+    }
+  }, [isRegistered]);
 
   const [userData, setUserData] = useState({
     username: '',
@@ -26,7 +34,6 @@ function Registration() {
     passwordErr: null,
     birthdayErr: null,
   });
-  const [successfully, setSuccessfully] = useState(false);
   const emailRegex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{3}');
   const passwordRegex = new RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/);
 
@@ -138,20 +145,13 @@ function Registration() {
       userData.birthday &&
       userData.country
     ) {
-      try {
-        dispatch(register(userData));
-      } catch (error) {
-        toast.info(`Something Wrong heresss!`, {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      }
+      dispatch(register(userData));
     } else {
       toast.info(`You should to fill every field`, {
         position: toast.POSITION.TOP_CENTER,
       });
     }
   };
-  let { message } = useSelector((MessageReducer) => MessageReducer);
   return (
     <div className="container w-50">
       <ToastContainer />
@@ -267,7 +267,7 @@ function Registration() {
         {message && (
           <div className="form-group">
             <div
-              className={successfully ? 'alert alert-success' : 'alert alert-danger'}
+              className={isRegistered ? 'alert alert-success' : 'alert alert-danger'}
               role="alert">
               {message}
             </div>
