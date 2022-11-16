@@ -43,7 +43,6 @@ function NavbarComponant() {
 
   const handleToggleDarkMode = () => {
     toggleDarkMode();
-    console.log(darkMode);
   };
   const handleLogout = () => {
     dispatch(logout());
