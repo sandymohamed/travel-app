@@ -1,5 +1,6 @@
 import { ENDPOINTS } from '../utils/endPoints';
 import { instance } from './authAPI';
+import authHeader from './auth-header';
 
 // get all hotels
 export const getHolidays = () => {
@@ -56,7 +57,7 @@ export const getHolidaysByCityName = (city) => {
 // Book holiday
 export const bookHoliday = (bookData) => {
   console.log(bookData);
-  return instance.post(`${ENDPOINTS.BOOKHOLIDAY}`,bookData)
+  return instance.post(`${ENDPOINTS.BOOKHOLIDAY}`,bookData , { headers: authHeader()})
 
   .then(res => console.log(res))
   .catch((error) => {

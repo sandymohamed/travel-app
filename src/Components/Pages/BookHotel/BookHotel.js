@@ -18,9 +18,9 @@ const BookHotel = () => {
 
   const [feedback, setFeedback]= useState([])
 
-  const userId = useSelector((({ signReducer }) => signReducer.data.id))
-  console.log(userId);
-  let user = (userId) ? userId : null
+  // const userId = useSelector((({ signReducer }) => signReducer.data.id))
+  // console.log(userId);
+  // let user = (userId) ? userId : null
 
   const initialValues = {
     RoomCount: "",
@@ -33,8 +33,8 @@ const BookHotel = () => {
     startDate: "",
     endDate: "",
     Hotels: `${id}`,
-    Tourist: `${user}`,
-    Guide: `${user}`
+    Tourist: `636ee72d8507294529847953`,
+    // Guide: `${user}`
   };
 
 
@@ -43,6 +43,7 @@ const BookHotel = () => {
     AOS.init();
 console.log(id);
     getHotelFeedback(id).then(res=> setFeedback(res))
+    console.log(feedback);
   }, [])
 
   console.log(feedback);
@@ -73,7 +74,7 @@ console.log(id);
   (feedback)&&(
     feedback.map((item,i)=> (
       <div className='feedback-card fw-semibold' key={i}>
-      <h4>{item.Tourist.username}</h4>
+      {/* <h4>{item.Tourist.username}</h4> */}
       <p className='text-secondary '>{item.Description}</p>
      <p className='text-end fst-italic'><span >{format(new Date(item.createdAt),  'dd/mm/yyyy')}</span></p> 
       </div>
@@ -86,7 +87,9 @@ console.log(id);
 
 <h2>Give Us Feedback</h2>
 
-<PostFeedback hotelId={id} userId={user} />
+<PostFeedback hotelId={id} userId="636ee72d8507294529847953"
+// userId={user} 
+/>
 
 
       </section>

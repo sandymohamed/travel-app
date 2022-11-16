@@ -77,7 +77,7 @@ function App() {
             />
     
                <Route
-              path={'/hotels/:id'}
+              path={'/hotel/:id'}
               component={BookHotel}
             />
           
