@@ -14,20 +14,10 @@ function NavbarComponant() {
 
   const [active, setActive] = useState('nav__menu');
   const [icon, setIcon] = useState('nav__toggler');
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
-  //  setShow(){
-  //   console.log("work");
-  //   if(show == false){
-  //     show= true;
-  //   }else{
-  //     show = !show
-  //   }
-  // }
-  
   const currentUser = AuthService.getCurrentUser();
 
-  console.log('currentUser', currentUser);
   const navToggle = () => {
     if (active === 'nav__menu') {
       setActive('nav__menu nav__active');
@@ -39,8 +29,8 @@ function NavbarComponant() {
     } else setIcon('nav__toggler');
   };
   const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
-  let { isLoggedIn } = useSelector(({ AuthReducer }) => AuthReducer);
-
+  let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
+  let firstName = user?.firstName;
   const handleToggleDarkMode = () => {
     toggleDarkMode();
   };
@@ -64,7 +54,7 @@ function NavbarComponant() {
             <Link
               className="nav__link"
               to="/hotels">
-              Hotels{' '}
+              Hotels
             </Link>
           </li>
           <li className="nav__item">
@@ -91,32 +81,39 @@ function NavbarComponant() {
 
           <li className="nav__item">
             <ul>
-              <li className={`userInfo ${isLoggedIn ? 'd-none' : ''}`}>
-                <i  class="fa-solid fa-user"></i>
-                <span onClick={setShow} >User Name</span>
+              <li
+                className={`userInfo ${!isLoggedIn ? 'd-none' : ''}`}
+                style={{ cursor: 'pointer' }}>
+                <i class="fa-solid fa-user"></i>
+                <span onClick={setShow}>{firstName}</span>
                 <ul className={`${show ? 'd-none' : ''}  `}>
                   <li>
-                    <span className='userInfo_icon'>
+                    <span className="userInfo_icon">
                       <i class="fa-regular fa-id-badge"></i>
                     </span>
-                    <NavLink to="/UserDetails" className="userInfo_link">
-                      <span className='userInfo_title'>Profile Page</span>
+                    <NavLink
+                      to="/user/profile"
+                      className="userInfo_link">
+                      <span className="userInfo_title">Profile Page</span>
                     </NavLink>
                   </li>
                   <li>
-                    <span className='userInfo_icon'>
+                    <span className="userInfo_icon">
                       <i class="fa-solid fa-list"></i>
                     </span>
-                    <NavLink to="/reservation" className="userInfo_link">
-
-                      <span className='userInfo_title'>My Reservation</span>
+                    <NavLink
+                      to="/reservation"
+                      className="userInfo_link">
+                      <span className="userInfo_title">My Reservation</span>
                     </NavLink>
                   </li>
-                  <li onClick={handleLogout} className="userInfo_link">
-                    <span className='userInfo_icon'>
+                  <li
+                    onClick={handleLogout}
+                    className="userInfo_link">
+                    <span className="userInfo_icon">
                       <i class="fa-solid fa-right-from-bracket"></i>
                     </span>
-                    <span className='userInfo_title'>Logout</span>
+                    <span className="userInfo_title">Logout</span>
                   </li>
                 </ul>
               </li>
@@ -144,11 +141,12 @@ function NavbarComponant() {
                 </button>
               </li>
             </ul>
-          </li >
-        </ul >
+          </li>
+        </ul>
 
-
-        <div onClick={navToggle} className={icon}>
+        <div
+          onClick={navToggle}
+          className={icon}>
           <div className="line1"></div>
           <div className="line2"></div>
           <div className="line3"></div>
@@ -162,8 +160,8 @@ function NavbarComponant() {
             onChange={(e) => handleToggleDarkMode()}
           />
         </div>
-      </nav >
-    </RootGuard >
+      </nav>
+    </RootGuard>
   );
 }
 
