@@ -14,17 +14,10 @@ function NavbarComponant() {
 
   const [active, setActive] = useState('nav__menu');
   const [icon, setIcon] = useState('nav__toggler');
+
   const [show, setShow] = useState(false)
 
-  //  setShow(){
-  //   console.log("work");
-  //   if(show == false){
-  //     show= true;
-  //   }else{
-  //     show = !show
-  //   }
-  // }
-  
+
   const currentUser = AuthService.getCurrentUser();
 
   console.log('currentUser', currentUser);
