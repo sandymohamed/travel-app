@@ -35,8 +35,6 @@ class AuthService {
       data: userData,
     })
       .then(({ data }) => {
-        console.log('data inside authAPI => ', data);
-
         toast.success(`${data.message}`, {
           position: toast.POSITION.TOP_CENTER,
         });
