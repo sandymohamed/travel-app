@@ -1,15 +1,14 @@
 import './Flight.scss';
 import { useEffect, useState } from 'react';
 import { getAllFlight } from '../../../services/FlightService';
-// import 'react-date-range/dist/styles.css'; // main style file
-// import 'react-date-range/dist/theme/default.css'; // theme css file
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 ////// For Header //////
-import headerImg from '../../../assets/header/transportationHeader.png';
+import headerImg from '../../../Assets/header/transportationHeader.png';
 import FlightCard from '../../Shared/cards/FlightCard';
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
 import SlideBar from '../../Shared/slideBar/Slidebar';
 import { setFormatDate } from '../../../services/DateformatService';
+
 
 const headerTitle = <> Find your Tayara</>;
 const headerParagraph = <> ana b7b masr gdn msh adaer asafr laaaa</>;
@@ -19,9 +18,11 @@ const Flight = () => {
   const [countryTo, setcountryTo] = useState();
   const [countryFrom, setcountryFrom] = useState();
   const [selectedClass, SetselectedClass] = useState();
+  const [dateFrom, setdateFrom] = useState();
   const [dateTo, setdateTo] = useState();
   const [price, setPrice] = useState();
   const [isBook, setIsBook] = useState();
+
 
   const FunctionSearch = (e) => {
     // Check Filter for Class Filter
@@ -37,6 +38,9 @@ const Flight = () => {
       case 'countryFrom':
         setcountryFrom(e.target.value);
         break;
+      case 'dateFrom':
+        setdateFrom(setFormatDate(e.target.value));
+          break;
       case 'dateTo':
         setdateTo(setFormatDate(e.target.value));
         break;
@@ -55,10 +59,13 @@ const Flight = () => {
                 name="country"
                 placeholder="From"
                 id="countryFrom"
+                onChange={(e) => {
+                  FunctionSearch(e);
+                }}
               />
               <i className="fa-solid fa-map-location-dot"></i>
               <datalist id="country">
-                <option value="Cairo" />
+                <option value="Egypt" />
                 <option value="Roma" />
                 <option value="UAE" />
                 <option value="USA" />
@@ -78,7 +85,7 @@ const Flight = () => {
               />
               <i className="fa-solid fa-map-location"></i>
               <datalist id="country">
-                <option value="Cairo" />
+                <option value="Egypt" />
                 <option value="Roma" />
                 <option value="UAE" />
                 <option value="USA" />
@@ -93,6 +100,9 @@ const Flight = () => {
                 name="date"
                 placeholder="From"
                 id="dateFrom"
+                onChange={(e) => {
+                  FunctionSearch(e);
+                }}
               />
 
               <input
@@ -153,7 +163,7 @@ const Flight = () => {
   );
   // Colling Database and Filter Data
   useEffect(() => {
-    getAllFlight(countryTo, dateTo, selectedClass, price).then((res) => setAirLineList(res.data));
+    getAllFlight( countryFrom,countryTo,dateFrom, dateTo, selectedClass, price).then((res) => setAirLineList(res.data));
     setIsBook(false);
   }, [countryTo, dateTo, selectedClass, price, isBook]);
 
@@ -165,7 +175,10 @@ const Flight = () => {
         img={headerImg}
       />
       <ServiceSection serviceSection={serviceSection} />
-
+ 
+         
+      
+       
       {/* ////////////////////// */}
       <section className="flightcomponent">
         <div className="row">
@@ -187,6 +200,8 @@ const Flight = () => {
           </section>
         </div>
       </section>
+       
+      
     </>
   );
 };

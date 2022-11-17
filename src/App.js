@@ -21,10 +21,9 @@ import UserDetails from './Components/Pages/UserDetails/UserDetails';
 import BookHoliday from './Components/Pages/BookHoliday/BookHoliday';
 import UserReservations from './Components/Pages/UserReservations/UserReservations';
 
+
 import React from 'react';
 import UserHolidayRes from './Components/Pages/UserReservations/UserHolidayRes';
-import Payment from './Components/Payment/Payment';
-import BookFlight from './Components/Pages/BookFlight/BookFlight';
 
 function App() {
   return (
@@ -47,6 +46,7 @@ function App() {
               component={Hotels}
             />
             <Route
+
               path={'/tourguide'}
               component={TourGuiding}
             />
@@ -54,12 +54,15 @@ function App() {
               path={'/flight'}
               component={Flight}
             />
-
             <Route
               path={'/holidays'}
               component={Holidays}
             />
-
+              <Route
+              path={'/holiday'}
+              component={Holidays}
+            />
+         
             <Route
               path={'/login'}
               component={Login}
@@ -69,50 +72,42 @@ function App() {
               component={Registeration}
             />
             <Route
-              path={'/payment'}
-              component={Payment}
-            />
-            <Route
               path={'/book'}
               component={BookForm}
             />
     
-          <GuardedRoute
-              path={'/hotel/:id'}
+               <GuardedRoute
+              path={'/hotels/:id'}
               component={BookHotel}
             />
-
-            <GuardedRoute
-              path={'/holiday/:id'}
+          
+              <GuardedRoute
+              path={'/holidays/:id'}
               component={BookHoliday}
             />
-            <GuardedRoute
-              path={'/reservation'}
+             <Route
+              path={'/userReservation'}
               component={UserReservations}
             />
-            <GuardedRoute
-              path={'/holiday/reservation'}
+              <Route
+              path={'/userholidayReservation'}
               component={UserHolidayRes}
             />
-
-            <GuardedRoute
-              path={'/user/profile'}
-              component={UserDetails}/>
-            <Route
-              path={'/user/BookFlight'}              
-              component={BookFlight} />
-
+         
+             <Route
+            path={'/UserDetails'}
+            exact
+            component={UserDetails}></Route>
             <Route
               path={'*'}
               component={NotFound}
             />
-
-
-
           </Switch>
         </RootGuard>
       </DarkModeProvider>
     </BrowserRouter>
+      
+
   );
 }
 

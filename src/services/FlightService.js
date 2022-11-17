@@ -1,19 +1,29 @@
- import axios from 'axios';
+import axios from 'axios';
 
 export const instance = axios.create({
   baseURL: 'http://localhost:8080/',
 });
 // Get all Flight
-export function getAllFlight(countryTo ,  dateTo ,selectedClass,price) {
+export function getAllFlight(countryFrom,countryTo,dateFrom, dateTo, selectedClass, price) {
 
   let Url ='flight'
   let isFrist = true ;
   // Filtertion For country
-  if(countryTo)
+  if(countryFrom)
     { 
-      Url += `?FlyingTo=${countryTo}` ;
+      Url += `?FlyingFrom=${countryFrom}` ;
       isFrist = false ;
    }
+  if(countryTo)
+    { 
+      Url += isFrist ? `?FlyingTo=${countryTo}` : `&FlyingTo=${countryTo}` ;
+      isFrist = false ;
+   }
+   if(dateFrom)
+    { 
+      Url += isFrist ? `?DepartureDate=${dateFrom}` :  `&DepartureDate=${dateFrom}` ;
+      isFrist = false ;
+    }
   if(dateTo)
     { 
       Url += isFrist ? `?ReturnDate=${dateTo}` :  `&ReturnDate=${dateTo}` ;
@@ -22,11 +32,15 @@ export function getAllFlight(countryTo ,  dateTo ,selectedClass,price) {
   if(selectedClass)
   {
      Url += isFrist ? `?CabinClass=${selectedClass}` :  `&CabinClass=${selectedClass}`
+     isFrist = false ;
   }
   if(price)
   {
      Url += isFrist ? `?Price=${price}` :  `&Price=${price}`
+     isFrist = false ;
   }
+
+  console.log("Url flight is  = " +Url);
 
   return instance({
     url: Url ,//`flight`,

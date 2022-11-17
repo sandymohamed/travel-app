@@ -4,14 +4,15 @@ import AuthService from '../../services/authAPI';
 export const register = (userData) => (dispatch) => {
   try {
     AuthService.register(userData).then((response) => {
-      let data = response ? response.data : null;
-      dispatch({ type: REGISTER_SUCCESS });
+      let message = response ? response.message : null;
 
-      dispatch({
-        type: SET_MESSAGE,
-        payload: data,
-      });
-
+      if (message) {
+        dispatch({ type: REGISTER_SUCCESS });
+        dispatch({
+          type: SET_MESSAGE,
+          payload: message,
+        });
+      }
       return Promise.resolve();
     });
   } catch (error) {
