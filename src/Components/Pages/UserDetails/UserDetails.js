@@ -1,23 +1,29 @@
 import { registerUser, updateUser } from '../../../services/authAPI';
-import React, {useEffect, useState, useSelector} from "react";
-
-
-
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import AuthService from '../../../services/authAPI';
+import authHeader from '../../../services/auth-header';
+import UserService from '../../../services/user.service';
+import { login } from '../../../redux/actions/auth';
 
 function UserDetails() {
+  let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
+  const dispatch = useDispatch();
 
-  const userDetailsRedux = useSelector((state) => state.signReducer.data)
-
-  useEffect(()=>{ setUserData(userDetailsRedux)
-
-  },[])
-
-const [userData, setUserData] = useState({
-    username: '',
-    firstName: '',
-    lastName: '',
-    country: '',
-    email: '',
+  // useEffect(() => {
+  //   authHeader();
+  //   UserService.getUserBoard();
+  //   return () => {
+  //     //cleanup
+  //   };
+  // }, []);
+  const [userData, setUserData] = useState({
+    username: `${user.username}`,
+    firstName: `${user.firstName}`,
+    lastName: `${user.lastName}`,
+    country: `${user.country}`,
+    email: `${user.email}`,
     password: '',
     birthday: '',
   });
@@ -35,20 +41,17 @@ const [userData, setUserData] = useState({
   const passwordRegex = new RegExp(
     /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/
   );
-  const [checkIfErrExist, setCheckIfErrExist] = useState(false);
-  const [response, setResponse] = useState({});
-
 
   const handleChange = (e) => {
-    if (e.target.name === 'name') {
+    if (e.target.name === 'username') {
       setUserData({
         ...userData,
-        name: e.target.value,
+        username: e.target.value,
       });
 
       setError({
         ...error,
-        nameErr:
+        usernameErr:
           e.target.value.length === 0
             ? 'This Field is Required'
             : e.target.value.length < 3
@@ -139,7 +142,7 @@ const [userData, setUserData] = useState({
             ? null
             : 'country not less than 3 characters ',
       });
-    } else if (e.target.name === 'country') {
+    } else if (e.target.name === 'birthday') {
       setUserData({
         ...userData,
         birthday: e.target.value,
@@ -158,23 +161,56 @@ const [userData, setUserData] = useState({
 
   const updateData = (e) => {
     e.preventDefault();
-    console.log(response);
-    if (!checkIfErrExist) {
-      updateUser(userData).then((res) => setResponse(res));
+    console.log(userData);
+    if (
+      userData.username &&
+      userData.password &&
+      userData.firstName &&
+      userData.lastName &&
+      userData.email &&
+      userData.birthday &&
+      userData.country
+    ) {
+      try {
+        AuthService.update(userData, user.id).then(() => {
+          dispatch(login({ username: userData.username, password: userData.password }));
+        });
+      } catch (error) {
+        toast.info(`Something Wrong here!`, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
+    } else {
+      toast.info(`You should to fill every field`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
     }
   };
-    return (
-        <>
+  return (
+    <div className="container w-50">
+      <ToastContainer />
 
-
-
-<div className="container w-50">
       <form onSubmit={(e) => updateData(e)}>
+        <div className="mb-3">
+          <label
+            htmlFor="username"
+            className="form-label">
+            User Name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            name="username"
+            value={userData.username}
+            onChange={(e) => handleChange(e)}
+          />
+          <p className="text-danger">{error.usernameErr}</p>
+        </div>
         <div className="mb-3">
           <label
             htmlFor="firstName"
             className="form-label">
-            First Name: 
+            First Name:
           </label>
           <input
             type="text"
@@ -233,21 +269,7 @@ const [userData, setUserData] = useState({
           />
           <p className="text-danger">{error.emailErr}</p>
         </div>
-        <div className="mb-3">
-          <label
-            htmlFor="name"
-            className="form-label">
-            User Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            name="username"
-            value={userData.username}
-            onChange={(e) => handleChange(e)}
-          />
-          <p className="text-danger">{error.usernameErr}</p>
-        </div>
+
         <div className="mb-3">
           <label
             htmlFor="country"
@@ -281,17 +303,12 @@ const [userData, setUserData] = useState({
 
         <button
           type="submit"
-          className="btn btn-primary me-5"
-          disabled={checkIfErrExist}>
+          className="btn btn-primary me-5">
           Update
         </button>
-      
       </form>
     </div>
-
-
-        </>
-    )
+  );
 }
 
-export default UserDetails
+export default UserDetails;

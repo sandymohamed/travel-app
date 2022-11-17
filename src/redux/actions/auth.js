@@ -29,48 +29,29 @@ export const register = (userData) => (dispatch) => {
 
     return Promise.reject();
   }
-  // return AuthService.register(userData).then(
-  //   (response) => {
-  //     dispatch({ type: REGISTER_SUCCESS });
-
-  //     dispatch({
-  //       type: SET_MESSAGE,
-  //       payload: response.data,
-  //     });
-
-  //     return Promise.resolve();
-  //   },
-  //   (error) => {
-  //     const message = JSON.stringify(error);
-  //     console.warn('message =>', error);
-
-  //     dispatch({
-  //       type: REGISTER_FAIL,
-  //     });
-
-  //     dispatch({
-  //       type: SET_MESSAGE,
-  //       payload: message,
-  //     });
-
-  //     return Promise.reject();
-  //   }
-  // );
 };
 
 export const login = (credentials) => (dispatch) => {
   return AuthService.login(credentials).then(
     (data) => {
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: { user: data },
-      });
+      if (data) {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: {
+            user: data,
+          },
+        });
+      } else {
+        dispatch({
+          type: LOGIN_FAIL,
+        });
+      }
 
       return Promise.resolve();
     },
     (error) => {
       const message = error.toString();
-      console.warn('message =>', message);
+
       dispatch({
         type: LOGIN_FAIL,
       });

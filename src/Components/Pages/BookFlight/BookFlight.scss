@@ -67,3 +67,26 @@ input[type=number]::-webkit-outer-spin-button {
     
 }
 
+
+.formCard{
+    position: relative;
+    left: 10% ;
+    width: 80%;
+    height: fit-content;
+    padding: 5%;
+    border: 10px solid darken($primaryColor, 5%);
+    background-color: rgb(255, 255, 255);
+    border-radius: calc($borderRadius * 3);
+    overflow: hidden;
+    margin: 1rem;
+
+    .reservation-card{
+        padding: 5%;
+        border: 1px solid rgb(98, 97, 97);
+        border-radius: 3rem;
+        margin: 1rem;
+        
+        
+    }
+
+}

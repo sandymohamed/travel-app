@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './bookHotel.scss';
 import AOS from 'aos';
 import "aos/dist/aos.css"
-import { bookHotel, getHotelFeedback } from '../../../services/hotelsServ';
+import { bookHotel, deleteHotelFeedback, getHotelFeedback } from '../../../services/hotelsServ';
 import { useParams } from 'react-router-dom'
 import BookForm from '../../Shared/BookForm/BookForm';
 import { useSelector } from 'react-redux';
@@ -37,7 +37,10 @@ const BookHotel = () => {
     // Guide: `${user}`
   };
 
-
+  const handleDelete=(id)=> {
+    console.log(id)
+    deleteHotelFeedback(id)
+  }
 
   useEffect(() => {
     AOS.init();
@@ -74,6 +77,7 @@ console.log(id);
   (feedback)&&(
     feedback.map((item,i)=> (
       <div className='feedback-card fw-semibold' key={i}>
+        <button className='btn btn-danger' onClick={()=>handleDelete(item._id)}>delete</button>
       {/* <h4>{item.Tourist.username}</h4> */}
       <p className='text-secondary '>{item.Description}</p>
      <p className='text-end fst-italic'><span >{format(new Date(item.createdAt),  'dd/mm/yyyy')}</span></p> 

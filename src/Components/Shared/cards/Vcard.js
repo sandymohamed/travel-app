@@ -5,7 +5,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 
-function Vcart({ link,title, city, description, Evaluation, Price, hotelId }) {
+function Vcart({ link, title, city, description, Evaluation, Price, hotelId }) {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -33,7 +33,7 @@ function Vcart({ link,title, city, description, Evaluation, Price, hotelId }) {
             <div className="cartBody_details_data_text">
               <span className="spanMajor">{city}</span>
               <span className="spanMinor">{description}</span>
-              <span className=" review spanMinor">Rate: {Evaluation}</span>
+              <span className=" review spanMinor"> {Evaluation} Stars</span>
             </div>
             <div className="cartBody_details_data_price">
               <span className="stars">price: </span>
