@@ -145,7 +145,13 @@ function Registration() {
       userData.birthday &&
       userData.country
     ) {
-      dispatch(register(userData));
+      try {
+        dispatch(register(userData));
+      } catch (error) {
+        toast.info(`Something Wrong here!`, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
     } else {
       toast.info(`You should to fill every field`, {
         position: toast.POSITION.TOP_CENTER,

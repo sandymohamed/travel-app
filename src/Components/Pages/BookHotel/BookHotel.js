@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './bookHotel.scss';
 import AOS from 'aos';
 import "aos/dist/aos.css"
-import { bookHotel, getHotelFeedback } from '../../../services/hotelsServ';
+import { bookHotel, deleteHotelFeedback, getHotelFeedback } from '../../../services/hotelsServ';
 import { useParams } from 'react-router-dom'
 import BookForm from '../../Shared/BookForm/BookForm';
 import { useSelector } from 'react-redux';
@@ -18,9 +18,9 @@ const BookHotel = () => {
 
   const [feedback, setFeedback]= useState([])
 
-  const userId = useSelector((({ signReducer }) => signReducer.data.id))
-  console.log(userId);
-  let user = (userId) ? userId : null
+  // const userId = useSelector((({ signReducer }) => signReducer.data.id))
+  // console.log(userId);
+  // let user = (userId) ? userId : null
 
   const initialValues = {
     RoomCount: "",
@@ -33,16 +33,20 @@ const BookHotel = () => {
     startDate: "",
     endDate: "",
     Hotels: `${id}`,
-    Tourist: `${user}`,
-    Guide: `${user}`
+    Tourist: `636ee72d8507294529847953`,
+    // Guide: `${user}`
   };
 
-
+  const handleDelete=(id)=> {
+    console.log(id)
+    deleteHotelFeedback(id)
+  }
 
   useEffect(() => {
     AOS.init();
 console.log(id);
     getHotelFeedback(id).then(res=> setFeedback(res))
+    console.log(feedback);
   }, [])
 
   console.log(feedback);
@@ -73,7 +77,8 @@ console.log(id);
   (feedback)&&(
     feedback.map((item,i)=> (
       <div className='feedback-card fw-semibold' key={i}>
-      <h4>{item.Tourist.username}</h4>
+        <button className='btn btn-danger' onClick={()=>handleDelete(item._id)}>delete</button>
+      {/* <h4>{item.Tourist.username}</h4> */}
       <p className='text-secondary '>{item.Description}</p>
      <p className='text-end fst-italic'><span >{format(new Date(item.createdAt),  'dd/mm/yyyy')}</span></p> 
       </div>
@@ -86,7 +91,9 @@ console.log(id);
 
 <h2>Give Us Feedback</h2>
 
-<PostFeedback hotelId={id} userId={user} />
+<PostFeedback hotelId={id} userId="636ee72d8507294529847953"
+// userId={user} 
+/>
 
 
       </section>

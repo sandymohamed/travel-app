@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getAllFlight } from '../../../services/FlightService';
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 ////// For Header //////
-import headerImg from '../../../Assets/header/transportationHeader.png';
+import headerImg from '../../../assets/header/transportationHeader.png';
 import FlightCard from '../../Shared/cards/FlightCard';
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
 import SlideBar from '../../Shared/slideBar/Slidebar';

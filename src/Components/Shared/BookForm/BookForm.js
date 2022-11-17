@@ -5,9 +5,11 @@ import AOS from 'aos';
 import "aos/dist/aos.css"
 import Form from 'react-bootstrap/Form';
 import { handleValidate } from '../../../services/handleForm';
+import { getTotalPrice } from '../../../services/hotelsServ';
 
-const BookForm = ({ initialValues, bookHotel }) => {
+const BookForm = ({ initialValues, bookHotel, id }) => {
   const [values, setValues] = useState(initialValues);
+  const [total, setTotal] = useState(null);
 
 
   const [err, setErr] = useState({
@@ -46,11 +48,9 @@ const BookForm = ({ initialValues, bookHotel }) => {
 
 
 
-  let total= 0;
   const handleInputChange = (e) => {
     handleValidate(e,values, setValues,err,setErr)
   // total += Number(values.RoomCount) * Number(values.Period) * Number(values.Price)
-
   };
 
 
@@ -62,6 +62,9 @@ const BookForm = ({ initialValues, bookHotel }) => {
     if (err.globalErr === null) {
       bookHotel(hotelData)
     }
+    
+    //   getTotalPrice(id).then((res) => setTotal(res));
+
   }
 
   useEffect(() => {
@@ -154,7 +157,7 @@ const BookForm = ({ initialValues, bookHotel }) => {
         </Form.Text>
 
         
-{/* <h2>{total}</h2> */}
+<h2>{total}</h2>
         <button className="primaryBtn bton" type="submit"> Book</button>
        
         <br />

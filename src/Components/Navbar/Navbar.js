@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
-import { Link, NavLink } from 'react-router-dom';
-import travEasyLogo from '../../Assets/logoWhite.png';
+import { Link } from 'react-router-dom';
+import travEasyLogo from '../../assets/logoWhite.png';
 import './navbar.scss';
 import { DarkModeContext } from '../../context/DarkMode';
 import RootGuard from '../../Guard/RootGuard';
@@ -15,7 +15,6 @@ function NavbarComponant() {
   const [active, setActive] = useState('nav__menu');
   const [icon, setIcon] = useState('nav__toggler');
   const [show, setShow] = useState(false);
-  // comment
   const currentUser = AuthService.getCurrentUser();
 
   const navToggle = () => {
@@ -74,49 +73,12 @@ function NavbarComponant() {
           <li className="nav__item">
             <Link
               className="nav__link "
-              to="/holiday">
+              to="/holidays">
               Holidays
             </Link>
           </li>
-
           <li className="nav__item">
             <ul>
-              <li
-                className={`userInfo ${!isLoggedIn ? 'd-none' : ''}`}
-                style={{ cursor: 'pointer' }}>
-                <i class="fa-solid fa-user"></i>
-                <span onClick={setShow}>{firstName}</span>
-                <ul className={`${show ? 'd-none' : ''}  `}>
-                  <li>
-                    <span className="userInfo_icon">
-                      <i class="fa-regular fa-id-badge"></i>
-                    </span>
-                    <NavLink
-                      to="/user/profile"
-                      className="userInfo_link">
-                      <span className="userInfo_title">Profile Page</span>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <span className="userInfo_icon">
-                      <i class="fa-solid fa-list"></i>
-                    </span>
-                    <NavLink
-                      to="/reservation"
-                      className="userInfo_link">
-                      <span className="userInfo_title">My Reservation</span>
-                    </NavLink>
-                  </li>
-                  <li
-                    onClick={handleLogout}
-                    className="userInfo_link">
-                    <span className="userInfo_icon">
-                      <i class="fa-solid fa-right-from-bracket"></i>
-                    </span>
-                    <span className="userInfo_title">Logout</span>
-                  </li>
-                </ul>
-              </li>
               <li>
                 <Link
                   className={`nav__link ${isLoggedIn ? 'd-none' : ''}`}
@@ -132,7 +94,6 @@ function NavbarComponant() {
                   Register
                 </Link>
               </li>
-
               <li>
                 <button
                   onClick={handleLogout}
@@ -144,13 +105,6 @@ function NavbarComponant() {
           </li>
         </ul>
 
-        <div
-          onClick={navToggle}
-          className={icon}>
-          <div className="line1"></div>
-          <div className="line2"></div>
-          <div className="line3"></div>
-        </div>
         <div className="form-check form-switch">
           <input
             className="form-check-input pb-3"
@@ -160,8 +114,8 @@ function NavbarComponant() {
             onChange={(e) => handleToggleDarkMode()}
           />
         </div>
-      </nav>
-    </RootGuard>
+      </nav >
+    </RootGuard >
   );
 }
 

@@ -9,6 +9,14 @@ export const getHotels = () => {
     .catch(err => console.log(err))
 }
 
+// get limited hotels 
+export const getHotelsLimit = () => {
+  return instance.get(`${ENDPOINTS.GETHOTELS}/limit`)
+
+  .then(res => {return(res.data)})
+  .catch(err => console.log(err))
+}
+
 // get hotel by id 
 export const getHotelById = (id) => {
   return instance.get(`${ENDPOINTS.GETHOTELS}`+id)
@@ -121,4 +129,10 @@ export const postFeedback = (feedback) => {
       }
     });
 
+}
+
+export const deleteHotelFeedback = (id) => {
+  return instance.delete(`${ENDPOINTS.POSTFEEDBACK}${id}`)
+  .then(res => {return(res.data)})
+  .catch(err => console.log(err))
 }

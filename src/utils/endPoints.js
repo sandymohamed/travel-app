@@ -11,13 +11,15 @@ export const ENDPOINTS ={
 
     
     GETHOLIDAYS: `holiday/`,
+    GETHOLIDAYSLIMIT: `holiday/limit`,
+
     GETHOLIDAYSBYRATE: `holiday/rate`,
     GETHOLIDAYSBYCITY: `holiday/city`,
     GETHOLIDAYBYPRICE :`holiday/price`,
     BOOKHOLIDAY:`bookedHoliday/`,
     BOOKHOLIDAYBYUSER: `bookedHoliday/user?user=`,
 
-    GETFEEDBACKBYHOTELID:`feedback/hotelid?hotel=`,
+    GETFEEDBACKBYHOTELID:`feedback/hotelid?=`,
     POSTFEEDBACK:`feedback/`,
 
 
