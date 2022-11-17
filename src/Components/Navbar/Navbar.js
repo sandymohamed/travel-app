@@ -15,7 +15,7 @@ function NavbarComponant() {
   const [active, setActive] = useState('nav__menu');
   const [icon, setIcon] = useState('nav__toggler');
   const [show, setShow] = useState(false);
-
+  // comment
   const currentUser = AuthService.getCurrentUser();
 
   const navToggle = () => {
