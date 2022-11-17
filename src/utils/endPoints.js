@@ -19,7 +19,7 @@ export const ENDPOINTS ={
     BOOKHOLIDAY:`bookedHoliday/`,
     BOOKHOLIDAYBYUSER: `bookedHoliday/user?user=`,
 
-    GETFEEDBACKBYHOTELID:`feedback/hotelid?=`,
+    GETFEEDBACKBYHOTELID:`feedback/hotelid?hotelid=`,
     POSTFEEDBACK:`feedback/`,
 
 

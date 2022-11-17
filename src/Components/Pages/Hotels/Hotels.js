@@ -1,7 +1,6 @@
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 import './hotels.scss';
 //// Header Data ////
-
 import headerimg from '../../../assets/header/hotelHeader.png';
 import Vcart from '../../Shared/cards/Vcard';
 import {

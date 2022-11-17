@@ -7,8 +7,8 @@ const PostFeedback = ({ hotelId, userId }) => {
 
     const initial = {
         description: '',
-        Hotels: `${hotelId}`,
-        Tourist: `${userId}`,
+        hotels: `${hotelId}`,
+        tourist: `${userId}`,
     }
 
     const [data, setData] = useState(initial)
