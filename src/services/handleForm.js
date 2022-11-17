@@ -24,6 +24,7 @@
     return (diffDays);
   }
 
+  
   export const handleValidate = (e, values, setValues,err,setErr ) => {
     if (e.target.name === "RoomCount") {
       setValues({
@@ -57,6 +58,10 @@
       })
       setErr({
         ...err,
+        AdultCountErr: (((e.target.value <= 0) ? "should be at least one Adualt" : null)
+        || ((Number(e.target.value) > (values.Single + (values.Double * 2))) ?
+          'Adualt count should equal room count , we provide free service for children in double rooms' : null)),
+     
         globalErr: ((e.target.value === '') ? "All Fields Are Required" : null)
       })
     }

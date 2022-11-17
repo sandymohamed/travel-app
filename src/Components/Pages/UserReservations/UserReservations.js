@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { bookedHolidayByUser } from '../../../services/holidaysServ';
 import { bookedHotelByUser } from '../../../services/hotelsServ';
 import { format } from 'date-fns'
-import calenderIcon from "../../../Assets/calender.png"
-import cloud1 from "../../../Assets/cloud.png"
-import cloud2 from "../../../Assets/cloud2.png"
-import hotelIcon from "../../../Assets/hotelIcon.png"
-import dummyHotel from "../../../Assets/card/dummyhotel.jpg"
+import calenderIcon from "../../../assets/calender.png"
+import cloud1 from "../../../assets/cloud.png"
+import cloud2 from "../../../assets/cloud2.png"
+import hotelIcon from "../../../assets/hotelIcon.png"
+import dummyHotel from "../../../assets/card/dummyhotel.jpg"
 
 import './userReservations.scss';
 
@@ -15,12 +15,11 @@ const UserReservations = () => {
 
     const [hotelReservations, setHReservations] = useState([])
 
-    // const userName = useSelector((({ signReducer }) => signReducer.data.username))
-    // console.log("user" + userName);
-    // let user = (userName) ? userName : null
+    const userId = useSelector((({ AuthReducer }) => AuthReducer.user.id))
 
-    useEffect(() => {
-        bookedHotelByUser("user").then(res => setHReservations(res))
+  let user = (userId) ? userId : null
+    useEffect(()=>{
+        bookedHotelByUser(user).then(res =>setHReservations(res) )
         console.log(hotelReservations);
 
 

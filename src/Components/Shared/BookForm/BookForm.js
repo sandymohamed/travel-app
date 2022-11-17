@@ -5,9 +5,11 @@ import AOS from 'aos';
 import "aos/dist/aos.css"
 import Form from 'react-bootstrap/Form';
 import { handleValidate } from '../../../services/handleForm';
+import { getTotalPrice } from '../../../services/hotelsServ';
 
-const BookForm = ({ initialValues, bookHotel }) => {
+const BookForm = ({ initialValues, bookHotel, id, price }) => {
   const [values, setValues] = useState(initialValues);
+  const [total, setTotal] = useState(null);
 
 
   const [err, setErr] = useState({
@@ -46,13 +48,18 @@ const BookForm = ({ initialValues, bookHotel }) => {
 
 
 
-  let total= 0;
   const handleInputChange = (e) => {
     handleValidate(e,values, setValues,err,setErr)
-  // total += Number(values.RoomCount) * Number(values.Period) * Number(values.Price)
 
+ 
   };
 
+  const calcTotal =()=>{
+
+    setTotal( Number(values.RoomCount) * Number(values.Period) * Number(price) )
+    console.log(total)
+
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -62,6 +69,9 @@ const BookForm = ({ initialValues, bookHotel }) => {
     if (err.globalErr === null) {
       bookHotel(hotelData)
     }
+    
+    //   getTotalPrice(id).then((res) => setTotal(res));
+
   }
 
   useEffect(() => {
@@ -153,9 +163,13 @@ const BookForm = ({ initialValues, bookHotel }) => {
           {err.globalErr}
         </Form.Text>
 
-        
-{/* <h2>{total}</h2> */}
-        <button className="primaryBtn bton" type="submit"> Book</button>
+        <button className=" btn btn-warning  position-absolute end-0 me-5 " onClick={()=>{calcTotal()}} > calc total price</button>
+        <br/>
+        <br/>
+        <br/>
+
+<h2>Total price: {total}</h2>
+        <button className="primaryBtn bton fs-3 w-50" type="submit"> Book</button>
        
         <br />
 

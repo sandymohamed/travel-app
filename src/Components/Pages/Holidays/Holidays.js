@@ -7,7 +7,7 @@ import {
   getHolidaysByCityName,
   getHolidayByPrice,
 } from '../../../services/holidaysServ';
-import headerimg from '../../../Assets/header/tourGuidHeader.png';
+import headerimg from '../../../assets/header/tourGuidHeader.png';
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 import Vcart from '../../Shared/cards/Vcard';
 import SlideBar from '../../Shared/slideBar/Slidebar';
@@ -58,6 +58,7 @@ const Holidays = () => {
         break;
       case 'price':
         getHolidayByPrice(price).then((res) => setHotlidays(res));
+        console.log(price, holidays);
         break;
       default:
         getHolidays().then((res) => setHotlidays(res));
