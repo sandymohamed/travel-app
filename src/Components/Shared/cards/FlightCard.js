@@ -72,7 +72,7 @@ const handleShow = () => setShow(true);
             data-aos="zoom-out"
             data-aos-delay="150">
             <div className="cardBody_details_data">
-              <div class="spacer"></div>
+              <div className="spacer"></div>
               <div className="container">
                 <span className="line">
                   {' '}
@@ -87,7 +87,7 @@ const handleShow = () => setShow(true);
                   - - - - - - -
                 </span>
                 <div className="container_data">
-                  <div class="spacer"></div>
+                  <div className="spacer"></div>
                   <div className="data">
                     <span className="data_from">{Flightobj.FlyingFrom}</span>
                     <span className="data_to">{Flightobj.FlyingTo}</span>
@@ -100,7 +100,7 @@ const handleShow = () => setShow(true);
                   {' '}
                   - - - - - - -
                   <span>
-                    <i class="fa-solid fa-calendar-days"></i>
+                    <i className="fa-solid fa-calendar-days"></i>
                   </span>{' '}
                   - - - - - - -
                 </span>
@@ -141,7 +141,7 @@ const handleShow = () => setShow(true);
         <Modal.Body>
 
         <div className="cardBody_details_data">
-              <div class="spacer"></div>
+              <div className="spacer"></div>
               <div className="container">
                 <span className="line">
                   {' '}
@@ -156,7 +156,7 @@ const handleShow = () => setShow(true);
                   - - - - - - -
                 </span>
                 <div className="container_data">
-                  <div class="spacer"></div>
+                  <div className="spacer"></div>
                   <div className="data">
                     <p className="data_from"> FlyingFrom :  {Flightobj.FlyingFrom} </p>
                     <p className="data_to"> FlyingTo : {Flightobj.FlyingTo} </p>
@@ -169,7 +169,7 @@ const handleShow = () => setShow(true);
                   {' '}
                   - - - - - - -
                   <span>
-                    <i class="fa-solid fa-calendar-days"></i>
+                    <i className="fa-solid fa-calendar-days"></i>
                   </span>{' '}
                   - - - - - - -
                 </span>

@@ -34,6 +34,7 @@ const BookHotel = () => {
     Single: "",
     Double: "",
     IsApprove: false,
+    Paid:false,
     startDate: "",
     endDate: "",
     Hotels: `${id}`,

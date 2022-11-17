@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const paypal_URL = 'AZ6XI3RlXJYcLM4jTeRqBL7Wvrg3S-t2Z4Afpa11m2HxdNTW7crMbVt9A7knX42B3lU1pI2QnmMfEtsf';
 
-export default function Payment() {
+export default function Payment({paid, setPaid}) {
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
   const [orderID, setOrderID] = useState('');
@@ -67,17 +67,21 @@ export default function Payment() {
         <div className="container text-center">
           <div className="my-5">
             <button
-              type="submit"
+type="button"
               className="btn btn-warning mx-5"
-              onClick={() => setShow(true)}>
-              Buy now
+              onClick={() => {setPaid(true);setShow(true)}}>
+
+              Pay now
             </button>
-            <button
-              type="submit"
-              className="btn btn-info"
-              onClick={() => setShow(false)}>
-              Pay Later
-            </button>
+            
+            <input
+              type="checkbox"
+              className="btn btn-info fs-4"
+              name="pay"
+              onChange={() => {setPaid(false);}}
+              value={show}
+              />
+             <label className="text-primary fs-5">Pay Later</label> 
           </div>
           <div className="container">
             {show ? (

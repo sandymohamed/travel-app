@@ -84,7 +84,7 @@ const Hotels = () => {
             className="slide-bar"
             style={{ width: '30%' }}>
             <SlideBar
-              className="filter-bar"
+              className="filter-bar "
               serviceFilter={
                 <StarRating
                   filterHotels={filterHotels}
@@ -107,7 +107,7 @@ const Hotels = () => {
                     city={hotel.City.City_Name}
                     Evaluation={hotel.Evaluation}
                     Price={hotel.Price}
-                    description={hotel.Description}
+                    // description={hotel.Description}
                     hotelId={hotel._id}
                     link={`hotels/${hotel._id}`}
                   />

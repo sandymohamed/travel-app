@@ -112,7 +112,7 @@ const Holidays = () => {
                     city={holiday.City.City_Name}
                     Evaluation={holiday.Evaluation}
                     Price={holiday.Price}
-                    description={holiday.Description}
+                    // description={holiday.Description}
                     link={`holidays/${holiday._id}`}
                   />
                 ))}

@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavbarComponant from './Components/Navbar/Navbar';
 import Home from './Components/Pages/Home/Home';
 import Hotels from './Components/Pages/Hotels/Hotels';
-import TourGuiding from './Components/Pages/TourGuiding/TourGuiding';
+// import TourGuiding from './Components/Pages/TourGuiding/TourGuiding';
 import Flight from './Components/Pages/Flight/Flight';
 import Holidays from './Components/Pages/Holidays/Holidays';
 import NotFound from './Components/Pages/Not-found/NotFound';
@@ -24,6 +24,7 @@ import UserReservations from './Components/Pages/UserReservations/UserReservatio
 
 import React from 'react';
 import UserHolidayRes from './Components/Pages/UserReservations/UserHolidayRes';
+import Payment from './Components/Payment/Payment';
 
 function App() {
   return (
@@ -46,11 +47,11 @@ function App() {
               path={'/hotels'}
               component={Hotels}
             />
-            <Route
+            {/* <Route
 
               path={'/tourguide'}
               component={TourGuiding}
-            />
+            /> */}
             <Route
               path={'/flight'}
               component={Flight}
@@ -87,7 +88,11 @@ function App() {
               path={'/holidays/:id'}
               component={BookHoliday}
             />
-             <Route
+                <GuardedRoute
+              path={'/payment'}
+              component={Payment}
+            />
+             <GuardedRoute
               path={'/reservation'}
               component={UserReservations}
             />

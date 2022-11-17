@@ -75,13 +75,13 @@ function NavbarComponant() {
               Flight
             </Link>
           </li>
-          <li className="nav__item">
+          {/* <li className="nav__item">
             <Link
               className="nav__link"
               to="/TourGuiding">
               Tour Guiding
             </Link>
-          </li>
+          </li> */}
           <li className="nav__item">
             <Link
               className="nav__link "
@@ -93,12 +93,12 @@ function NavbarComponant() {
           <li className="nav__item">
             <ul>
               <li className={`userInfo ${!isLoggedIn ? 'd-none' : ''}`}>
-                <i  class="fa-solid fa-user"></i>
+                <i  className="fa-solid fa-user"></i>
                 <span onClick={setShow} >User Name</span>
                 <ul className={`${show ? 'd-none' : ''}  `}>
                   <li>
                     <span className='userInfo_icon'>
-                      <i class="fa-regular fa-id-badge"></i>
+                      <i className="fa-regular fa-id-badge"></i>
                     </span>
                     <NavLink to="/UserDetails" className="userInfo_link">
                       <span className='userInfo_title'>Profile Page</span>
@@ -106,7 +106,7 @@ function NavbarComponant() {
                   </li>
                   <li>
                     <span className='userInfo_icon'>
-                      <i class="fa-solid fa-list"></i>
+                      <i className="fa-solid fa-list"></i>
                     </span>
                     <NavLink to="/reservation" className="userInfo_link">
 
@@ -115,7 +115,7 @@ function NavbarComponant() {
                   </li>
                   <li onClick={handleLogout} className="userInfo_link">
                     <span className='userInfo_icon'>
-                      <i class="fa-solid fa-right-from-bracket"></i>
+                      <i className="fa-solid fa-right-from-bracket"></i>
                     </span>
                     <span className='userInfo_title'>Logout</span>
                   </li>

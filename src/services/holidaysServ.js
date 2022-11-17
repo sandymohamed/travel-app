@@ -65,7 +65,7 @@ export const getHolidaysByCityName = (city) => {
 // Book holiday
 export const bookHoliday = (bookData) => {
   console.log(bookData);
-  return instance.post(`${ENDPOINTS.BOOKHOLIDAY}`,bookData , { headers: authHeader()})
+  return instance.post(`${ENDPOINTS.BOOKHOLIDAY}`,bookData )
 
   .then(res => console.log(res))
   .catch((error) => {
