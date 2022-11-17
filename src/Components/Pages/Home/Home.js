@@ -11,10 +11,13 @@ import tourImg from "../../../assets/home-tour.png"
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getHotelsLimit } from '../../../services/hotelsServ';
+import { geHolidaysLimit } from '../../../services/holidaysServ';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
   const [hotels, setHotels] = useState([]);
+  const [holidays, setHolidays] = useState([]);
 
   let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
   let { message } = useSelector((MessageReducer) => MessageReducer);
@@ -23,7 +26,7 @@ const Home = () => {
   useEffect(() => {
 
     getHotelsLimit().then((res) => setHotels(res));
-    console.log(hotels);
+    geHolidaysLimit().then((res) => setHolidays(res));
   }, []);
  
   return (
@@ -121,27 +124,10 @@ const Home = () => {
               <article>
                 <p>Away From Your Home !?</p>
                 <h3>Select your Home</h3>
-                {/* <img src={hotelImg} loading="lazy"></img> */}
-                <div className="cards-container ">
-              {hotels &&
-                hotels.map((hotel, i) => (
-                 <div  style={{"width":"30%"}}>
-                  <Vcart
-                
-                    key={i}
-                    title={hotel.HotelName}
-                    city={hotel.City.City_Name}
-                    Evaluation={hotel.Evaluation}
-                    Price={hotel.Price}
-                    description={hotel.Description}
-                    hotelId={hotel._id}
-                    link={`hotels/${hotel._id}`}
-                  />
-                  </div>
-                ))}
-            </div>
-              
-                <button className='orangeBtn'>Discover Now</button>
+                <img src={hotelImg} loading="lazy"></img>
+                       
+                <Link className='orangeBtn' to='hotels'>Discover Now </Link>
+
               </article>
 
             </div>
@@ -159,11 +145,22 @@ const Home = () => {
       <section className='home-tourContaier'>
         <div className='container'>
           <div className='row'>
-            <div className='tour-img col-md-5' >
-              <Vcart></Vcart>
-              <Vcart></Vcart>
-              <Vcart></Vcart>
-              <Vcart></Vcart>
+            <div className='tour-img col-md-5 d-flex ' >
+
+{holidays &&
+  holidays.map((holiday, i) => (
+   <div >
+         <Vcart
+                    key={i}
+                    title={holiday.HotelName}
+                    city={holiday.City.City_Name}
+                    Evaluation={holiday.Evaluation}
+                    Price={holiday.Price}
+                    description={holiday.Description}
+                    link={`holiday/${holiday._id}`}
+                  />
+    </div>
+  ))}
 
             </div>
             <article className='tour-article col-md-6'>
@@ -171,7 +168,7 @@ const Home = () => {
               <h3>The Perfect Partner </h3>
               <p>of your journey.</p>
               <img src={tourImg} loading="lazy" ></img>
-              <button className='orangeBtn'>Discover Now</button>
+              <Link className='orangeBtn' to='holidays'>Discover Now </Link>
 
             </article>
           </div>
@@ -179,10 +176,10 @@ const Home = () => {
 
         </div>
 
+        <br/>
 
 
       </section>
-
 
     </section>
 

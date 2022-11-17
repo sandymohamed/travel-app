@@ -56,7 +56,7 @@ function FlightCard({ Flightobj, setIsBook }) {
             data-aos="zoom-out"
             data-aos-delay="200">
             <div className="cardBody_details_data">
-              <div class="spacer"></div>
+              <div className="spacer"></div>
               <div className="container">
                 <span className="line">
                   {' '}
@@ -71,7 +71,7 @@ function FlightCard({ Flightobj, setIsBook }) {
                   - - - - - - -
                 </span>
                 <div className="container_data">
-                  <div class="spacer"></div>
+                  <div className="spacer"></div>
                   <div className="data">
                     <span className="data_from">{Flightobj.FlyingFrom}</span>
                     <span className="data_to">{Flightobj.FlyingTo}</span>
@@ -84,7 +84,7 @@ function FlightCard({ Flightobj, setIsBook }) {
                   {' '}
                   - - - - - - -
                   <span>
-                    <i class="fa-solid fa-calendar-days"></i>
+                    <i className="fa-solid fa-calendar-days"></i>
                   </span>{' '}
                   - - - - - - -
                 </span>

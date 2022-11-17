@@ -77,7 +77,7 @@ function App() {
               component={BookForm}
             />
     
-               <Route
+          <GuardedRoute
               path={'/hotel/:id'}
               component={BookHotel}
             />
@@ -86,11 +86,11 @@ function App() {
               path={'/holiday/:id'}
               component={BookHoliday}
             />
-            <Route
+            <GuardedRoute
               path={'/reservation'}
               component={UserReservations}
             />
-            <Route
+            <GuardedRoute
               path={'/holiday/reservation'}
               component={UserHolidayRes}
             />

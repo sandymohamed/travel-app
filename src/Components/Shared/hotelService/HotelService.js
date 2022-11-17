@@ -6,12 +6,17 @@ const HotelService = ({setSearch, filterHotels, city ,setCity, cities}) => {
         <div className="hotelDetails">
           <div className="hotelDetails_hotel">
             <input
+              className="me-1"
               type="search"
               name="hotel"
               placeholder="Find Your Hotel"
               onChange={(e) => setSearch(e.target.value)}
             />
-            <button onClick={() => filterHotels('name')}> find</button>
+            <button             
+              className="p-2"
+ onClick={() => filterHotels('name')}> 
+ find
+ </button>
           </div>
   
           <select

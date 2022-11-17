@@ -11,6 +11,14 @@ export const getHolidays = () => {
     .catch((err) => console.log(err));
 };
 
+// get limited holidays 
+export const geHolidaysLimit = () => {
+  return instance.get(`${ENDPOINTS.GETHOLIDAYSLIMIT}`)
+
+  .then(res => {return(res.data)})
+  .catch(err => console.log(err))
+}
+
 // get holiday by id 
 export const getHolidayById = (id) => {
   console.log( id);
@@ -29,7 +37,7 @@ export const getHolidayByPrice = (price) => {
     .catch((err) => console.log(err));
 };
 
-// get hotels by it's rate
+// get holidays by it's rate
 export const getHolidaysByRate = (rate) => {
   console.log('lol');
   return instance
@@ -41,7 +49,7 @@ export const getHolidaysByRate = (rate) => {
     .catch((err) => console.log(err));
 };
 
-// get all hotels by city
+// get all holidays by city
 export const getHolidaysByCityName = (city) => {
   return instance
     .get(`${ENDPOINTS.GETHOLIDAYSBYCITY}?city=${city}`)

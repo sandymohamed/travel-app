@@ -11,6 +11,8 @@ export const ENDPOINTS ={
 
     
     GETHOLIDAYS: `holiday/`,
+    GETHOLIDAYSLIMIT: `holiday/limit`,
+
     GETHOLIDAYSBYRATE: `holiday/rate`,
     GETHOLIDAYSBYCITY: `holiday/city`,
     GETHOLIDAYBYPRICE :`holiday/price`,
