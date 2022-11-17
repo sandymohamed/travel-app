@@ -15,10 +15,9 @@ const UserReservations = () => {
 
     const [hotelReservations, setHReservations] = useState([])
 
-    const userName = useSelector((({ signReducer }) => signReducer.data.username))
-    console.log("user"+userName);
-    let user = (userName) ? userName : null
+    const userId = useSelector((({ AuthReducer }) => AuthReducer.user.id))
 
+  let user = (userId) ? userId : null
     useEffect(()=>{
         bookedHotelByUser(user).then(res =>setHReservations(res) )
         console.log(hotelReservations);

@@ -11,13 +11,13 @@ const UserHolidayRes = () => {
  
     const [holidayReservations, setTReservations]= useState([])
 
-    // const userName = useSelector((({ signReducer }) => signReducer.data.username))
-    // console.log("user"+userName);
-    // let user = (userName) ? userName : null
+    const userId = useSelector((({ AuthReducer }) => AuthReducer.user.id))
+
+  let user = (userId) ? userId : null
 
     useEffect(()=>{
      
-        bookedHolidayByUser('user').then(res =>setTReservations(res) )
+        bookedHolidayByUser(user).then(res =>setTReservations(res) )
         console.log(holidayReservations);
 
     },[])

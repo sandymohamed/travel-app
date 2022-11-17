@@ -42,6 +42,7 @@ function App() {
               component={Home}
             />
             <Route
+            exact
               path={'/hotels'}
               component={Hotels}
             />
@@ -55,6 +56,7 @@ function App() {
               component={Flight}
             />
             <Route
+            exact
               path={'/holidays'}
               component={Holidays}
             />
@@ -86,7 +88,7 @@ function App() {
               component={BookHoliday}
             />
              <Route
-              path={'/userReservation'}
+              path={'/reservation'}
               component={UserReservations}
             />
               <Route
