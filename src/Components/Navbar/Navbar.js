@@ -79,7 +79,7 @@ function NavbarComponant() {
           {/* <li className="nav__item">
             <Link
               className="nav__link"
-              to="/TourGuiding">
+              to="/tourguide">
               Tour Guiding
             </Link>
           </li> */}

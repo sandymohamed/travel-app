@@ -1,5 +1,7 @@
 @import "../../../Style//shortcuts.scss";
 
+.log-container{
+    height: 90vh;
 
 #login {
     // min-height: 75vh !important;
@@ -11,7 +13,6 @@
     padding: 2rem 0;
     border-radius: calc($borderRadius * 3);
     position: relative;
-
     .container {
         display: flex;
         justify-content: space-around;
@@ -59,4 +60,4 @@
             }
         }
     }
-}
+}}

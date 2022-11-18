@@ -18,14 +18,11 @@ function Vcart({ link, title, city, description, Evaluation, Price, hotelId }) {
     <section
       id="vcart"
       className={`  v${darkMode}`}
-
       // data-aos="fade-in"
       // data-aos-delay="200"
       >
       <div
             className={` cartBody v${darkMode}`}
-
-      // className="cartBody"
       >
         <div
           className="cartBody_img"

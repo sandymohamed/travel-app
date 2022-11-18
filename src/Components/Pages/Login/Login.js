@@ -78,6 +78,7 @@ function SignIn() {
 
   return (
     <>
+    <div className='log-container'>
       <section
         id="login"
         className={`${darkMode ? 'bg-dark ' : ''}`}>
@@ -141,6 +142,7 @@ function SignIn() {
           </form>
         </div>
       </section>
+      </div>
     </>
   );
 }
