@@ -23,7 +23,10 @@ function DarkModeProvider(props) {
   return (
     <div>
       <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
+        <div className={`  ${darkMode}`}>
         {props.children}
+
+        </div>
       </DarkModeContext.Provider>
     </div>
   );

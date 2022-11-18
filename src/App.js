@@ -13,7 +13,7 @@ import Login from './Components/Pages/Login/Login';
 import BookHotel from './Components/Pages/BookHotel/BookHotel';
 
 import BookForm from './Components/Shared/BookForm/BookForm';
-import { DarkModeProvider } from './context/DarkMode';
+import { DarkModeContext, DarkModeProvider } from './context/DarkMode';
 // import { AuthProvider } from './context/AuthContext';
 import RootGuard from './Guard/RootGuard';
 import GuardedRoute from './Guard/RouteGuard';
@@ -22,14 +22,24 @@ import BookHoliday from './Components/Pages/BookHoliday/BookHoliday';
 import UserReservations from './Components/Pages/UserReservations/UserReservations';
 
 
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import UserHolidayRes from './Components/Pages/UserReservations/UserHolidayRes';
 import Payment from './Components/Payment/Payment';
 
 function App() {
+    const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
+
+
+  // const [themeContext, setThemeContext]= useState('normal')
+console.log(darkMode);
+// 
   return (
-    <BrowserRouter>
-      <DarkModeProvider>
+    <div >
+
+<BrowserRouter>
+      <DarkModeProvider >
+        {/*  */}
+
         <RootGuard>
           <NavbarComponant />
           <Switch>
@@ -114,6 +124,7 @@ function App() {
       </DarkModeProvider>
     </BrowserRouter>
       
+    </div>
 
   );
 }

@@ -15,12 +15,13 @@ li {
 }
 
 
+
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-around;
   height: 4rem;
-  background: #51acf1;
+  // background: #51acf1;
 
   .nav__logo {
     img {
@@ -199,4 +200,12 @@ li {
 
 .toggle .line3 {
   transform: rotate(45deg) translate(-4px, -5px);
+}
+
+.ntrue {
+  background-color: #51acf1;;
+}
+
+ .nfalse {
+  background-color: rgb(43, 42, 42);
 }

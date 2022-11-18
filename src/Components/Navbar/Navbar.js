@@ -8,6 +8,8 @@ import RootGuard from '../../Guard/RootGuard';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/actions/auth';
 import AuthService from '../../services/authAPI';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons'
 
 function NavbarComponant() {
   const dispatch = useDispatch();
@@ -31,19 +33,25 @@ function NavbarComponant() {
       setIcon('nav__toggler toggle');
     } else setIcon('nav__toggler');
   };
+
+  const [myIcon, setMyIcon] = useState(faMoon);
+
   const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
   let { isLoggedIn } = useSelector(({ AuthReducer }) => AuthReducer);
 
   const handleToggleDarkMode = () => {
-    toggleDarkMode();
+    setMyIcon((myIcon === faMoon) ? faSun : faMoon)
+    toggleDarkMode(darkMode === true ? false : true)
     console.log(darkMode);
   };
+
+
   const handleLogout = () => {
     dispatch(logout());
   };
   return (
     <RootGuard>
-      <nav className={`nav  ${darkMode ? 'bg-dark ' : ''}`}>
+      <nav className={`nav  n${darkMode}`}>
         <Link
           className="nav__logo"
           to="/Home">
@@ -86,7 +94,7 @@ function NavbarComponant() {
           <li className="nav__item">
             <ul>
               <li className={`userInfo ${!isLoggedIn ? 'd-none' : ''}`}>
-                <i  className="fa-solid fa-user"></i>
+                <i className="fa-solid fa-user"></i>
                 <span onClick={setShow} >User Name</span>
                 <ul className={`${show ? 'd-none' : ''}  `}>
                   <li>
@@ -148,13 +156,17 @@ function NavbarComponant() {
           <div className="line3"></div>
         </div>
         <div className="form-check form-switch">
-          <input
+          {/* <input
             className="form-check-input pb-3"
             type="checkbox"
             id="darkModeToggler"
-            checked={`${darkMode ? 'checked' : ''}`}
+            // checked={`${darkMode ? 'checked' : ''}`}
             onChange={(e) => handleToggleDarkMode()}
-          />
+          /> */}
+
+          <div className=" text-warning" onClick={() => handleToggleDarkMode()}>
+            <FontAwesomeIcon icon={myIcon} className='fs-1' style={{'cursor': 'pointer'}} />
+          </div>
         </div>
       </nav >
     </RootGuard >

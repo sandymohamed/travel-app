@@ -2,16 +2,20 @@
 
 import "./serviceSection.scss"
 import { Link ,NavLink } from "react-router-dom"
+import { useContext } from "react";
+import { DarkModeContext } from "../../../context/DarkMode";
 
 
 function ServiceSection(props) {
 
+    const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
 
     return (
         <>
 
-            <section id="flight">
-                <div className='service_container'>
+            <section id="flight" >
+                <div  className={`service_container  v${darkMode}`}
+>
                     <section className='services'>
 
                         {/* --------------: Hotel :-------------- */}
