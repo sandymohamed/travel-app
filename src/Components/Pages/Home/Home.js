@@ -3,11 +3,11 @@ import './home.scss';
 import FlightCard from '../../Shared/cards/FlightCard';
 import Vcart from '../../Shared/cards/Vcard';
 import Carousel from 'react-bootstrap/Carousel';
-import testslider from "../../../assets/cover/testcover.jpg"
-import flightImg from "../../../assets/header/flight.png"
-import hotelImg from "../../../assets/hotel-home.png"
-import hotelImg2 from "../../../assets/hotel-home-2.png"
-import tourImg from "../../../assets/home-tour.png"
+import testslider from "../../../Assets/cover/testcover.jpg"
+import flightImg from "../../../Assets/header/flight.png"
+import hotelImg from "../../../Assets/hotel-home.png"
+import hotelImg2 from "../../../Assets/hotel-home-2.png"
+import tourImg from "../../../Assets/home-tour.png"
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getHotelsLimit } from '../../../services/hotelsServ';

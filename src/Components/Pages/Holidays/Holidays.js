@@ -7,7 +7,7 @@ import {
   getHolidaysByCityName,
   getHolidayByPrice,
 } from '../../../services/holidaysServ';
-import headerimg from '../../../assets/header/tourGuidHeader.png';
+import headerimg from '../../../Assets/header/tourGuidHeader.png';
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 import Vcart from '../../Shared/cards/Vcard';
 import SlideBar from '../../Shared/slideBar/Slidebar';
