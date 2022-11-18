@@ -1,5 +1,6 @@
 import { ENDPOINTS } from '../utils/endPoints';
 import { instance } from './authAPI';
+import authHeader from './auth-header';
 
 // get all hotels
 export const getHolidays = () => {
@@ -9,6 +10,14 @@ export const getHolidays = () => {
     .then((res) => res.data)
     .catch((err) => console.log(err));
 };
+
+// get limited holidays 
+export const geHolidaysLimit = () => {
+  return instance.get(`${ENDPOINTS.GETHOLIDAYSLIMIT}`)
+
+  .then(res => {return(res.data)})
+  .catch(err => console.log(err))
+}
 
 // get holiday by id 
 export const getHolidayById = (id) => {
@@ -28,7 +37,7 @@ export const getHolidayByPrice = (price) => {
     .catch((err) => console.log(err));
 };
 
-// get hotels by it's rate
+// get holidays by it's rate
 export const getHolidaysByRate = (rate) => {
   console.log('lol');
   return instance
@@ -40,7 +49,7 @@ export const getHolidaysByRate = (rate) => {
     .catch((err) => console.log(err));
 };
 
-// get all hotels by city
+// get all holidays by city
 export const getHolidaysByCityName = (city) => {
   return instance
     .get(`${ENDPOINTS.GETHOLIDAYSBYCITY}?city=${city}`)
@@ -56,7 +65,7 @@ export const getHolidaysByCityName = (city) => {
 // Book holiday
 export const bookHoliday = (bookData) => {
   console.log(bookData);
-  return instance.post(`${ENDPOINTS.BOOKHOLIDAY}`,bookData)
+  return instance.post(`${ENDPOINTS.BOOKHOLIDAY}`,bookData )
 
   .then(res => console.log(res))
   .catch((error) => {

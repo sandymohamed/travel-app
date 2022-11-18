@@ -6,10 +6,13 @@ import Form from 'react-bootstrap/Form';
 import './holidayForm.scss';
 import { handleValidate } from '../../../services/handleForm';
 import { bookHoliday } from '../../../services/holidaysServ';
+import Payment from '../../Payment/Payment';
 
-const HolidayForm = ({ initialValues }) => {
+const HolidayForm = ({ initialValues, price }) => {
 
     const [values, setValues] = useState(initialValues);
+    const [paid, setPaid] = useState(false)
+    const [total, setTotal] = useState(null);
 
 
     const [err, setErr] = useState({
@@ -23,7 +26,7 @@ const HolidayForm = ({ initialValues }) => {
         endDateErr: null,
         HotelsErr: null,
         TouristErr: null,
-        GuideErr: null,
+        // GuideErr: null,
         globalErr: null
 
 
@@ -36,11 +39,12 @@ const HolidayForm = ({ initialValues }) => {
         period: values.Period,
         transport: values.Transport,
         isApprove: false,
+        paid :paid,
         startDate: values.startDate,
         endDate: values.endDate,
         holidays:values.Holidays,
         tourist: values.Tourist,
-        guide: values.Guide
+        // guide: values.Guide
     }
 
 
@@ -48,6 +52,13 @@ const HolidayForm = ({ initialValues }) => {
         handleValidate(e, values, setValues, err, setErr)
 
     };
+
+    const calcTotal =()=>{
+
+        setTotal( Number(values.RoomCount) * Number(values.Period) * Number(price) )
+        console.log(total)
+    
+      }
 
 
     const handleSubmit = (e) => {
@@ -64,7 +75,7 @@ const HolidayForm = ({ initialValues }) => {
 
     useEffect(() => {
         AOS.init();
-    }, [])
+    }, [paid])
 
 
     return (
@@ -159,11 +170,17 @@ const HolidayForm = ({ initialValues }) => {
                     {err.globalErr}
                 </Form.Text>
 
+                <button type="button" className=" btn btn-warning  position-absolute end-0 me-5 " onClick={()=>{calcTotal()}} > calc total price</button>
+        <br/>
+        <br/>
+        <br/>
 
+        <h2>Total price: {total}</h2>
 
+                <Payment paid={paid} setPaid={setPaid} />
 
                 {/* <h2>{total}</h2> */}
-                <button className="primaryBtn bton" type="submit"> Book</button>
+                <button className="primaryBtn bton fs-3 w-50" type="submit"> Book</button>
 
                 <br />
 

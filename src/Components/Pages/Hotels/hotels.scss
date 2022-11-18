@@ -4,7 +4,6 @@
 .hotelDetails {
     @include dFlex;
     justify-content: space-around;
-
  
 
        
@@ -34,6 +33,7 @@
 
     .cards-container{
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-evenly;
         align-items: center;
 
@@ -59,6 +59,7 @@
         .slide-bar{
             width: 100%;
             display: block;
+            margin: 0;
 
             .filter-bar{
                 width: 100%;
