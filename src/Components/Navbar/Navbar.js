@@ -92,7 +92,7 @@ function NavbarComponant() {
 
           <li className="nav__item">
             <ul>
-              <li className={`userInfo ${isLoggedIn ? 'd-none' : ''}`}>
+              <li className={`userInfo ${!isLoggedIn ? 'd-none' : ''}`}>
                 <i  class="fa-solid fa-user"></i>
                 <span onClick={setShow} >User Name</span>
                 <ul className={`${show ? 'd-none' : ''}  `}>
@@ -100,7 +100,7 @@ function NavbarComponant() {
                     <span className='userInfo_icon'>
                       <i class="fa-regular fa-id-badge"></i>
                     </span>
-                    <NavLink to="/UserDetails" className="userInfo_link">
+                    <NavLink to="/user/profile" className="userInfo_link">
                       <span className='userInfo_title'>Profile Page</span>
                     </NavLink>
                   </li>
