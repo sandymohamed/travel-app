@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { bookedHolidayByUser } from '../../../services/holidaysServ';
 import { bookedHotelByUser } from '../../../services/hotelsServ';
 import { format } from 'date-fns'
-import calenderIcon from "../../../assets/calender.png"
-import cloud1 from "../../../assets/cloud.png"
-import cloud2 from "../../../assets/cloud2.png"
-import hotelIcon from "../../../assets/hotelIcon.png"
-import dummyHotel from "../../../assets/card/dummyhotel.jpg"
+import calenderIcon from "../../../Assets/calender.png"
+import cloud1 from "../../../Assets/cloud.png"
+import cloud2 from "../../../Assets/cloud2.png"
+import hotelIcon from "../../../Assets/hotelIcon.png"
+import dummyHotel from "../../../Assets/card/dummyhotel.jpg"
 
 import './userReservations.scss';
 

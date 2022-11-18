@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 import { Link, NavLink } from 'react-router-dom';
-import travEasyLogo from '../../assets/logoWhite.png';
+import travEasyLogo from '../../Assets/logoWhite.png';
 import './navbar.scss';
 import { DarkModeContext } from '../../context/DarkMode';
 import RootGuard from '../../Guard/RootGuard';
@@ -71,7 +71,7 @@ function NavbarComponant() {
           <li className="nav__item">
             <Link
               className="nav__link"
-              to="/TourGuiding">
+              to="/tourguide">
               Tour Guiding
             </Link>
           </li>
