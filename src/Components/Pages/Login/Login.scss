@@ -8,7 +8,6 @@
     @include dFlex;
     overflow: hidden;
     background-color: rgb(255, 255, 255);
-    border: 10px solid lighten($primaryColor, 10);
     margin: 2rem 10vw;
     padding: 2rem 0;
     border-radius: calc($borderRadius * 3);
@@ -60,4 +59,40 @@
             }
         }
     }
-}}
+}
+
+}
+
+
+.logintrue{
+    border: 10px solid lighten($primaryColor, 10);
+
+}
+
+.loginfalse {
+    background-color:$secoundryColorDark  !important;
+    border: 10px solid lighten($secoundryColorDark, 10);
+   
+    .container {
+    
+        form {
+            label{
+                color: white !important;
+            }
+            .loginGorm_title {
+            
+                span {
+                    color: white;
+                    background-color: $secoundryColor !important;
+                    &:hover {
+                        box-shadow: 5px 5px lighten($secoundryColor, $amount: 10) !important;
+                    }
+                }
+                h3 {
+                    color: $white !important;
+
+                }
+            }
+        }
+    }
+};

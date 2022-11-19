@@ -1,14 +1,18 @@
+import "./UserDetails.scss"
 import { registerUser, updateUser } from '../../../services/authAPI';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import AuthService from '../../../services/authAPI';
 import authHeader from '../../../services/auth-header';
 import UserService from '../../../services/user.service';
 import { login } from '../../../redux/actions/auth';
+import { DarkModeContext } from "../../../context/DarkMode";
 
 function UserDetails() {
   let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
+  const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
+
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -55,8 +59,8 @@ function UserDetails() {
           e.target.value.length === 0
             ? 'This Field is Required'
             : e.target.value.length < 3
-            ? 'please insert valid name'
-            : null,
+              ? 'please insert valid name'
+              : null,
       });
     } else if (e.target.name === 'email') {
       setUserData({
@@ -69,8 +73,8 @@ function UserDetails() {
           e.target.value.length === 0
             ? 'This Field is Required'
             : emailRegex.test(e.target.value)
-            ? null
-            : 'email format must be xxx@xxxx.com',
+              ? null
+              : 'email format must be xxx@xxxx.com',
       });
     } else if (e.target.name === 'userName') {
       setUserData({
@@ -83,8 +87,8 @@ function UserDetails() {
           e.target.value.length === 0
             ? 'This Field is Required'
             : e.target.value.length < 3
-            ? 'please insert valid user name'
-            : null,
+              ? 'please insert valid user name'
+              : null,
       });
     } else if (e.target.name === 'password') {
       setUserData({
@@ -97,8 +101,8 @@ function UserDetails() {
           e.target.value.length === 0
             ? 'This Field is Required'
             : passwordRegex.test(e.target.value)
-            ? null
-            : 'password length not less than 8 characters contains at least one lowercase , one uppercase , at least one digit and special character [ example : *@%$#] ',
+              ? null
+              : 'password length not less than 8 characters contains at least one lowercase , one uppercase , at least one digit and special character [ example : *@%$#] ',
       });
     } else if (e.target.name === 'firstName') {
       setUserData({
@@ -111,8 +115,8 @@ function UserDetails() {
           e.target.value.length === 0
             ? 'This Field is Required'
             : e.target.value.length > 3
-            ? null
-            : 'first name 3 characters ',
+              ? null
+              : 'first name 3 characters ',
       });
     } else if (e.target.name === 'lastName') {
       setUserData({
@@ -125,8 +129,8 @@ function UserDetails() {
           e.target.value.length === 0
             ? 'This Field is Required'
             : e.target.value.length > 3
-            ? null
-            : 'last name 3 characters ',
+              ? null
+              : 'last name 3 characters ',
       });
     } else if (e.target.name === 'country') {
       setUserData({
@@ -139,8 +143,8 @@ function UserDetails() {
           e.target.value.length === 0
             ? 'This Field is Required'
             : e.target.value.length > 3
-            ? null
-            : 'country not less than 3 characters ',
+              ? null
+              : 'country not less than 3 characters ',
       });
     } else if (e.target.name === 'birthday') {
       setUserData({
@@ -153,8 +157,8 @@ function UserDetails() {
           e.target.value.length === 0
             ? 'This Field is Required'
             : e.target.value.length > 3
-            ? null
-            : 'country not less than 3 characters ',
+              ? null
+              : 'country not less than 3 characters ',
       });
     }
   };
@@ -187,126 +191,164 @@ function UserDetails() {
     }
   };
   return (
-    <div className="container w-50">
+    <div className={`userDetails user${darkMode}`}>
       <ToastContainer />
+      <div className='container'>
+        <div className='row'>
+          <div className='userData col-md-3'>
+            <div className='container'>
+              <img></img>
+              <div className='userData_value'>
+                <span className='title'>UserName</span>
+                <span className='value'>{userData.username}</span>
+              </div>
+              <div className='userData_value'>
+                <span className='title'> First Name</span>
+                <span className='value'>{userData.firstName}</span>
+              </div>
+              <div className='userData_value'>
+                <span className='title'>Last Name</span>
+                <span className='value'>{userData.lastName}</span>
+              </div>
+              <div className='userData_value'>
+                <span className='title'>Email Address</span>
+                <span className='value'>{userData.email}</span>
+              </div>
+              <div className='userData_value'>
+                <span className='title'>Country</span>
+                <span className='value'>{userData.country}</span>
+              </div>
 
-      <form onSubmit={(e) => updateData(e)}>
-        <div className="mb-3">
-          <label
-            htmlFor="username"
-            className="form-label">
-            User Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            name="username"
-            value={userData.username}
-            onChange={(e) => handleChange(e)}
-          />
-          <p className="text-danger">{error.usernameErr}</p>
-        </div>
-        <div className="mb-3">
-          <label
-            htmlFor="firstName"
-            className="form-label">
-            First Name:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            name="firstName"
-            value={userData.firstName}
-            onChange={(e) => handleChange(e)}
-          />
-          <p className="text-danger">{error.firstNameErr}</p>
-        </div>
-        <div className="mb-3">
-          <label
-            htmlFor="lastName"
-            className="form-label">
-            Last Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            name="lastName"
-            value={userData.lastName}
-            onChange={(e) => handleChange(e)}
-          />
-          <p className="text-danger">{error.lastNameErr}</p>
+            </div>
+          </div>
+          <div className='userData_Update col-md-6'>
+            <h3>Update Profile</h3>
+            <form onSubmit={(e) => updateData(e)}>
+              <div className="row">
+                <div className="userDate_input col-md-5">
+                  <label
+                    htmlFor="username"
+                    className="form-label">
+                    User Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="username"
+                    value={userData.username}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <p className="text-danger">{error.usernameErr}</p>
+                </div>
+                <div className="userDate_input col-md-5">
+                  <label
+                    htmlFor="firstName"
+                    className="form-label">
+                    First Name:
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="firstName"
+                    value={userData.firstName}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <p className="text-danger">{error.firstNameErr}</p>
+                </div>
+                <div className="userDate_input col-md-5">
+                  <label
+                    htmlFor="lastName"
+                    className="form-label">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="lastName"
+                    value={userData.lastName}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <p className="text-danger">{error.lastNameErr}</p>
+                </div>
+
+                <div className="userDate_input col-md-5">
+                  <label
+                    htmlFor="exampleInputEmail1"
+                    className="form-label">
+                    Email address
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    name="email"
+                    value={userData.email}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <p className="text-danger">{error.emailErr}</p>
+                </div>
+                <div className="userDate_input col-md-5">
+                  <label
+                    htmlFor="birthday"
+                    className="form-label">
+                    Birthday
+                  </label>
+                  <input
+                    min="1920-01-01"
+                    max="2010-12-31"
+                    type="date"
+                    className="form-control"
+                    name="birthday"
+                    value={userData.birthday}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <p className="text-danger">{error.emailErr}</p>
+                </div>
+
+                <div className="userDate_input col-md-5">
+                  <label
+                    htmlFor="country"
+                    className="form-label">
+                    Country
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="country"
+                    value={userData.country}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <p className="text-danger">{error.countryErr}</p>
+                </div>
+                <div className="userDate_input col-md-5">
+                  <label
+                    htmlFor="exampleInputPassword1"
+                    className="form-label">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    value={userData.password}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <p className="text-danger">{error.passwordErr}</p>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn-primary me-5">
+                Update
+              </button>
+            </form>
+          </div>
+
+
         </div>
 
-        <div className="mb-3">
-          <label
-            htmlFor="exampleInputEmail1"
-            className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            name="email"
-            value={userData.email}
-            onChange={(e) => handleChange(e)}
-          />
-          <p className="text-danger">{error.emailErr}</p>
-        </div>
-        <div className="mb-3">
-          <label
-            htmlFor="birthday"
-            className="form-label">
-            Birthday
-          </label>
-          <input
-            min="1920-01-01"
-            max="2010-12-31"
-            type="date"
-            className="form-control"
-            name="birthday"
-            value={userData.birthday}
-            onChange={(e) => handleChange(e)}
-          />
-          <p className="text-danger">{error.emailErr}</p>
-        </div>
+      </div>
 
-        <div className="mb-3">
-          <label
-            htmlFor="country"
-            className="form-label">
-            Country
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            name="country"
-            value={userData.country}
-            onChange={(e) => handleChange(e)}
-          />
-          <p className="text-danger">{error.countryErr}</p>
-        </div>
-        <div className="mb-3">
-          <label
-            htmlFor="exampleInputPassword1"
-            className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            name="password"
-            value={userData.password}
-            onChange={(e) => handleChange(e)}
-          />
-          <p className="text-danger">{error.passwordErr}</p>
-        </div>
-
-        <button
-          type="submit"
-          className="btn btn-primary me-5">
-          Update
-        </button>
-      </form>
     </div>
   );
 }

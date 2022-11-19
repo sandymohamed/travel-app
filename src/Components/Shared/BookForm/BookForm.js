@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import './bookForm.scss';
 
 import AOS from 'aos';
@@ -9,8 +9,11 @@ import { getTotalPrice } from '../../../services/hotelsServ';
 import Payment from '../../Payment/Payment';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { DarkModeContext } from '../../../context/DarkMode';
+
 
 const BookForm = ({ initialValues, bookHotel, id, price }) => {
+  const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
   const [values, setValues] = useState(initialValues);
   const [total, setTotal] = useState(null);
   const [paid, setPaid] = useState(false)
@@ -41,7 +44,7 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
     single: values.Single,
     double: values.Double,
     isApprove: false,
-    paid :paid,
+    paid: paid,
     startDate: values.startDate,
     endDate: values.endDate,
     hotels: values.Hotels,
@@ -53,14 +56,14 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
 
 
   const handleInputChange = (e) => {
-    handleValidate(e,values, setValues,err,setErr)
+    handleValidate(e, values, setValues, err, setErr)
 
- 
+
   };
 
-  const calcTotal =()=>{
+  const calcTotal = () => {
 
-    setTotal( Number(values.RoomCount) * Number(values.Period) * Number(price) )
+    setTotal(Number(values.RoomCount) * Number(values.Period) * Number(price))
     console.log(total)
 
   }
@@ -74,7 +77,7 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
       bookHotel(hotelData)
       toast("booked successfully check your email!");
     }
-    
+
     //   getTotalPrice(id).then((res) => setTotal(res));
 
   }
@@ -86,8 +89,10 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
 
   return (
     <>
-      <Form onSubmit={(e) => { handleSubmit(e) }} className="my-form">
-          <Form.Group className="mb-3"       data-aos="fade-up" data-aos-delay="400"  controlId="formBasicSingle">
+   
+   <div className={`bookForm book${darkMode}`}>
+        <Form onSubmit={(e) => { handleSubmit(e) }} className="my-form row">
+          <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicSingle">
             <Form.Label >Single Room Count</Form.Label>
             <Form.Control required type="number" min="0" name="Single"
               placeholder="Single Room Count" value={values.Single} onChange={(e) => handleInputChange(e)} />
@@ -96,7 +101,7 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3"       data-aos="fade-up" data-aos-delay="400"  controlId="formBasicDouble">
+          <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicDouble">
             <Form.Label >Double Room Count</Form.Label>
             <Form.Control required type="number" min="0" name="Double"
               placeholder="Double  Room Count" value={values.Double} onChange={(e) => handleInputChange(e)} />
@@ -105,82 +110,85 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3"       data-aos="fade-up" data-aos-delay="400"  controlId="formBasicRoomCount">
-          <Form.Label >Room Count </Form.Label>
-          <Form.Control required type="number" min="0" placeholder="Enter Room Count" value={values.RoomCount} name="RoomCount" onChange={(e) => handleInputChange(e)} />
+          <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicRoomCount">
+            <Form.Label >Room Count </Form.Label>
+            <Form.Control required type="number" min="0" placeholder="Enter Room Count" value={values.RoomCount} name="RoomCount" onChange={(e) => handleInputChange(e)} />
+            <Form.Text className="text-danger">
+              {err.RoomCountErr}
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicAdultCount">
+            <Form.Label >Adult Count </Form.Label>
+            <Form.Control required type="number" min="0" name="AdultCount"
+              placeholder=" Enter Adult Count" value={values.AdultCount} onChange={(e) => handleInputChange(e)} />
+            <Form.Text className="text-danger">
+              {err.AdultCountErr}
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicRoomCount">
+            <Form.Label >Child Count </Form.Label>
+            <Form.Control required type="number" min="0" name="Child"
+              placeholder="Enter Child Count" value={values.Child} onChange={(e) => handleInputChange(e)} />
+            <Form.Text className="text-danger">
+              {err.ChildErr}
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicStart">
+            <Form.Label >Start date</Form.Label>
+            <Form.Control required type="date"
+              value={values.startDate}
+              name="startDate"
+              placeholder="Start Date"
+              onChange={(e) => handleInputChange(e)} />
+            <Form.Text className="text-danger">
+              {err.startDateErr}
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicEnd">
+            <Form.Label >End date</Form.Label>
+            <Form.Control required type="date"
+              value={values.endDate}
+              name="endDate"
+              placeholder="Enter End Date"
+              onChange={(e) => handleInputChange(e)} />
+            <Form.Text className="text-danger">
+              {err.endDateErr}
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicPeriod">
+            <Form.Label >Days Number</Form.Label>
+            <Form.Control required type="Number" min="0" name="Period"
+              placeholder="Enter Days Number" value={values.Period} onChange={(e) => handleInputChange(e)} />
+            <Form.Text className="text-danger">
+              {err.PeriodErr}
+            </Form.Text>
+          </Form.Group>
+
           <Form.Text className="text-danger">
-            {err.RoomCountErr}
+            {err.globalErr}
           </Form.Text>
-        </Form.Group>
+          <div className='bookAction'>
+            <div className='price'>
+              <button type="button" className="orangeBtn" onClick={() => { calcTotal() }} > calc total price</button>
+              <h2>Total price: {total}</h2>
 
-        <Form.Group className="mb-3"       data-aos="fade-up" data-aos-delay="400"  controlId="formBasicAdultCount">
-          <Form.Label >Adult Count </Form.Label>
-          <Form.Control required type="number" min="0" name="AdultCount"
-            placeholder=" Enter Adult Count" value={values.AdultCount} onChange={(e) => handleInputChange(e)} />
-          <Form.Text className="text-danger">
-            {err.AdultCountErr}
-          </Form.Text>
-        </Form.Group>
+            </div>
+            <div className='booking'>
+              <Payment paid={paid} setPaid={setPaid} />
+              <button className="primaryBtn" type="submit"> Book</button>
+              <ToastContainer />
 
-        <Form.Group className="mb-3"       data-aos="fade-up" data-aos-delay="400"  controlId="formBasicRoomCount">
-          <Form.Label >Child Count </Form.Label>
-          <Form.Control required type="number" min="0" name="Child"
-            placeholder="Enter Child Count" value={values.Child} onChange={(e) => handleInputChange(e)} />
-          <Form.Text className="text-danger">
-            {err.ChildErr}
-          </Form.Text>
-        </Form.Group>
+            </div>
 
-        <Form.Group className="mb-3"       data-aos="fade-up" data-aos-delay="400"  controlId="formBasicStart">
-          <Form.Label >Start date</Form.Label>
-          <Form.Control required type="date"
-            value={values.startDate}
-            name="startDate"
-            placeholder="Start Date"
-            onChange={(e) => handleInputChange(e)} />
-          <Form.Text className="text-danger">
-            {err.startDateErr}
-          </Form.Text>
-        </Form.Group>
+          </div>
 
-        <Form.Group className="mb-3"       data-aos="fade-up" data-aos-delay="400"  controlId="formBasicEnd">
-          <Form.Label >End date</Form.Label>
-          <Form.Control required type="date"
-            value={values.endDate}
-            name="endDate"
-            placeholder="Enter End Date"
-            onChange={(e) => handleInputChange(e)} />
-          <Form.Text className="text-danger">
-            {err.endDateErr}
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group className="mb-3"       data-aos="fade-up" data-aos-delay="400"  controlId="formBasicPeriod">
-          <Form.Label >Days Number</Form.Label>
-          <Form.Control required type="Number" min="0" name="Period"
-            placeholder="Enter Days Number" value={values.Period} onChange={(e) => handleInputChange(e)} />
-          <Form.Text className="text-danger">
-            {err.PeriodErr}
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Text className="text-danger">
-          {err.globalErr}
-        </Form.Text>
-
-        <button  type="button" className=" btn btn-warning  position-absolute end-0 me-5 " onClick={()=>{calcTotal()}} > calc total price</button>
-        <br/>
-        <br/>
-        <br/>
-
-        <h2>Total price: {total}</h2>
-        <Payment paid={paid} setPaid={setPaid} />
-        <button className="primaryBtn bton fs-3 w-50" type="submit"> Book</button>
-        <ToastContainer />
-
-        <br />
-
-      </Form>
+        </Form>
+      </div>
 
     </>
   );

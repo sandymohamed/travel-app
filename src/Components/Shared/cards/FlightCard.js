@@ -1,6 +1,6 @@
 import './flightcard.scss';
 import dummyImg from '../../../assets/card/dummy-image.jpg';
-import { useEffect, useState } from 'react';
+import { useEffect, useState  , useContext} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faCalendarWeek } from '@fortawesome/free-solid-svg-icons';
 import AOS from 'aos';
@@ -12,6 +12,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Payment from '../../Payment/Payment';
+import { DarkModeContext } from '../../../context/DarkMode';
 
 
 
@@ -19,6 +20,7 @@ function FlightCard({ Flightobj, setIsBook }) {
   useEffect(() => {
     AOS.init();
   }, []);
+  const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
 
   let DepartureDate = new Date(Flightobj.DepartureDate);
   let ReturnDate = new Date(Flightobj.ReturnDate);

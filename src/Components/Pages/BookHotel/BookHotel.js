@@ -35,7 +35,7 @@ const BookHotel = () => {
     Single: "",
     Double: "",
     IsApprove: false,
-    Paid:false,
+    Paid: false,
     startDate: "",
     endDate: "",
     Hotels: `${id}`,
@@ -55,7 +55,7 @@ const BookHotel = () => {
 
 
   }
-  
+
   useEffect(() => {
     AOS.init();
     getHotelFeedback(id).then(res => setFeedback(res))
@@ -63,58 +63,56 @@ const BookHotel = () => {
   }, [feedback])
 
 
+
   return (
 
-
-    <div className='d-block book-container'>
-      <section className='slider m-0 p-0'>
-        <ImgSlider hotelId={id} />
-      </section>
-
-      <section className="formCard center" data-aos="fade-up" data-aos-delay="100">
-        <HotelDetails hotelId={id} />
-      </section>
-
-      <br />
-      <section className="formCard center" data-aos="fade-up" data-aos-delay="200">
-        <h2>Book Now</h2>
-        <BookForm initialValues={initialValues} id={id} bookHotel={bookHotel} price={price} />
-      </section>
-      <section className="formCard center" data-aos="fade-up" data-aos-delay="200">
-
-        <h2>Hotel Feedbacks</h2>
-        {
-          (feedback) && (
-            feedback.map((item, i) => {
-            return(  <div className='feedback-card fw-semibold position-relative mb-2' key={i}>
-                <button className='btn btn-danger position-absolute end-0 me-5' onClick={() => handleDelete(item._id, item.Tourist.username)}>delete</button>
-                <ToastContainer />
-
-                {/* <h4>{item.Tourist.username}</h4> */}
-                <p className='text-secondary '>{item.Description}</p>
-                {/* <p className='text-end fst-italic'><span >{format(new Date(item.createdAt), 'dd/mm/yyyy')}</span></p> */}
-                <p className='text-end fst-italic'><span >{setFormatDate(item.createdAt)}</span></p>
-
-              </div>)
-            })
-          )
-        }
-      </section>
-
-      <section className="formCard center" data-aos="fade-up" data-aos-delay="200">
-
-        <h2>Give Us Feedback</h2>
-
-        <PostFeedback
-          hotelId={id}
-          userId={user}
-        />
+    <section className='hotelBook'>
 
 
-      </section>
+      <div className='container'>
+
+        <section className="formCard center" data-aos="fade-up" data-aos-delay="100">
+          <HotelDetails hotelId={id} />
+        </section>
+
+        <section className="formCard center" data-aos="fade-up" data-aos-delay="200">
+          <BookForm initialValues={initialValues} id={id} bookHotel={bookHotel} price={price} />
+        </section>
+        <section className="formCard center" data-aos="fade-up" data-aos-delay="200">
+
+<h2>Hotel Feedbacks</h2>
+{
+  (feedback) && (
+    feedback.map((item, i) => {
+    return(  <div className='feedback-card fw-semibold position-relative mb-2' key={i}>
+        <button className='btn btn-danger position-absolute end-0 me-5' onClick={() => handleDelete(item._id, item.Tourist.username)}>delete</button>
+        <ToastContainer />
+
+        {/* <h4>{item.Tourist.username}</h4> */}
+        <p className='text-secondary '>{item.Description}</p>
+        {/* <p className='text-end fst-italic'><span >{format(new Date(item.createdAt), 'dd/mm/yyyy')}</span></p> */}
+        <p className='text-end fst-italic'><span >{setFormatDate(item.createdAt)}</span></p>
+
+      </div>)
+    })
+  )
+}
+</section>
+
+        <section className="formCard center" data-aos="fade-up" data-aos-delay="200">
+          <PostFeedback
+            hotelId={id}
+            userId={user}
+          />
 
 
-    </div>
+        </section>
+
+
+
+      </div>
+    </section>
+
   );
 };
 

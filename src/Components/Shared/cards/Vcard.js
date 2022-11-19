@@ -15,15 +15,9 @@ function Vcart({ link, title, city, description, Evaluation, Price, hotelId,img 
   }, []);
 
   return (
-    <section
-      id="vcart"
-      className={`  v${darkMode}`}
-      // data-aos="fade-in"
-      // data-aos-delay="200"
-      >
+    <section id="vcart" className={`v${darkMode}`}>
       <div
-            className={` cartBody v${darkMode}`}
-      >
+        className={` cartBody `}>
         <div
           className="cartBody_img"
           data-aos="fade-up"

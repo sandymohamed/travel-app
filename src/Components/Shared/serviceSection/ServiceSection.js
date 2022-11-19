@@ -1,7 +1,7 @@
 
 
 import "./serviceSection.scss"
-import { Link ,NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { useContext } from "react";
 import { DarkModeContext } from "../../../context/DarkMode";
 
@@ -14,13 +14,14 @@ function ServiceSection(props) {
         <>
 
             <section id="flight" >
-                <div  className={`service_container  v${darkMode}`}
->
+                <div className={`service_container  s${darkMode}`}
+                >
+                    {/* {`services s${darkMode}`} */}
                     <section className='services'>
 
                         {/* --------------: Hotel :-------------- */}
                         <NavLink className="nav__link" to="/hotels" activeClassName="active">
-                            <div className=' serviceItem services_hotels'>
+                            <div className={` serviceItem services_hotels s${darkMode} `}>
                                 <div className='icon'>
                                     <i className="fa-solid fa-hotel"></i>
                                 </div>
@@ -32,7 +33,7 @@ function ServiceSection(props) {
                         {/* --------------: Flight :-------------- */}
 
                         <NavLink className="nav__link" to="/flight" activeClassName="active">
-                            <div className='serviceItem services_flights'>
+                            <div className={`serviceItem services_flights  s${darkMode}`}>
                                 <div className='icon'>
                                     <i className="fa-solid fa-plane"></i>
                                 </div>
@@ -44,7 +45,7 @@ function ServiceSection(props) {
 
                         <NavLink className="nav__link " to="/holidays" activeClassName="active">
 
-                            <div className='serviceItem services_holiday'>
+                            <div className={`serviceItem services_holiday s${darkMode}`}>
                                 <div className='icon'>
                                     <i className="fa-solid fa-suitcase-rolling"></i>
                                 </div>

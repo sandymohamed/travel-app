@@ -84,5 +84,6 @@ $borderRadius: 1.2em;
 @mixin dFlex {
 display: flex;
 align-items: center;
+flex-wrap: wrap;
 justify-content: center;    
 }

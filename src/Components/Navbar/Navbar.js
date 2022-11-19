@@ -154,15 +154,8 @@ function NavbarComponant() {
           <div className="line3"></div>
         </div>
         <div className="form-check form-switch">
-          {/* <input
-            className="form-check-input pb-3"
-            type="checkbox"
-            id="darkModeToggler"
-            // checked={`${darkMode ? 'checked' : ''}`}
-            onChange={(e) => handleToggleDarkMode()}
-          /> */}
-
-          <div className=" text-warning" onClick={() => handleToggleDarkMode()}>
+    
+          <div className="toggleIcon" onClick={() => handleToggleDarkMode()}>
             <FontAwesomeIcon icon={myIcon} className='fs-1' style={{'cursor': 'pointer'}} />
           </div>
         </div>

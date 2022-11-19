@@ -10,6 +10,7 @@
     margin-left: 3rem;
     margin-top: 1rem;
 
+    transition: $noramlTransition;
     .cardBody {
 
         @include dFlex;
@@ -102,5 +103,10 @@
 
 
     }
+
+}
+#fcfalse{
+    background-color: $secoundryColorDark !important;
+    border: 10px solid darken($primaryColor, 5%);
 
 }
