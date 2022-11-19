@@ -56,7 +56,7 @@ const Hotels = () => {
     getCities().then((res) => setCities(res));
 
     getHotels().then((res) => setHotels(res));
-    console.log(price);
+    console.log(hotels);
   }, []);
 
   const serviceSection = (
@@ -107,6 +107,8 @@ const Hotels = () => {
                     city={hotel.City.City_Name}
                     Evaluation={hotel.Evaluation}
                     Price={hotel.Price}
+                    img={hotel.ImgURL[0]}
+
                     // description={hotel.Description}
                     hotelId={hotel._id}
                     link={`hotels/${hotel._id}`}

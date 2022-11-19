@@ -40,14 +40,11 @@ const BookHoliday = () => {
     useEffect(() => {
         AOS.init();
 
-        console.log(id);
-
         getHolidayById(id).then(res => setHoliday(res))
         getHolidayById(`${id}`).then((res) => setPrice(res.Price))
 
     }, [])
 
-    console.log(holiday);
     return (
 
         <section className='bookHoliday'>

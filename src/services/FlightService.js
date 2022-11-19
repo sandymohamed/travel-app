@@ -82,12 +82,14 @@ export function getAllFlightByUser(countryTo ,  dateTo ,user) {
     .catch((err) => alert(err));
 }
 
-export const bookedFlight = (UserID , Flight) => {
+export const bookedFlight = (UserID , Flight , PassportNumber ,IsPaid) => {
 
   const UserBooking = {
     IsBooking  : false ,
     Tourist : UserID ,
-    Flight : Flight 
+    Flight : Flight  ,
+    PassportNumber :PassportNumber ,
+    IsPaid : IsPaid
   }
   
   return instance.post(`flightBooking`,UserBooking)

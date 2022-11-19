@@ -7,7 +7,10 @@ import Form from 'react-bootstrap/Form';
 import { handleValidate } from '../../../services/handleForm';
 import { getTotalPrice } from '../../../services/hotelsServ';
 import Payment from '../../Payment/Payment';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { DarkModeContext } from '../../../context/DarkMode';
+
 
 const BookForm = ({ initialValues, bookHotel, id, price }) => {
   const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
@@ -72,6 +75,7 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
 
     if (err.globalErr === null) {
       bookHotel(hotelData)
+      toast("booked successfully check your email!");
     }
 
     //   getTotalPrice(id).then((res) => setTotal(res));
@@ -85,7 +89,8 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
 
   return (
     <>
-      <div className={`bookForm book${darkMode}`}>
+   
+   <div className={`bookForm book${darkMode}`}>
         <Form onSubmit={(e) => { handleSubmit(e) }} className="my-form row">
           <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicSingle">
             <Form.Label >Single Room Count</Form.Label>
@@ -176,6 +181,7 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
             <div className='booking'>
               <Payment paid={paid} setPaid={setPaid} />
               <button className="primaryBtn" type="submit"> Book</button>
+              <ToastContainer />
 
             </div>
 

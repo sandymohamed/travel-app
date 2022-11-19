@@ -1,4 +1,5 @@
 import {ENDPOINTS} from '../utils/endPoints' 
+import authHeader from './auth-header'
 import {instance} from './authAPI'
 
 // get all hotels 
@@ -19,7 +20,7 @@ export const getHotelsLimit = () => {
 
 // get hotel by id 
 export const getHotelById = (id) => {
-  return instance.get(`${ENDPOINTS.GETHOTELS}`+id)
+  return instance.get(`${ENDPOINTS.GETHOTELS}`+id, { headers: authHeader() })
 
   .then(res => {return(res.data)})
   .catch(err => console.log(err))
@@ -81,7 +82,7 @@ export const getCities = () => {
 // book hotel
 export const bookHotel = (bookData) => {
     console.log(bookData);
-    return instance.post(`${ENDPOINTS.BOOKHOTEL}`,bookData)
+    return instance.post(`${ENDPOINTS.BOOKHOTEL}`,bookData, { headers: authHeader() })
 
     .then(res => console.log(res))
     .catch((error) => {
@@ -99,7 +100,7 @@ export const bookHotel = (bookData) => {
 
 // get UserReservations 
 export const bookedHotelByUser = (userName) => {
-  return instance.get(`${ENDPOINTS.BOOKHOTELBYUSER}${userName}`)
+  return instance.get(`${ENDPOINTS.BOOKHOTELBYUSER}${userName}`, { headers: authHeader() })
 
   .then(res => {return(res.data)})
   .catch(err => console.log(err))
@@ -115,7 +116,7 @@ export const getHotelFeedback = (id) => {
 // post feedback
 export const postFeedback = (feedback) => {
   console.log(feedback);
-  return instance.post(`${ENDPOINTS.POSTFEEDBACK}`,feedback)
+  return instance.post(`${ENDPOINTS.POSTFEEDBACK}`,feedback, { headers: authHeader() })
 
   .then(res => console.log(res))
   .catch((error) => {
@@ -132,7 +133,7 @@ export const postFeedback = (feedback) => {
 }
 
 export const deleteHotelFeedback = (id) => {
-  return instance.delete(`${ENDPOINTS.POSTFEEDBACK}${id}`)
+  return instance.delete(`${ENDPOINTS.POSTFEEDBACK}${id}`, { headers: authHeader() })
   .then(res => {return(res.data)})
   .catch(err => console.log(err))
 }

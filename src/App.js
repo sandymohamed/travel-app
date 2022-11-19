@@ -30,7 +30,6 @@ function App() {
     const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
 
   // const [themeContext, setThemeContext]= useState('normal')
-console.log(darkMode);
 // 
   return (
     <div >

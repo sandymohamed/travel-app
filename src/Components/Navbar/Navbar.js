@@ -22,7 +22,6 @@ function NavbarComponant() {
 
   const currentUser = AuthService.getCurrentUser();
 
-  console.log('currentUser', currentUser);
   const navToggle = () => {
     if (active === 'nav__menu') {
       setActive('nav__menu nav__active');
@@ -42,7 +41,6 @@ function NavbarComponant() {
   const handleToggleDarkMode = () => {
     setMyIcon((myIcon === faMoon) ? faSun : faMoon)
     toggleDarkMode(darkMode === true ? false : true)
-    console.log(darkMode);
   };
 
 
@@ -101,7 +99,7 @@ function NavbarComponant() {
                     <span className='userInfo_icon'>
                       <i className="fa-regular fa-id-badge"></i>
                     </span>
-                    <NavLink to="/UserDetails" className="userInfo_link">
+                    <NavLink to="/user/profile" className="userInfo_link">
                       <span className='userInfo_title'>Profile Page</span>
                     </NavLink>
                   </li>

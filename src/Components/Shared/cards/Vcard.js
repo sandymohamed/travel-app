@@ -6,8 +6,8 @@ import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../../context/DarkMode';
 
-function Vcart({ link, title, city, description, Evaluation, Price, hotelId }) {
-
+function Vcart({ link, title, city, description, Evaluation, Price, hotelId,img }) {
+  
   const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function Vcart({ link, title, city, description, Evaluation, Price, hotelId }) {
           data-aos="fade-up"
           data-aos-delay="300">
           <img
-            src={dummyImg}
+            src={img? img : dummyImg}
             alt="Item_Name"></img>
         </div>
         <article
