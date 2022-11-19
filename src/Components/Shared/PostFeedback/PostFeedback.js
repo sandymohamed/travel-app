@@ -1,8 +1,9 @@
 import './postFeedback.scss';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { postFeedback } from '../../../services/hotelsServ';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const PostFeedback = ({ hotelId, userId }) => {
 
     const initial = {
@@ -26,9 +27,10 @@ const PostFeedback = ({ hotelId, userId }) => {
         e.preventDefault();
 
         //  user hotel desc
-        console.log(data);
         if (data.description.length > 3) {
             postFeedback(data)
+            toast("post successfully !");
+
 
         } else {
             serErr('too short feedback')
@@ -36,6 +38,9 @@ const PostFeedback = ({ hotelId, userId }) => {
 
     }
 
+    useEffect(()=> {
+
+    },[])
     return (
         <div>
             <Form
@@ -54,6 +59,7 @@ const PostFeedback = ({ hotelId, userId }) => {
                 </Form.Group>
 
                 <button className="primaryBtn bton" type="submit"> Send</button>
+                <ToastContainer />
 
 <br />
             </Form>

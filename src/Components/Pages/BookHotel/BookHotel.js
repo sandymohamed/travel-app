@@ -59,8 +59,7 @@ const BookHotel = () => {
     AOS.init();
     getHotelFeedback(id).then(res => setFeedback(res))
     getHotelById(`${id}`).then((res)=>setPrice(res.Price))
-
-  }, [])
+  }, [feedback])
 
 
   return (
@@ -85,16 +84,17 @@ const BookHotel = () => {
         <h2>Hotel Feedbacks</h2>
         {
           (feedback) && (
-            feedback.map((item, i) => (
-              <div className='feedback-card fw-semibold position-relative' key={i}>
+            feedback.map((item, i) => {
+              console.log(item);
+            return(  <div className='feedback-card fw-semibold position-relative mb-2' key={i}>
                 <button className='btn btn-danger position-absolute end-0 me-5' onClick={() => handleDelete(item._id, item.Tourist.username)}>delete</button>
-                <h4>{item.Tourist.username}</h4>
+                {/* <h4>{item.Tourist.username}</h4> */}
                 <p className='text-secondary '>{item.Description}</p>
                 {/* <p className='text-end fst-italic'><span >{format(new Date(item.createdAt), 'dd/mm/yyyy')}</span></p> */}
                 <p className='text-end fst-italic'><span >{setFormatDate(item.createdAt)}</span></p>
 
-              </div>
-            ))
+              </div>)
+            })
           )
         }
       </section>

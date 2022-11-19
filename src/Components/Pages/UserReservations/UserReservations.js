@@ -2,11 +2,8 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { bookedHolidayByUser } from '../../../services/holidaysServ';
 import { bookedHotelByUser } from '../../../services/hotelsServ';
-import { format } from 'date-fns'
 import calenderIcon from "../../../assets/calender.png"
-import cloud1 from "../../../assets/cloud.png"
-import cloud2 from "../../../assets/cloud2.png"
-import hotelIcon from "../../../assets/hotelIcon.png"
+
 import dummyHotel from "../../../assets/card/dummyhotel.jpg"
 
 import './userReservations.scss';
@@ -17,7 +14,7 @@ const UserReservations = () => {
     const [hotelReservations, setHReservations] = useState([])
     const [holidayReservations, setTReservations] = useState([])
 
-    const userId = useSelector((({ AuthReducer }) => AuthReducer.user.id))
+    const userId = useSelector((({ AuthReducer }) => AuthReducer.user.username))
     let user = (userId) ? userId : null
 
     useEffect(() => {
@@ -49,7 +46,7 @@ const UserReservations = () => {
 
                                                     <div className='row'>
                                                         <div className='cardImg col-md-3'>
-                                                            <img src={dummyHotel}></img>
+                                                            <img src={(item.ImgURL)? item.ImgURL[0] :dummyHotel}></img>
                                                         </div>
 
                                                         {/* /////// */}
@@ -138,7 +135,7 @@ const UserReservations = () => {
 
                                                     <div className='row'>
                                                         <div className='cardImg col-md-3'>
-                                                            <img src={dummyHotel}></img>
+                                                        <img src={(item.ImgURL)? item.ImgURL[0] :dummyHotel}></img>
                                                         </div>
 
                                                         {/* /////// */}

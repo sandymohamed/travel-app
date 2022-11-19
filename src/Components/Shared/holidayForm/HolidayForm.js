@@ -7,6 +7,8 @@ import './holidayForm.scss';
 import { handleValidate } from '../../../services/handleForm';
 import { bookHoliday } from '../../../services/holidaysServ';
 import Payment from '../../Payment/Payment';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HolidayForm = ({ initialValues, price }) => {
 
@@ -68,6 +70,7 @@ const HolidayForm = ({ initialValues, price }) => {
 
         if (err.globalErr === null) {
             bookHoliday(holidayData)
+            toast("booked successfully check your email!");
         }
 
         console.log(err.globalErr)
@@ -181,6 +184,7 @@ const HolidayForm = ({ initialValues, price }) => {
 
                 {/* <h2>{total}</h2> */}
                 <button className="primaryBtn bton fs-3 w-50" type="submit"> Book</button>
+                <ToastContainer />
 
                 <br />
 

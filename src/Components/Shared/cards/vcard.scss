@@ -11,9 +11,9 @@
   }
 #vcart {
     border: 10px solid darken($primaryColor, 5%);
-    // width: 15em !important;
-    min-width: 200px;
-    max-width: 250px;
+    width: 15em !important;
+    // min-width: 200px;
+    // max-width: 250px;
     border-radius: calc($borderRadius * 3);
     overflow: hidden;
     .cartBody {
@@ -21,9 +21,12 @@
             border-radius: calc($borderRadius * 2);
             overflow: hidden;
             margin: 1rem;
+            width:90%;
+            height: 20vh;
 
             img {
                 width: 100%;
+                height: 100%;
 
             }
         }

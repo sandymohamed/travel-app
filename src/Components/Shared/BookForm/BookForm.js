@@ -7,6 +7,8 @@ import Form from 'react-bootstrap/Form';
 import { handleValidate } from '../../../services/handleForm';
 import { getTotalPrice } from '../../../services/hotelsServ';
 import Payment from '../../Payment/Payment';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BookForm = ({ initialValues, bookHotel, id, price }) => {
   const [values, setValues] = useState(initialValues);
@@ -70,6 +72,7 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
 
     if (err.globalErr === null) {
       bookHotel(hotelData)
+      toast("booked successfully check your email!");
     }
     
     //   getTotalPrice(id).then((res) => setTotal(res));
@@ -173,7 +176,8 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
         <h2>Total price: {total}</h2>
         <Payment paid={paid} setPaid={setPaid} />
         <button className="primaryBtn bton fs-3 w-50" type="submit"> Book</button>
-       
+        <ToastContainer />
+
         <br />
 
       </Form>
