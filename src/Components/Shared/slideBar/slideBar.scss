@@ -1,16 +1,9 @@
 @import "../../../Style/colors.scss";
 @import "../../../Style/shortcuts.scss";
 
-.ftrue {
-    background-color: $liteGray;
-}
-  
-.ffalse {
-    background-color: rgb(119, 117, 122);
 
-  }
 .slidebar {
-    // background-color: $liteGray;
+    background-color: $liteGray;
     border: 10px solid rgb(255, 255, 255);
     border-radius: calc($borderRadius *3);
     display: flex;
@@ -67,6 +60,75 @@
                 position: relative;
                 border-radius: $borderRadius;
                 border: 5px solid white;
+                
+
+                & ::before {
+                    content: "";
+                    position: absolute;
+                    left: 5px;
+                    height: 20px;
+                    width: 20px;
+                    border: 3px solid white;
+                    border-radius: 50%;
+
+                }
+
+            }
+
+            small {
+                font-size: 8px;
+            }
+        }
+        .priceFilter{
+            span{
+                display: block;
+                margin-bottom: 20px;
+            }
+            button{
+                @include primaryBtn;
+            }
+        }
+
+        
+    }
+
+}
+
+.slidebarfalse {
+    background-color: $secoundryColorDark;
+    border: 10px solid lighten($secoundryColorDark, 10) !important;
+    color: white ;
+   
+    // h4{
+    //     padding-top: 1rem
+    // }
+    .slidebar_container {
+
+      
+        .filter {
+         
+
+            input[type="number"] ,input[type="radio"]{
+                display: none;
+
+                &:checked + label {
+                    background-color: $primaryColor;
+
+                    ::before {
+                        border: 6px solid lighten($secoundryColorDark, 10)
+                    }
+                }
+            }
+
+            label {
+                font-size: 12px;
+                margin: 1px;
+                background-color: lighten($secoundryColorDark, 10);
+                padding: 5px 10px 5px 30px;
+
+                position: relative;
+                border-radius: $borderRadius;
+                border: 5px solid lighten($secoundryColorDark, 20);
                 
 
                 & ::before {

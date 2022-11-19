@@ -2,43 +2,29 @@
 @import"../../../Style/shortcuts.scss";
 
 
+.hotelBook {
+    .feedback-container {}
 
-.book-container {
-
-    section {
-        display: block;
-    }
-
-    .slider {
-        height: 60vh;
-        width: 100%;
-        margin: 0;
-
-        img {
-            height: 100%;
-        }
-    }
+    .feedbacks {
+        position: relative;
+        left: 10%;
+        width: 80%;
+        height: fit-content;
+        padding: 5%;
+        border: 10px solid darken($primaryColor, 5%);
+        background-color: rgb(255, 255, 255);
+        border-radius: calc($borderRadius * 3);
+        overflow: hidden;
+        margin: 1rem;
 
 
-    .formCard {
-        // position: relative;
-        // left: 10% ;
-        // width: 80%;
-        // height: fit-content;
-        // padding: 5%;
-        // border: 10px solid darken($primaryColor, 5%);
-        // background-color: rgb(255, 255, 255);
-        // border-radius: calc($borderRadius * 3);
-        // overflow: hidden;
-        // margin: 1rem;
-
-        .feedback-card {
-            padding: 5%;
-            border: 1px solid rgb(98, 97, 97);
-            border-radius: 3rem;
-
+        label {
+            padding: 10px 20px;
+            border-radius: calc($borderRadius * 3);
+            background-color: $secoundryColor;
 
         }
 
     }
+
 }

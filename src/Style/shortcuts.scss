@@ -23,11 +23,16 @@ $borderRadius: 1.2em;
     border: none;
     border-radius: $borderRadius;
     padding: 0 0.7em;
-    color: white;
+    color: white !important;
     transition: $noramlTransition;
     margin: 0.2em 0;
+    a{
+        color: white !important;
+ 
+    }
     &:hover{
-       background-color:$primaryColorDark ;
+       background-color: darken($primaryColor, 20) ;
+    
     }
    }
 .primaryBtn{

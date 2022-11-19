@@ -107,16 +107,16 @@ function FlightCard({ Flightobj, setIsBook }) {
   return (
     <>
       <section
-        id="flightCard"
+        className={`flightCard flightCard${darkMode}`}
         data-aos="fade-up"
-        data-aos-delay="100">
+        data-aos-delay="20">
 
         <ToastContainer />
         <div className="cardBody">
           <div
             className="cardBody_img col-md-4 "
             data-aos="fade-up"
-            data-aos-delay="150">
+            data-aos-delay="50">
             <img
               src="https://w7.pngwing.com/pngs/901/129/png-transparent-hurghada-international-airport-cairo-borg-el-arab-airport-egyptair-airbus-a330-others-text-egypt-logo-thumbnail.png" //{dummyImg}
               alt="Item_Name"></img>
@@ -124,19 +124,16 @@ function FlightCard({ Flightobj, setIsBook }) {
           <article
             className="cardBody_details col-md-7 col-sm-12"
             data-aos="zoom-out"
-            data-aos-delay="150">
+            data-aos-delay="50">
             <div className="cardBody_details_data">
               <div className="spacer"></div>
               <div className="container">
                 <span className="line">
                   {' '}
                   - - - - - - -
-                  <span>
+                  <span className='icon'>  
                     {' '}
-                    <FontAwesomeIcon
-                      className="fs-3"
-                      icon={faPlane}
-                    />{' '}
+                    <i class="fa-solid fa-plane"></i>{' '}
                   </span>{' '}
                   - - - - - - -
                 </span>
@@ -153,7 +150,7 @@ function FlightCard({ Flightobj, setIsBook }) {
                 <span className="line">
                   {' '}
                   - - - - - - -
-                  <span>
+                  <span className='icon'>
                     <i className="fa-solid fa-calendar-days"></i>
                   </span>{' '}
                   - - - - - - -

@@ -50,9 +50,9 @@ const BookHoliday = () => {
         <section className='bookHoliday'>
             <div className='container'>
             <div className='d-block book-container'>
-                <section className='slider m-0 p-0'>
+                {/* <section className='slider m-0 p-0'>
                     <ImgSlider hotelId={id} />
-                </section>
+                </section> */}
 
                 <section className="formCard center" data-aos="fade-up" data-aos-delay="100">
                     <div className='det-container' data-aos="fade-out" data-aos-delay="400">
@@ -62,7 +62,6 @@ const BookHoliday = () => {
                                 <p>{holiday.Evaluation} stars holiday</p>
                                 <p>{holiday.Period} days</p>
                                 <p>{holiday.Description}</p>
-
                                 <p>Price: {holiday.Price}$</p>
                             </>
                         )}

@@ -135,11 +135,11 @@ const UserReservations = () => {
                     </div>
 
                     {/* ******************************** Holiday *****************************  */}
-                    <div className='userReservations_Img'>
+                    {/* <div className='userReservations_Img'>
                         <span className='cloud'></span>
                         <img src={calenderIcon}></img>
                         <h2 className='text-center'>Holiday Reservations</h2>
-                    </div>
+                    </div> */}
                     <div className='userReservations_data'>
                         <div className='container'>
                             <div className='row'>
@@ -230,11 +230,11 @@ const UserReservations = () => {
 
 
                      {/* ******************************** Flight *****************************  */}
-                     <div className='userReservations_Img'>
+                     {/* <div className='userReservations_Img'>
                         <span className='cloud'></span>
                         <img src={calenderIcon}></img>
                         <h2 className='text-center'>Flight Reservations</h2>
-                    </div>
+                    </div> */}
                     <div className='userReservations_data'>
                         <div className='container'>
                             <div className='row'>
