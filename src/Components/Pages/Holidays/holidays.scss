@@ -1,0 +1,88 @@
+@import "../../../Style/colors.scss";
+@import "../../../Style/shortcuts.scss";
+
+.holidayDetails {
+margin-bottom: 1rem;
+
+    .city-options {
+        background-color: white;
+        border-radius: 1rem;
+        border: 3px solid $secoundryColor ;
+        position: relative;
+        left: 40%;
+        width: 12rem;
+
+    }
+}
+
+
+.hotelcomponent {
+    margin: 2rem 10vw;
+
+    .cardsArea {
+
+        @include dFlex;
+        flex-direction: column;
+    }
+
+    .cards-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+
+        >* {
+            margin-right: 1rem;
+        }
+    }
+
+}
+
+.serviceFilter_stars {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+@media (max-width: 768px) {
+    .hotel-container {
+        flex-direction: column;
+
+
+        .slide-bar {
+            width: 100%;
+            display: block;
+
+            .filter-bar {
+                width: 100%;
+            }
+        }
+
+        .cards-container {
+            flex-direction: column;
+        }
+    }
+
+}
+
+@media (max-width: 768px) {
+    .hotel-container {
+        flex-direction: column;
+
+
+        .slide-bar {
+            width: 100%;
+            display: block;
+
+            .filter-bar {
+                width: 100%;
+            }
+        }
+
+        .cards-container {
+            flex-direction: column;
+        }
+    }
+
+}
