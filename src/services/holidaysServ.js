@@ -88,3 +88,10 @@ export const bookedHolidayByUser = (userName) => {
   .then(res => {return(res.data)})
   .catch(err => console.log(err))
 }
+
+// get total price
+export const getTotalPrice = (id) => {
+  return instance.get(`${ENDPOINTS.HTOTALPRICE}${id}`)
+  .then(res => {return(res.data.totalAmount)})
+  .catch(err => console.log(err))
+}

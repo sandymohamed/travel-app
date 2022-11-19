@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { bookedHolidayByUser } from '../../../services/holidaysServ';
-import { bookedHotelByUser } from '../../../services/hotelsServ';
+import { bookedHotelByUser, getTotalPrice } from '../../../services/hotelsServ';
 import calenderIcon from "../../../assets/calender.png"
 
 import dummyHotel from "../../../assets/card/dummyhotel.jpg"
@@ -21,10 +21,19 @@ const UserReservations = () => {
     const userId = useSelector((({ AuthReducer }) => AuthReducer.user.username))
     let user = (userId) ? userId : null
 
+    const GetTotal =({id})=>{
+        const [total, setTotal]= useState(0);
+        getTotalPrice(id).then(res => console.log(res))
+        console.log(total);
+
+      return   <span className='data'>{total}</span>
+
+    }
     useEffect(() => {
         bookedHotelByUser(user).then(res => setHReservations(res))
         bookedHolidayByUser(user).then(res => setTReservations(res))
         getAllFlightByUser(null, null, user.name).then((res) => setFlightReservations(res.data));
+
     }, [])
     return (
         <>
@@ -70,15 +79,21 @@ const UserReservations = () => {
                                                                         <span className='data'>{item.Period}</span>
                                                                     </div>
                                                                     <div className='roomCount'>
-                                                                        <span className='title'>RoomCount</span>
+                                                                        <span className='title'>Room Count</span>
                                                                         <span className='data'> {item.RoomCount}</span>
                                                                     </div><br />
+                                                                    {/* <div className='period'> */}
+                                                                        {/* <span className='title'>Total Price</span> */}
+                                                                        {/* <GetTotal id={item._id} /> */}
+
+                                                                        {/* <span className='data'>{getTotal(item._id)}</span> */}
+                                                                    {/* </div> */}
                                                                     <div className='period'>
-                                                                        <span className='title'>createdAt</span>
+                                                                        <span className='title'>created At</span>
                                                                         <span className='data'>{setFormatDate(item.createdAt)}</span>
                                                                     </div>
                                                                     <div className='period'>
-                                                                        <span className='title'>updatedAt</span>
+                                                                        <span className='title'>updated At</span>
                                                                         <span className='data'>{setFormatDate(item.updatedAt)}</span>
                                                                     </div>
                                                                 </div>

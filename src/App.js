@@ -31,7 +31,6 @@ function App() {
 
 
   // const [themeContext, setThemeContext]= useState('normal')
-console.log(darkMode);
 // 
   return (
     <div >

@@ -10,6 +10,7 @@ import ImgSlider from '../../Shared/Slider/ImgSlider';
 import HotelDetails from '../../Shared/hotelDetails/HotelDetails';
 import PostFeedback from '../../Shared/PostFeedback/PostFeedback';
 import { setFormatDate } from '../../../services/DateformatService';
+import { ToastContainer, toast } from 'react-toastify';
 
 const BookHotel = () => {
 
@@ -49,7 +50,7 @@ const BookHotel = () => {
     }
     else {
       // ****************************************************************************************
-      alert('cant')
+      toast("you don't have permition !");
     }
 
 
@@ -85,9 +86,10 @@ const BookHotel = () => {
         {
           (feedback) && (
             feedback.map((item, i) => {
-              console.log(item);
             return(  <div className='feedback-card fw-semibold position-relative mb-2' key={i}>
                 <button className='btn btn-danger position-absolute end-0 me-5' onClick={() => handleDelete(item._id, item.Tourist.username)}>delete</button>
+                <ToastContainer />
+
                 {/* <h4>{item.Tourist.username}</h4> */}
                 <p className='text-secondary '>{item.Description}</p>
                 {/* <p className='text-end fst-italic'><span >{format(new Date(item.createdAt), 'dd/mm/yyyy')}</span></p> */}

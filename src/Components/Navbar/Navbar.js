@@ -22,7 +22,6 @@ function NavbarComponant() {
 
   const currentUser = AuthService.getCurrentUser();
 
-  console.log('currentUser', currentUser);
   const navToggle = () => {
     if (active === 'nav__menu') {
       setActive('nav__menu nav__active');
@@ -42,7 +41,6 @@ function NavbarComponant() {
   const handleToggleDarkMode = () => {
     setMyIcon((myIcon === faMoon) ? faSun : faMoon)
     toggleDarkMode(darkMode === true ? false : true)
-    console.log(darkMode);
   };
 
 
