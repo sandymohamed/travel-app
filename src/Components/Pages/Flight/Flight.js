@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getAllFlight } from '../../../services/FlightService';
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 ////// For Header //////
-import headerImg from '../../../assets/header/transportationHeader.png';
+import headerImg from '../../../Assets/header/transportationHeader.png';
 import FlightCard from '../../Shared/cards/FlightCard';
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
 import SlideBar from '../../Shared/slideBar/Slidebar';
@@ -11,7 +11,7 @@ import { setFormatDate } from '../../../services/DateformatService';
 
 
 const headerTitle = <> Find your Tayara</>;
-const headerParagraph = <> ana b7b masr gdn msh adaer asafr laaaa</>;
+const headerParagraph = <> You wanna fly, you got to give up the shit that weighs you down.</>;
 
 const Flight = () => {
   const [AirLineList, setAirLineList] = useState([]);
@@ -40,7 +40,7 @@ const Flight = () => {
         break;
       case 'dateFrom':
         setdateFrom(setFormatDate(e.target.value));
-          break;
+        break;
       case 'dateTo':
         setdateTo(setFormatDate(e.target.value));
         break;
@@ -163,7 +163,7 @@ const Flight = () => {
   );
   // Colling Database and Filter Data
   useEffect(() => {
-    getAllFlight( countryFrom,countryTo,dateFrom, dateTo, selectedClass, price).then((res) => setAirLineList(res.data));
+    getAllFlight(countryFrom, countryTo, dateFrom, dateTo, selectedClass, price).then((res) => setAirLineList(res.data));
     setIsBook(false);
   }, [countryTo, dateTo, selectedClass, price, isBook]);
 
@@ -175,10 +175,10 @@ const Flight = () => {
         img={headerImg}
       />
       <ServiceSection serviceSection={serviceSection} />
- 
-         
-      
-       
+
+
+
+
       {/* ////////////////////// */}
       <section className="flightcomponent">
         <div className="row">
@@ -200,8 +200,8 @@ const Flight = () => {
           </section>
         </div>
       </section>
-       
-      
+
+
     </>
   );
 };

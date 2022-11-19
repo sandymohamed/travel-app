@@ -3,11 +3,11 @@ import './home.scss';
 import FlightCard from '../../Shared/cards/FlightCard';
 import Vcart from '../../Shared/cards/Vcard';
 import Carousel from 'react-bootstrap/Carousel';
-import testslider from "../../../assets/cover/testcover.jpg"
-import flightImg from "../../../assets/header/flight.png"
-import hotelImg from "../../../assets/hotel-home.png"
-import hotelImg2 from "../../../assets/hotel-home-2.png"
-import tourImg from "../../../assets/home-tour.png"
+import testslider from "../../../Assets/cover/testcover.jpg"
+import flightImg from "../../../Assets/header/flight.png"
+import hotelImg from "../../../Assets/hotel-home.png"
+import hotelImg2 from "../../../Assets/hotel-home-2.png"
+import tourImg from "../../../Assets/home-tour.png"
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getHotelsLimit } from '../../../services/hotelsServ';
@@ -43,9 +43,9 @@ const Home = () => {
           />
           <Carousel.Caption>
             <h3 data-aos="fade-up"
-              data-aos-delay="200">First slide label</h3>
+              data-aos-delay="200">I love my job only when I’m on vacation</h3>
             <p data-aos="fade-up"
-              data-aos-delay="300">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              data-aos-delay="300">Moderation in exercise, eating and amusement is the best guarantee of a beneficial vacation.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={500}>
@@ -55,8 +55,8 @@ const Home = () => {
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Laughter is an instant vacation</h3>
+            <p>A one day holiday can at times be better than a one week vacation if you totally unplug for that one day!</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -66,7 +66,7 @@ const Home = () => {
             alt="Third slide"
           />
           <Carousel.Caption>
-            <h3>Third slide label</h3>
+            <h3>Deep summer is when laziness finds respectability.</h3>
             <p>
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
             </p>
@@ -87,14 +87,14 @@ const Home = () => {
 
                 <div className='discover_cards  col-md-7'>
 
-                  {AirLineList.map((AirLine , index) =>
-                   { if(index < 3) {
-                    return (
-                      <FlightCard
-                        Flightobj={AirLine}                      
-                      />
-                    );
-                  }
+                  {AirLineList.map((AirLine, index) => {
+                    if (index < 3) {
+                      return (
+                        <FlightCard
+                          Flightobj={AirLine}
+                        />
+                      );
+                    }
                   })}
 
                 </div>
@@ -155,21 +155,21 @@ const Home = () => {
             <div className='row'>
               <div className='tour-img col-md-5 d-flex ' >
 
-{holidays &&
-  holidays.map((holiday, i) => (
-   <div >
-         <Vcart
-                    key={i}
-                    title={holiday.HotelName}
-                    city={holiday.City.City_Name}
-                    Evaluation={holiday.Evaluation}
-                    Price={holiday.Price}
-                    img={holiday.ImgURL[0]}
-                    // description={holiday.Description}
-                    link={`holidays/${holiday._id}`}
-                  />
-    </div>
-  ))}
+                {holidays &&
+                  holidays.map((holiday, i) => (
+                    <div >
+                      <Vcart
+                        key={i}
+                        title={holiday.HotelName}
+                        city={holiday.City.City_Name}
+                        Evaluation={holiday.Evaluation}
+                        Price={holiday.Price}
+                        img={holiday.ImgURL[0]}
+                        // description={holiday.Description}
+                        link={`holidays/${holiday._id}`}
+                      />
+                    </div>
+                  ))}
 
               </div>
               <article className='tour-article col-md-6'>

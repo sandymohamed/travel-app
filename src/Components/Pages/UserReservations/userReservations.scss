@@ -26,7 +26,7 @@
         .cloud {
 
             &::after {
-                content: url(../../../assets/cloud2.png);
+                content: url(../../../Assets/cloud2.png);
                 position: absolute;
                 width: 50px !important;
                 height: auto;
@@ -43,7 +43,7 @@
             }
 
             &::before {
-                content: url(../../../assets/cloud.png);
+                content: url(../../../Assets/cloud.png);
                 position: absolute;
                 width: 50px !important;
                 height: auto;

@@ -1,5 +1,5 @@
 import './Login.scss';
-import loginImg from '../../../assets/login.jpg';
+import loginImg from '../../../Assets/login.jpg';
 import { useState, useContext } from 'react';
 
 import { Link } from 'react-router-dom';
@@ -78,70 +78,70 @@ function SignIn() {
 
   return (
     <>
-    <div className='log-container'>
-      <section
-        id="login"
-        className={`login${darkMode}`}>
-        <div className={`container `}>
-          <div className="loginImg ">
-            <img
-              src={loginImg}
-              alt="login img"
-              className=""
-            />
-          </div>
-          <ToastContainer />
-
-          <form onSubmit={(e) => submitData(e)}>
-            <div className="loginGorm_title">
-              <span> Welcome To TravEasy</span>
-              <h3> Sign In</h3>
-            </div>
-            <div>
-              <label
-                htmlFor="username"
-                className="form-label">
-                Username
-              </label>
-              <input
-                type="text"
-                className={`form-control ${errors.usernameErr && 'border-danger'}`}
-                name="username"
-                value={userData.username}
-                onChange={(e) => changeDetails(e)}
+      <div className='log-container'>
+        <section
+          id="login"
+          className={`login${darkMode}`}>
+          <div className={`container `}>
+            <div className="loginImg ">
+              <img
+                src={loginImg}
+                alt="login img"
+                className=""
               />
-
-              <p className="text-danger"> {errors.usernameErr} </p>
             </div>
+            <ToastContainer />
 
-            <div>
-              <label
-                htmlFor="password"
-                className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className={`form-control ${errors.passwordErr && 'border-danger'} `}
-                name="password"
-                value={userData.password}
-                onChange={(e) => changeDetails(e)}
-              />
-
-              <p className="text-danger"> {errors.passwordErr} </p>
-              <div className="d-flex flex-column align-items-center">
-                <button
-                  disabled={errors.usernameErr || errors.passwordErr}
-                  type="submit"
-                  className="primaryBtn">
-                  Login
-                </button>
-                <Link to="/register">Create an account</Link>
+            <form onSubmit={(e) => submitData(e)}>
+              <div className="loginGorm_title">
+                <span> Welcome To TravEasy</span>
+                <h3> Sign In</h3>
               </div>
-            </div>
-          </form>
-        </div>
-      </section>
+              <div>
+                <label
+                  htmlFor="username"
+                  className="form-label">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  className={`form-control ${errors.usernameErr && 'border-danger'}`}
+                  name="username"
+                  value={userData.username}
+                  onChange={(e) => changeDetails(e)}
+                />
+
+                <p className="text-danger"> {errors.usernameErr} </p>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="password"
+                  className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className={`form-control ${errors.passwordErr && 'border-danger'} `}
+                  name="password"
+                  value={userData.password}
+                  onChange={(e) => changeDetails(e)}
+                />
+
+                <p className="text-danger"> {errors.passwordErr} </p>
+                <div className="d-flex flex-column align-items-center">
+                  <button
+                    disabled={errors.usernameErr || errors.passwordErr}
+                    type="submit"
+                    className="primaryBtn">
+                    Login
+                  </button>
+                  <Link to="/register">Create an account</Link>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
       </div>
     </>
   );

@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { bookedHolidayByUser } from '../../../services/holidaysServ';
 import { bookedHotelByUser, getTotalPrice } from '../../../services/hotelsServ';
-import calenderIcon from "../../../assets/calender.png"
+import calenderIcon from "../../../Assets/calender.png"
 
-import dummyHotel from "../../../assets/card/dummyhotel.jpg"
-import dummyFlight from "../../../assets/card/dummyFlight.jpg"
+import dummyHotel from "../../../Assets/card/dummyhotel.jpg"
+import dummyFlight from "../../../Assets/card/dummyFlight.jpg"
 
 import './userReservations.scss';
 import { setFormatDate } from '../../../services/DateformatService';
@@ -16,17 +16,17 @@ const UserReservations = () => {
     const [hotelReservations, setHReservations] = useState([])
     const [holidayReservations, setTReservations] = useState([])
     const [FlightReservations, setFlightReservations] = useState([])
-     
+
 
     const userId = useSelector((({ AuthReducer }) => AuthReducer.user.username))
     let user = (userId) ? userId : null
 
-    const GetTotal =({id})=>{
-        const [total, setTotal]= useState(0);
+    const GetTotal = ({ id }) => {
+        const [total, setTotal] = useState(0);
         getTotalPrice(id).then(res => console.log(res))
         console.log(total);
 
-      return   <span className='data'>{total}</span>
+        return <span className='data'>{total}</span>
 
     }
     useEffect(() => {
@@ -58,7 +58,7 @@ const UserReservations = () => {
 
                                                     <div className='row'>
                                                         <div className='cardImg col-md-3'>
-                                                            <img src={(item.ImgURL)? item.ImgURL[0] :dummyHotel}></img>
+                                                            <img src={(item.ImgURL) ? item.ImgURL[0] : dummyHotel}></img>
                                                         </div>
 
                                                         {/* /////// */}
@@ -83,10 +83,10 @@ const UserReservations = () => {
                                                                         <span className='data'> {item.RoomCount}</span>
                                                                     </div><br />
                                                                     {/* <div className='period'> */}
-                                                                        {/* <span className='title'>Total Price</span> */}
-                                                                        {/* <GetTotal id={item._id} /> */}
+                                                                    {/* <span className='title'>Total Price</span> */}
+                                                                    {/* <GetTotal id={item._id} /> */}
 
-                                                                        {/* <span className='data'>{getTotal(item._id)}</span> */}
+                                                                    {/* <span className='data'>{getTotal(item._id)}</span> */}
                                                                     {/* </div> */}
                                                                     <div className='period'>
                                                                         <span className='title'>created At</span>
@@ -153,7 +153,7 @@ const UserReservations = () => {
 
                                                     <div className='row'>
                                                         <div className='cardImg col-md-3'>
-                                                        <img src={(item.ImgURL)? item.ImgURL[0] :dummyHotel}></img>
+                                                            <img src={(item.ImgURL) ? item.ImgURL[0] : dummyHotel}></img>
                                                         </div>
 
                                                         {/* /////// */}
@@ -229,8 +229,8 @@ const UserReservations = () => {
                     </div>
 
 
-                     {/* ******************************** Flight *****************************  */}
-                     {/* <div className='userReservations_Img'>
+                    {/* ******************************** Flight *****************************  */}
+                    {/* <div className='userReservations_Img'>
                         <span className='cloud'></span>
                         <img src={calenderIcon}></img>
                         <h2 className='text-center'>Flight Reservations</h2>
@@ -259,7 +259,7 @@ const UserReservations = () => {
                                                                     <div className='confirmation'>
                                                                         <span className='title'>Acceptance: </span>
                                                                         <span className='data pending'> {String(item.IsBooking)}</span>
-                                                                       
+
                                                                     </div>
                                                                     <div className='period'>
                                                                         <span className='title'>Departure Date</span>
@@ -298,7 +298,7 @@ const UserReservations = () => {
                                                                     </div>
 
                                                                 </div>
-                                                                
+
                                                             </div>
                                                         </div>
 

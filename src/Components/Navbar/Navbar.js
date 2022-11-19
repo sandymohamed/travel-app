@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 import { Link, NavLink } from 'react-router-dom';
-import travEasyLogo from '../../assets/logoWhite.png';
+import travEasyLogo from '../../Assets/logoWhite.png';
 import './navbar.scss';
 import { DarkModeContext } from '../../context/DarkMode';
 import RootGuard from '../../Guard/RootGuard';
@@ -93,7 +93,7 @@ function NavbarComponant() {
             <ul>
               <li className={`userInfo ${!isLoggedIn ? 'd-none' : ''}`}>
                 <i className="fa-solid fa-user"></i>
-                <span onClick={setShow} >User Name</span>
+                <span onClick={setShow} >{currentUser?.firstName}</span>
                 <ul className={`${show ? 'd-none' : ''}  `}>
                   <li>
                     <span className='userInfo_icon'>
@@ -136,13 +136,13 @@ function NavbarComponant() {
                 </Link>
               </li>
 
-              <li>
+              {/* <li>
                 <button
                   onClick={handleLogout}
                   className={`btn btn-md text-white pt-1 ${!isLoggedIn ? 'd-none' : ''}`}>
                   <i className="fa-solid fa-arrow-right-from-bracket"></i> Logout
                 </button>
-              </li>
+              </li> */}
             </ul>
           </li >
         </ul >
@@ -154,9 +154,9 @@ function NavbarComponant() {
           <div className="line3"></div>
         </div>
         <div className="form-check form-switch">
-    
+
           <div className="toggleIcon" onClick={() => handleToggleDarkMode()}>
-            <FontAwesomeIcon icon={myIcon} className='fs-1' style={{'cursor': 'pointer'}} />
+            <FontAwesomeIcon icon={myIcon} className='fs-1' style={{ 'cursor': 'pointer' }} />
           </div>
         </div>
       </nav >

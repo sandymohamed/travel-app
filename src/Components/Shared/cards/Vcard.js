@@ -1,13 +1,13 @@
 import './vcard.scss';
-import dummyImg from '../../../assets/card/dummy-image.jpg';
+import dummyImg from '../../../Assets/card/dummy-image.jpg';
 import { useContext, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../../context/DarkMode';
 
-function Vcart({ link, title, city, description, Evaluation, Price, hotelId,img }) {
-  
+function Vcart({ link, title, city, description, Evaluation, Price, hotelId, img }) {
+
   const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function Vcart({ link, title, city, description, Evaluation, Price, hotelId,img 
           data-aos="fade-up"
           data-aos-delay="300">
           <img
-            src={img? img : dummyImg}
+            src={img ? img : dummyImg}
             alt="Item_Name"></img>
         </div>
         <article

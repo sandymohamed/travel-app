@@ -1,7 +1,7 @@
 import './tourGuiding.scss';
 
 //// Header Data ////
-import headerimg from '../../../assets/header/tourGuidHeader.png';
+import headerimg from '../../../Assets/header/tourGuidHeader.png';
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
 const headerTitle = <>Select Your tooor </>;

@@ -7,7 +7,7 @@ import {
   getHolidaysByCityName,
   getHolidayByPrice,
 } from '../../../services/holidaysServ';
-import headerimg from '../../../assets/header/tourGuidHeader.png';
+import headerimg from '../../../Assets/header/tourGuidHeader.png';
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 import Vcart from '../../Shared/cards/Vcard';
 import SlideBar from '../../Shared/slideBar/Slidebar';
@@ -15,8 +15,8 @@ import StarRating from '../../Shared/Stars/Stars';
 
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
 
-const headerTitle = <>Select Your tooor </>;
-const headerParagraph = <> Ana msh mn sharm , </>;
+const headerTitle = <>Select Your Tour </>;
+const headerParagraph = <> A Good vibes happen on the tides.</>;
 const Holidays = () => {
   const [holidays, setHotlidays] = useState([]);
   const [cities, setCities] = useState([]);
