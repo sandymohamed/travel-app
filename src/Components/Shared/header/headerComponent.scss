@@ -1,8 +1,16 @@
 @import "../../../Style/colors.scss";
 @import "../../../Style/shortcuts.scss";
 
-#header_container {
+.vtrue {
     background-color: rgb(255, 255, 255);
+  }
+  
+.vfalse {
+    background-color: rgb(53, 50, 60);
+
+  }
+#header_container {
+    // background-color: rgb(255, 255, 255);
     border: 10px solid lighten($primaryColor, 10);
     margin: 2rem 10vw;
     padding: 2rem;

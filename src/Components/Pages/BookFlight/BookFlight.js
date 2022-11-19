@@ -5,7 +5,7 @@ import { getAllFlightByUser } from '../../../services/FlightService';
 // import 'react-date-range/dist/theme/default.css'; // theme css file
 import HeaderComponent from '../../Shared/header/HeaderComponent';
 ////// For Header //////
-import headerImg from '../../../Assets/header/transportationHeader.png';
+import headerImg from '../../../assets/header/transportationHeader.png';
 import FlightCard from '../../Shared/cards/FlightCard';
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
 import { setFormatDate } from '../../../services/DateformatService';
@@ -61,8 +61,8 @@ const BookFlight = () => {
                 <p>Flying From: {AirLine.Flight.FlyingFrom}</p>
                 <p>FlyingTo: {AirLine.Flight.FlyingTo}</p>
                 <p>Confirmation of Acceptance: {String(AirLine.IsBooking)}</p>
-                <p>TravellerCount : {AirLine.Flight.TravellerCount}</p>
-                <p>Child: {AirLine.Flight.Child}</p>
+                <p>Trip Number : {AirLine.Flight.TravellerCount}</p>
+                <p>Seat no: {AirLine.Flight.Child}</p>
                 <p>Infant: {AirLine.Flight.Infant}</p>
                 <p>Cabin Class: {AirLine.Flight.CabinClass}</p>
                

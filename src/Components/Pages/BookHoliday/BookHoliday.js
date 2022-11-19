@@ -14,10 +14,11 @@ const BookHoliday = () => {
     const { id } = useParams()
 
     const [holiday, setHoliday] = useState({})
+    const [price, setPrice] = useState(null)
 
-    const userId = useSelector((({ signReducer }) => signReducer.data.id))
-    console.log(userId);
+    const userId = useSelector((({ AuthReducer }) => AuthReducer.user.id))
     let user = (userId) ? userId : null
+  
 
     const initialValues = {
         RoomCount: "",
@@ -26,6 +27,7 @@ const BookHoliday = () => {
         Period: "",
         Transport: "",
         IsApprove: false,
+        Paid :false,
         startDate: "",
         endDate: "",
         Holidays: `${id}`,
@@ -41,6 +43,8 @@ const BookHoliday = () => {
         console.log(id);
 
         getHolidayById(id).then(res => setHoliday(res))
+        getHolidayById(`${id}`).then((res)=>setPrice(res.Price))
+
     }, [])
 
     console.log(holiday);
@@ -70,7 +74,7 @@ const BookHoliday = () => {
             <br />
             <section className="formCard center" data-aos="fade-up" data-aos-delay="200">
                 <h2>Book Now</h2>
-                <HolidayForm initialValues={initialValues} id={id} />
+                <HolidayForm initialValues={initialValues} id={id} price={price} />
             </section>
 
 

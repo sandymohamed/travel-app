@@ -2,16 +2,20 @@
 
 import "./serviceSection.scss"
 import { Link ,NavLink } from "react-router-dom"
+import { useContext } from "react";
+import { DarkModeContext } from "../../../context/DarkMode";
 
 
 function ServiceSection(props) {
 
+    const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
 
     return (
         <>
 
-            <section id="flight">
-                <div className='service_container'>
+            <section id="flight" >
+                <div  className={`service_container  v${darkMode}`}
+>
                     <section className='services'>
 
                         {/* --------------: Hotel :-------------- */}
@@ -50,7 +54,7 @@ function ServiceSection(props) {
                         </NavLink>
                         {/* --------------: TourGuid :-------------- */}
 
-                        <NavLink className="nav__link" to="/TourGuiding" activeClassName="active">
+                        {/* <NavLink className="nav__link" to="/TourGuiding" activeClassName="active">
                             <div className=' serviceItem services_tourGuide'>
                                 <div className='icon'>
                                     <i className="fa-solid fa-language"></i>
@@ -58,7 +62,7 @@ function ServiceSection(props) {
                                 <span>Tour Guide</span>
                             </div>
 
-                        </NavLink>
+                        </NavLink> */}
 
 
 

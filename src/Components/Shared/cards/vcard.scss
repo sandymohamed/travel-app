@@ -1,16 +1,22 @@
 @import "../../../Style/colors.scss";
 @import"../../../Style/shortcuts.scss";
 
+.vtrue {
+    background-color: rgb(255, 255, 255);
+  }
+  
+.vfalse {
+    background-color: rgb(53, 50, 60);
+
+  }
 #vcart {
     border: 10px solid darken($primaryColor, 5%);
     // width: 15em !important;
     min-width: 200px;
     max-width: 250px;
-    background-color: rgb(255, 255, 255);
     border-radius: calc($borderRadius * 3);
     overflow: hidden;
     .cartBody {
-
         .cartBody_img {
             border-radius: calc($borderRadius * 2);
             overflow: hidden;
@@ -91,3 +97,4 @@
     }
 
 }
+

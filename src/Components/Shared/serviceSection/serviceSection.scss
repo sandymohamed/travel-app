@@ -2,8 +2,17 @@
 @import "../../../Style/shortcuts.scss";
 @import "../../../Style/colors.scss";
 
+.vtrue {
+    background-color: rgb(255, 255, 255);
+  }
+  
+.vfalse {
+    background-color: rgb(53, 50, 60);
+
+  }
+
 .service_container{
-    background-color: white;
+    // background-color: white;
     border: 10px solid lighten($primaryColor, 10);
 
     margin: 6rem 10vw;

@@ -1,8 +1,16 @@
 @import "../../../Style/colors.scss";
 @import "../../../Style/shortcuts.scss";
 
-.slidebar {
+.ftrue {
     background-color: $liteGray;
+}
+  
+.ffalse {
+    background-color: rgb(119, 117, 122);
+
+  }
+.slidebar {
+    // background-color: $liteGray;
     border: 10px solid rgb(255, 255, 255);
     border-radius: calc($borderRadius *3);
     display: flex;

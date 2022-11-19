@@ -1,11 +1,15 @@
 import './vcard.scss';
-import dummyImg from '../../../Assets/card/dummy-image.jpg';
-import { useEffect } from 'react';
+import dummyImg from '../../../assets/card/dummy-image.jpg';
+import { useContext, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
+import { DarkModeContext } from '../../../context/DarkMode';
 
 function Vcart({ link, title, city, description, Evaluation, Price, hotelId }) {
+  
+  const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -13,9 +17,13 @@ function Vcart({ link, title, city, description, Evaluation, Price, hotelId }) {
   return (
     <section
       id="vcart"
-      data-aos="fade-up"
-      data-aos-delay="200">
-      <div className="cartBody">
+      className={`  v${darkMode}`}
+      // data-aos="fade-in"
+      // data-aos-delay="200"
+      >
+      <div
+            className={` cartBody v${darkMode}`}
+      >
         <div
           className="cartBody_img"
           data-aos="fade-up"
@@ -33,7 +41,7 @@ function Vcart({ link, title, city, description, Evaluation, Price, hotelId }) {
             <div className="cartBody_details_data_text">
               <span className="spanMajor">{city}</span>
               <span className="spanMinor">{description}</span>
-              <span className=" review spanMinor">Rate: {Evaluation}</span>
+              <span className=" review spanMinor"> {Evaluation} Stars</span>
             </div>
             <div className="cartBody_details_data_price">
               <span className="stars">price: </span>

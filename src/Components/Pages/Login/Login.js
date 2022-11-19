@@ -1,6 +1,6 @@
 import './Login.scss';
-import loginImg from '../../../Assets/login.jpg';
-import { useState, useContext, useEffect } from 'react';
+import loginImg from '../../../assets/login.jpg';
+import { useState, useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,9 +12,6 @@ import { DarkModeContext } from '../../../context/DarkMode';
 function SignIn() {
   const dispatch = useDispatch();
   const history = useHistory();
-  let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
-  let { message } = useSelector((MessageReducer) => MessageReducer);
-  const { darkMode } = useContext(DarkModeContext);
 
   const [userData, setUserData] = useState({
     username: '',
@@ -24,11 +21,9 @@ function SignIn() {
     usernameErr: null,
     passwordErr: null,
   });
-  useEffect(() => {
-    if (isLoggedIn) {
-      history.push('/home');
-    }
-  }, [isLoggedIn]);
+  let { isLoggedIn, user } = useSelector(({ AuthReducer }) => AuthReducer);
+  let { message } = useSelector((MessageReducer) => MessageReducer);
+  const { darkMode } = useContext(DarkModeContext);
 
   const regex = new RegExp('^[a-zA-Z0-9!@#$%]+$');
   const changeDetails = (e) => {
@@ -73,10 +68,17 @@ function SignIn() {
         position: toast.POSITION.TOP_CENTER,
       });
     }
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+    if (isLoggedIn) {
+      history.push('/home');
+    }
   };
 
   return (
     <>
+    <div className='log-container'>
       <section
         id="login"
         className={`${darkMode ? 'bg-dark ' : ''}`}>
@@ -140,6 +142,7 @@ function SignIn() {
           </form>
         </div>
       </section>
+      </div>
     </>
   );
 }

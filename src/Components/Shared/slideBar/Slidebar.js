@@ -2,14 +2,17 @@
 import "./slideBar.scss"
 
 import MultiRangeSlider from '../../Shared/range/MultiRangeSlider';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DarkModeContext } from "../../../context/DarkMode";
 
 function SlideBar({ serviceFilter, setPrice, filterHotels}) {
+    const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
 
     const [myMax, setMyMax] = useState(10000)
+
     return (
         <>
-            <section className="slidebar">
+            <section  className={`slidebar  f${darkMode}`}>
                 <h4>Filters</h4>
                 <div className='slidebar_container'>
 
