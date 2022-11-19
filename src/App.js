@@ -29,7 +29,6 @@ import Payment from './Components/Payment/Payment';
 function App() {
     const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
 
-
   // const [themeContext, setThemeContext]= useState('normal')
 console.log(darkMode);
 // 

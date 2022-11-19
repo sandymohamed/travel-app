@@ -1,6 +1,6 @@
 import './flightcard.scss';
 import dummyImg from '../../../assets/card/dummy-image.jpg';
-import { useEffect, useState } from 'react';
+import { useEffect, useState  , useContext} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faCalendarWeek } from '@fortawesome/free-solid-svg-icons';
 import AOS from 'aos';
@@ -11,12 +11,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+import { DarkModeContext } from '../../../context/DarkMode';
 
 
 function FlightCard({ Flightobj, setIsBook }) {
   useEffect(() => {
     AOS.init();
   }, []);
+
+  const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
 
   let DepartureDate = new Date(Flightobj.DepartureDate);
   let ReturnDate = new Date(Flightobj.ReturnDate);
@@ -45,18 +48,18 @@ function FlightCard({ Flightobj, setIsBook }) {
     }
   };
 
-const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
-const handleClose = () => setShow(false);
-const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <>
       <section
         id="flightCard"
+        className={` fc${darkMode}`}
         data-aos="fade-up"
         data-aos-delay="100">
-
         <ToastContainer />
         <div className="cardBody">
           <div
@@ -113,7 +116,7 @@ const handleShow = () => setShow(true);
 
               </div>
 
-              
+
 
               <button
                 className={Flightobj.NumberTickets > 0 ? "primaryBtn" : "orangeBtn"}
@@ -126,13 +129,13 @@ const handleShow = () => setShow(true);
               </button>
               <Button className="secondaryBtn" variant="primary" onClick={handleShow}>
                 Details
-                </Button>
+              </Button>
             </div>
           </article>
         </div>
       </section>
 
-     
+
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -140,88 +143,88 @@ const handleShow = () => setShow(true);
         </Modal.Header>
         <Modal.Body>
 
-        <div className="cardBody_details_data">
-              <div className="spacer"></div>
-              <div className="container">
-                <span className="line">
-                  {' '}
-                  - - - - - - -
-                  <span>
-                    {' '}
-                    <FontAwesomeIcon
-                      className="fs-3"
-                      icon={faPlane}
-                    />{' '}
-                  </span>{' '}
-                  - - - - - - -
-                </span>
-                <div className="container_data">
-                  <div className="spacer"></div>
-                  <div className="data">
-                    <p className="data_from"> FlyingFrom :  {Flightobj.FlyingFrom} </p>
-                    <p className="data_to"> FlyingTo : {Flightobj.FlyingTo} </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="container">
-                <span className="line">
-                  {' '}
-                  - - - - - - -
-                  <span>
-                    <i className="fa-solid fa-calendar-days"></i>
-                  </span>{' '}
-                  - - - - - - -
-                </span>
-                <div className="container_data">
-                  <div className="data">
-                    <p className="data_from"> DepartureDate :  {DepartureDateMDY} </p>
-                    <p className="data_to"> ReturnDate :  {ReturnDateMDY} </p>
-                  </div>
-                </div>
-
-              </div>
-              <div className="container">
-                <span className="line">
-                  {' '}
-                  - - - - - - -
-                  {' '}
-                  - - - - - - -
-                </span>
-                <div className="container_data">
-                  <div className="data">
-                    <p className="data_to"> NumberTickets : {Flightobj.NumberTickets}</p>
-                    <p className="data_to"> CabinClass : {Flightobj.CabinClass}</p>
-                    <p className="data_to"> Price : {Flightobj.Price}</p>
-                  </div>
-                </div>
-              </div>
-              
-
-              <button
-                className={Flightobj.NumberTickets > 0 ? "primaryBtn" : "orangeBtn"}
-                disabled={Flightobj.NumberTickets > 0 ? false : true}
-                onClick={() => {
-                  FunctionBooking();
-                }}>
+          <div className="cardBody_details_data">
+            <div className="spacer"></div>
+            <div className="container">
+              <span className="line">
                 {' '}
-                Booking
-              </button>
-             
+                - - - - - - -
+                <span>
+                  {' '}
+                  <FontAwesomeIcon
+                    className="fs-3"
+                    icon={faPlane}
+                  />{' '}
+                </span>{' '}
+                - - - - - - -
+              </span>
+              <div className="container_data">
+                <div className="spacer"></div>
+                <div className="data">
+                  <p className="data_from"> FlyingFrom :  {Flightobj.FlyingFrom} </p>
+                  <p className="data_to"> FlyingTo : {Flightobj.FlyingTo} </p>
+                </div>
+              </div>
             </div>
-          
-          
+
+            <div className="container">
+              <span className="line">
+                {' '}
+                - - - - - - -
+                <span>
+                  <i className="fa-solid fa-calendar-days"></i>
+                </span>{' '}
+                - - - - - - -
+              </span>
+              <div className="container_data">
+                <div className="data">
+                  <p className="data_from"> DepartureDate :  {DepartureDateMDY} </p>
+                  <p className="data_to"> ReturnDate :  {ReturnDateMDY} </p>
+                </div>
+              </div>
+
+            </div>
+            <div className="container">
+              <span className="line">
+                {' '}
+                - - - - - - -
+                {' '}
+                - - - - - - -
+              </span>
+              <div className="container_data">
+                <div className="data">
+                  <p className="data_to"> NumberTickets : {Flightobj.NumberTickets}</p>
+                  <p className="data_to"> CabinClass : {Flightobj.CabinClass}</p>
+                  <p className="data_to"> Price : {Flightobj.Price}</p>
+                </div>
+              </div>
+            </div>
+
+
+            <button
+              className={Flightobj.NumberTickets > 0 ? "primaryBtn" : "orangeBtn"}
+              disabled={Flightobj.NumberTickets > 0 ? false : true}
+              onClick={() => {
+                FunctionBooking();
+              }}>
+              {' '}
+              Booking
+            </button>
+
+          </div>
+
+
 
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          
+
         </Modal.Footer>
       </Modal>
 
-      
+
     </>
   );
 }

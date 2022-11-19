@@ -18,7 +18,7 @@ import StarRating from '../../Shared/Stars/Stars';
 import HotelService from '../../Shared/hotelService/HotelService';
 
 const headerTitle = <>Select Your Home </>;
-const headerParagraph = <> Ana B7b bety Gdan , msh hadar aseebo laaaaaaaaaaa</>;
+const headerParagraph = <> Get great hotel deals and the best rates at Hotels . <br></br> Indulgent holiday offers, family packages, business bundles and more. Book now</>;
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);

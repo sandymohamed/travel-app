@@ -6,8 +6,8 @@
   }
   
 .vfalse {
-    background-color: rgb(53, 50, 60);
-
+    background-color: $secoundryColorDark;
+    border: 10px solid lighten($secoundryColorDark, 10) !important;
   }
 #header_container {
     // background-color: rgb(255, 255, 255);

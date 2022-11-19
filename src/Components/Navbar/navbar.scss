@@ -34,13 +34,13 @@ li {
       color: white;
       transition: $noramlTransition;
       border-radius: $borderRadius;
-      border: 3px solid #51acf1;
+      // border: 3px solid #51acf1;
       padding: 5px 10px;
 
       &:hover {
         background-color: white;
         color: #51acf1;
-        border: 3px solid white;
+        // border: 3px solid white;
       }
 
 
@@ -201,11 +201,18 @@ li {
 .toggle .line3 {
   transform: rotate(45deg) translate(-4px, -5px);
 }
-
+.form-check{
+  .toggleIcon{
+    color: white;
+    svg{
+      width: 1.5rem;
+    }
+  }
+}
 .ntrue {
-  background-color: #51acf1;;
+  background-color: darken($primaryColor,10);
 }
 
  .nfalse {
-  background-color: rgb(43, 42, 42);
+  background-color: $secoundryColorDark ;
 }

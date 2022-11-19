@@ -1,18 +1,11 @@
-
 @import "../../../Style/shortcuts.scss";
 @import "../../../Style/colors.scss";
 
-.vtrue {
-    background-color: rgb(255, 255, 255);
-  }
-  
-.vfalse {
-    background-color: rgb(53, 50, 60);
 
-  }
 
-.service_container{
-    // background-color: white;
+
+.service_container {
+    background-color: white;
     border: 10px solid lighten($primaryColor, 10);
 
     margin: 6rem 10vw;
@@ -20,15 +13,20 @@
 
     border-radius: calc($borderRadius *3);
     position: relative;
+    transition:$noramlTransition;
+
 
     .services {
         display: flex;
         justify-content: space-around;
         margin: 0 2rem;
 
+
         .serviceItem {
+
             background-color: $liteGray;
             border: 5px solid white;
+            color: $gray;
 
             display: flex;
             align-items: center;
@@ -53,8 +51,9 @@
                 i {
                     color: white;
                 }
-                span{
-                    color: $primaryColor 
+
+                span {
+                    color: $primaryColor
                 }
 
             }
@@ -64,12 +63,38 @@
         .active .serviceItem {
             background-color: $secoundryColor;
             text-align: center;
+            color: white;
 
             .icon {
                 @include dFlex;
                 border: 3px solid white;
 
                 background-color: darken($secoundryColor, $amount: 10);
+                border-radius: 50%;
+
+                i {
+                    color: white;
+                }
+
+            }
+
+        }
+
+        .sfalse {
+            background-color: $secoundryColorDark ;
+            color: white !important;
+            border: 5px solid lighten($secoundryColorDark, 10);
+
+        }
+
+        .active .sfalse {
+            background-color: lighten($secoundryColorDark, 30);
+            text-align: center;
+
+            .icon {
+                @include dFlex;
+                border: 3px solid white;
+                background-color: lighten($secoundryColorDark, 30);
                 border-radius: 50%;
 
                 i {
@@ -93,7 +118,12 @@
         //   }
     }
 
- 
-    
 
+
+
+}
+.sfalse {
+    background-color: $secoundryColorDark ;
+
+    border: 10px solid lighten($secoundryColorDark, 10) ; 
 }

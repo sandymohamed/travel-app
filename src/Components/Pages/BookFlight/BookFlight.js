@@ -65,10 +65,7 @@ const BookFlight = () => {
                 <p>Child: {AirLine.Flight.Child}</p>
                 <p>Infant: {AirLine.Flight.Infant}</p>
                 <p>Cabin Class: {AirLine.Flight.CabinClass}</p>
-               
-
-
-
+              
               </div>
             )
 

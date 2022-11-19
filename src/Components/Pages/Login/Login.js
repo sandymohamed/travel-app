@@ -81,7 +81,7 @@ function SignIn() {
     <div className='log-container'>
       <section
         id="login"
-        className={`${darkMode ? 'bg-dark ' : ''}`}>
+        className={`login${darkMode}`}>
         <div className={`container `}>
           <div className="loginImg ">
             <img
