@@ -92,6 +92,8 @@ const BookForm = ({ initialValues, bookHotel, id, price }) => {
    
    <div className={`bookForm book${darkMode}`}>
         <Form onSubmit={(e) => { handleSubmit(e) }} className="my-form row">
+        <h1 className='text-center'>BOOK YOUR HOTEL</h1>
+
           <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicSingle">
             <Form.Label >Single Room Count</Form.Label>
             <Form.Control required type="number" min="0" name="Single"

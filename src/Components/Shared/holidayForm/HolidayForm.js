@@ -87,7 +87,7 @@ const HolidayForm = ({ initialValues, price }) => {
     return (    <>
         <div className={`holidayForm holiday${darkMode}`}>
             <Form onSubmit={(e) => { handleSubmit(e) }} className="my-form row">
-                <h2>Book Now</h2>
+                <h2 className='text-center'>Book Now</h2>
                 <Form.Group className="col-md-3 inputContainer" data-aos="fade-up" data-aos-delay="400" controlId="formBasicRoomCount">
                     <Form.Label >Room Count </Form.Label>
                     <Form.Control required type="number" min="0" placeholder="Enter Room Count" value={values.RoomCount} name="HRoomCount" onChange={(e) => handleInputChange(e)} />

@@ -21,14 +21,14 @@ const UserReservations = () => {
     const userId = useSelector((({ AuthReducer }) => AuthReducer.user.username))
     let user = (userId) ? userId : null
 
-    const GetTotal =({id})=>{
-        const [total, setTotal]= useState(0);
-        getTotalPrice(id).then(res => console.log(res))
-        console.log(total);
+    // const GetTotal =({id})=>{
+    //     const [total, setTotal]= useState(null);
+    //     getTotalPrice(id).then(res => console.log(res))
+    //     console.log(id);
 
-      return   <span className='data'>{total}</span>
+    //   return   <span className='data'>{total}</span>
 
-    }
+    // }
     useEffect(() => {
         bookedHotelByUser(user).then(res => setHReservations(res))
         bookedHolidayByUser(user).then(res => setTReservations(res))
@@ -43,7 +43,7 @@ const UserReservations = () => {
                     <div className='userReservations_Img'>
                         <span className='cloud'></span>
                         <img src={calenderIcon}></img>
-                        <h2 className='text-center'>Hotels Reservations</h2>
+                        <h2 className='text-center'> Reservations</h2>
                     </div>
                     <div className='userReservations_data'>
                         <div className='container'>
@@ -61,7 +61,6 @@ const UserReservations = () => {
                                                             <img src={(item.ImgURL)? item.ImgURL[0] :dummyHotel}></img>
                                                         </div>
 
-                                                        {/* /////// */}
                                                         <div className='cardData col-md-9'>
                                                             <span className='cardData_name text-center'> {item.Hotels.HotelName}</span>
 
@@ -82,13 +81,13 @@ const UserReservations = () => {
                                                                         <span className='title'>Room Count</span>
                                                                         <span className='data'> {item.RoomCount}</span>
                                                                     </div><br />
-                                                                    {/* <div className='period'> */}
-                                                                        {/* <span className='title'>Total Price</span> */}
-                                                                        {/* <GetTotal id={item._id} /> */}
+                                                                    {/* <div className='period'>
+                                                                        <span className='title'>Total Price: </span>
+                                                                        <GetTotal id={item._id} />
 
-                                                                        {/* <span className='data'>{getTotal(item._id)}</span> */}
-                                                                    {/* </div> */}
-                                                                    <div className='period'>
+                                                                        // <span className='data'>{getTotal(item._id)}</span> 
+                                                        </div>*/}
+                                                                    <div className='period'> 
                                                                         <span className='title'>created At</span>
                                                                         <span className='data'>{setFormatDate(item.createdAt)}</span>
                                                                     </div>
@@ -261,10 +260,12 @@ const UserReservations = () => {
                                                                         <span className='data pending'> {String(item.IsBooking)}</span>
                                                                        
                                                                     </div>
+                                                                    {(item.Flight)&&                        
+<>
                                                                     <div className='period'>
                                                                         <span className='title'>Departure Date</span>
-                                                                        <span className='data'>{setFormatDate(item.Flight.DepartureDate)}</span>
-                                                                    </div>
+                                                                            <span className='data'>{setFormatDate(item.Flight.DepartureDate)}</span>
+                                                                                                                                          </div>
                                                                     <div className='roomCount'>
                                                                         <span className='title'>Return Date</span>
                                                                         <span className='data'> {setFormatDate(item.Flight.ReturnDate)}</span>
@@ -297,6 +298,8 @@ const UserReservations = () => {
                                                                         <span className='data'>{item.Flight.CabinClass}</span>
                                                                     </div>
 
+                                                                
+                                                                </>}
                                                                 </div>
                                                                 
                                                             </div>

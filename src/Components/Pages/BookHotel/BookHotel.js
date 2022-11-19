@@ -44,15 +44,8 @@ const BookHotel = () => {
   };
 
   const handleDelete = (id, user) => {
-
-    if (user === userName) {
       deleteHotelFeedback(id)
-    }
-    else {
-      // ****************************************************************************************
-      toast("you don't have permition !");
-    }
-
+      toast(`Deleted Successfully!`);
 
   }
 
@@ -89,14 +82,23 @@ const BookHotel = () => {
                   (feedback) && (
                     feedback.map((item, i) => {
                       return (<div className='feedback-card fw-semibold position-relative mb-2' key={i}>
-                        <button className='btn btn-danger position-absolute end-0 me-5' onClick={() => handleDelete(item._id, item.Tourist.username)}>delete</button>
+                        {
+
+(item.Tourist)?
+                          (item.Tourist.username === userName)?(  <button 
+                            className='btn btn-danger position-absolute end-0 me-5' 
+                            onClick={() => handleDelete(item._id, item.Tourist.username)}
+                            >delete</button>
+                          ):null
+                          :null
+                        }
                         <ToastContainer />
 
-                        {/* <h4>{item.Tourist.username}</h4> */}
+                        { (item.Tourist)&&(<h4>{item.Tourist.username}</h4>) }
                         <p className='text-secondary '>{item.Description}</p>
                         {/* <p className='text-end fst-italic'><span >{format(new Date(item.createdAt), 'dd/mm/yyyy')}</span></p> */}
                         <p className='text-end fst-italic'><span >{setFormatDate(item.createdAt)}</span></p>
-
+                        <hr/>
                       </div>)
                     })
                   )

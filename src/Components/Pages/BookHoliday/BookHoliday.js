@@ -16,9 +16,8 @@ const BookHoliday = () => {
     const [holiday, setHoliday] = useState({})
     const [price, setPrice] = useState(null)
 
-    const userId = useSelector((({ AuthReducer }) => AuthReducer.user.id))
+    const userId = useSelector((({ AuthReducer }) => AuthReducer.user.id))  
     let user = (userId) ? userId : null
-
 
     const initialValues = {
         RoomCount: "",
@@ -31,7 +30,7 @@ const BookHoliday = () => {
         startDate: "",
         endDate: "",
         Holidays: `${id}`,
-        Tourist: '636ee72d8507294529847953',
+        Tourist: `${user}`,
         // Guide: `${user}``
     };
 

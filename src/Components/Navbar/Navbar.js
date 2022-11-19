@@ -16,8 +16,10 @@ function NavbarComponant() {
 
   const [active, setActive] = useState('nav__menu');
   const [icon, setIcon] = useState('nav__toggler');
-
   const [show, setShow] = useState(false)
+
+  const username = useSelector((({ AuthReducer }) => AuthReducer.user.username))
+  const userName = (username) ? username : null
 
 
   const currentUser = AuthService.getCurrentUser();
@@ -93,7 +95,7 @@ function NavbarComponant() {
             <ul>
               <li className={`userInfo ${!isLoggedIn ? 'd-none' : ''}`}>
                 <i className="fa-solid fa-user"></i>
-                <span onClick={setShow} >User Name</span>
+                <span onClick={setShow} >{userName}</span>
                 <ul className={`${show ? 'd-none' : ''}  `}>
                   <li>
                     <span className='userInfo_icon'>
