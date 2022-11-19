@@ -4,6 +4,7 @@ import FlightCard from '../../Shared/cards/FlightCard';
 import Vcart from '../../Shared/cards/Vcard';
 import Carousel from 'react-bootstrap/Carousel';
 import testslider from "../../../assets/cover/testcover.jpg"
+import cover2 from "../../../assets/cover/cover2.jpg"
 import flightImg from "../../../assets/header/flight.png"
 import hotelImg from "../../../assets/hotel-home.png"
 import hotelImg2 from "../../../assets/hotel-home-2.png"
@@ -43,20 +44,18 @@ const Home = () => {
           />
           <Carousel.Caption>
             <h3 data-aos="fade-up"
-              data-aos-delay="200">First slide label</h3>
-            <p data-aos="fade-up"
-              data-aos-delay="300">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              data-aos-delay="200">Experts at adventure</h3>
+           
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={500}>
           <img
             className="d-block"
-            src={testslider}
+            src={cover2}
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Time for an adventure</h3>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -66,10 +65,8 @@ const Home = () => {
             alt="Third slide"
           />
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <h3> Life’s better with a backpack</h3>
+            
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

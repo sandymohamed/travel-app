@@ -15,8 +15,8 @@ import StarRating from '../../Shared/Stars/Stars';
 
 import ServiceSection from '../../Shared/serviceSection/ServiceSection';
 
-const headerTitle = <>Select Your tooor </>;
-const headerParagraph = <> Ana msh mn sharm , </>;
+const headerTitle = <> Holiday Hustle and Bustle </>;
+const headerParagraph = <> Holidays can likewise be called as pressure busters for the people.<br />  The normal surge of life needs a few days to relax.The holidays are welcomed and waited for all.</>;
 const Holidays = () => {
   const [holidays, setHotlidays] = useState([]);
   const [cities, setCities] = useState([]);
@@ -29,7 +29,7 @@ const Holidays = () => {
     <>
       <div className="holidayDetails ">
         <select
-          className=" bg-warning m-2 p-2 border border-0 rounded city-options"
+          className="city-options"
           id="dropdown-basic"
           defaultValue={city}
           onClick={() => filterHolidays('city')}

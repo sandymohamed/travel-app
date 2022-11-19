@@ -25,6 +25,7 @@ import UserReservations from './Components/Pages/UserReservations/UserReservatio
 import React, { useContext, useState } from 'react';
 import UserHolidayRes from './Components/Pages/UserReservations/UserHolidayRes';
 import Payment from './Components/Payment/Payment';
+import Footer from './Components/Footer/Footer';
 
 function App() {
     const { toggleDarkMode, darkMode } = useContext(DarkModeContext);
@@ -118,6 +119,7 @@ function App() {
               component={NotFound}
             />
           </Switch>
+          <Footer/>
         </RootGuard>
       </DarkModeProvider>
     </BrowserRouter>
