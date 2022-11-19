@@ -12,7 +12,7 @@ function SlideBar({ serviceFilter, setPrice, filterHotels}) {
 
     return (
         <>
-            <section  className={`slidebar  f${darkMode}`}>
+            <section  className={`slidebar  slidebar${darkMode}`}>
                 <h4>Filters</h4>
                 <div className='slidebar_container'>
 
