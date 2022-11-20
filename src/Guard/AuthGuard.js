@@ -21,6 +21,9 @@ const AuthGuard = ({ children }) => {
     if (location.pathname === '/user/profile' && isLoggedIn === false) {
       history.push('/login');
     }
+    if (location.pathname === '/UserDetails' && isLoggedIn === false) {
+      history.push('/login');
+    }
   }, [location.pathname]);
   return children;
 };

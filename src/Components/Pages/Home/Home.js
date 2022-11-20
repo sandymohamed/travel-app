@@ -175,7 +175,6 @@ const Home = () => {
               <article className='tour-article col-md-6'>
                 <h3>HOLIDAYS</h3>
                 <h3>The Perfect Place </h3>
-                <p>And journey.</p>
                 <img src={tourImg} loading="lazy" ></img>
                 <Link className='orangeBtn' to='holidays'>Discover Now </Link>
 

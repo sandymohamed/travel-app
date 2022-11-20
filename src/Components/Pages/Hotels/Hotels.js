@@ -17,8 +17,8 @@ import SlideBar from '../../Shared/slideBar/Slidebar';
 import StarRating from '../../Shared/Stars/Stars';
 import HotelService from '../../Shared/hotelService/HotelService';
 
-const headerTitle = <>Select Your Home </>;
-const headerParagraph = <> Get great hotel deals and the best rates at Hotels . <br></br> Indulgent holiday offers, family packages, business bundles and more. Book now</>;
+const headerTitle = <>Select Your Destination </>;
+const headerParagraph = <> Excuse me while I taunt my Facebook friends with another picture of my beach vacation.</>;
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);
